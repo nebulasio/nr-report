@@ -6,6 +6,7 @@
 \usepackage{comment}
 \usepackage{xeCJK}
 \usepackage[title,titletoc]{appendix}
+\usepackage{pagecolor}
 
 \setCJKmainfont[BoldFont = STSongti-SC-Bold]{STSongti-SC-Regular}
 \setCJKfamilyfont{hei}{SIL-Hei-Med-Jian}		%宋体
@@ -24,12 +25,11 @@
 
 \setCJKsansfont[BoldFont = STHeitiSC-Medium]{STHeitiSC-Light}
 
-\usepackage{pagecolor}
 
+\bibliographystyle{unsrt}
 \input{common.tex}
-
-%\bibliographystyle{unsrt}
 %\addbibresource{reference.bib}
+
 \begin{document}
 \renewcommand{\contentsname}{目录}
 \renewcommand{\abstractname}{摘要}
@@ -61,6 +61,8 @@
 \input{core-impl.tex}
 \input{extension.tex}
 \input{future.tex}
+%\printbibliography
+\bibliography{reference}
 
 \begin{appendices}
 
