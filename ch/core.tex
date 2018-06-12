@@ -52,11 +52,24 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \end{align}
 
 \subsection*{出入度指标$\gamma$}
-出入度指标的计算首先需要对图进行“去环”处理。一个环在节点$v$开始并结束，记为$H(v)$，即，
+出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
+一个交易环在节点$v$开始并结束，是交易图中边的集合，记为$H(v)$，即，
 \[
-H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_n, \tau_n)\}
+H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
 \noindent 其中，$\forall 1\le i \le {n-1} : \tau_i \le \tau_{i+1} $。
+\noindent 如~\reffig{fig:loop}所示，其中包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
+
+\input{fig_loop.tex}
+
+在找到交易环后，需要进行去交易环处理。步骤如下：{\color{red} 算法细节}
+\begin{enumerate}
+\item 对于交易环$H(v)$，从起始节点$v$出发，依次便利交易环中的各个节点
+\end{enumerate}
+
+\input{fig_no_loop.tex}
+
+
 经过“去环”后，图中不再存在按时间顺序形成的环。
 
 在“去环”后，需要对图中起始点及终止点相同的边进行合并，{\color{red} 怎么合并？}
