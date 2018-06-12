@@ -2,13 +2,10 @@
 
 核心星云指数用于衡量{\textbf{一段时间内}}用户对整个经济体的贡献。
 精确的计算这一指标是十分困难的，因此，我们使用了一个近似算法。
-在该近似算法中，我们考虑了两个重要的因素，即账户持有的币龄及账户在交易网络中的位置信息。
+在该近似算法中，我们考虑了两个重要的因素，即账户持有的币龄及账户在交易网络中的位置信息。在稍后的评测中，我们证明了这种近似算法的有效性。
 
 
-我们仅仅使用一段时间内的链上的交易记录作为核心星云指数的数据来源。如前所述，交易所的数据在没有交易所配合
-的情况下，是无法得到的；而在交易所配合的情况下，交易数据可以按照链上交易的方式进行形式化，因此，我们此处
-并不区分交易所与普通账户。
-
+我们使用一段时间内的链上的交易记录作为核心星云指数的数据来源。
 对于一段时间$[t_0\ −\ T,\ t_0]$内的交易记录，可以描述为集合
 \begin{align}
 \Theta(t_0) = \{(s, d, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq r \}
@@ -17,19 +14,18 @@
 边的权值的$w$，边的时间为$\tau$。
 
 
-
-核心星云指数$\mathcal{C}$的计算基于$\Theta(t_0)$，即
+对于账户$a \in \mathcal{A}$，其核心星云指数$\mathcal{C}(a)$的计算基于$\Theta(t_0)$，即
 \begin{align}
-\mathcal{C} = \Omega(\beta) * \Psi(\gamma)
+\mathcal{C}(a) = \Omega(\beta(a)) * \Psi(\gamma(a))
 \label{eq:rank}
 \end{align}
-\noindent 其中$\beta$为一段时间内用户持有的资产的数量的中值；$\gamma$为用户在一段时间内的出入度指标。
+\noindent 其中$\beta(a)$为一段时间内账户$a$持有的资产的数量的中值；$\gamma(a)$为账户$a$在一段时间内的出入度指标。
 
-我们分别考虑式~\ref{eq:rank}中的三个问题，资产中值$\beta$的计算，出入度指标$\gamma$的计算，以及函数
+我们分别考虑式~\ref{eq:rank}中的三个问题，资产中值$\beta(a)$的计算，出入度指标$\gamma(a)$的计算，以及函数
 $\Omega$及$\Psi$的选择。
 
 {\color{gray}注意，我们并未使用技术白皮书中的计算方法。说说原因}
-\subsection*{资产中值$\beta$}
+\subsection*{资产中值$\beta(a)$}
 对于时间段$[t_0\ −\ T,\ t_0]$，区块链系统中存在$n$个区块，记为
 \[
 B_0, B_1, \dots, B_n
@@ -45,11 +41,12 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \]
 其中$d^a_{(i)} < d^a_{(i+1)}, 0\le i \le {n-1}$，由此，可以得到
 \begin{align}
-\beta = \left\{ \begin{array}{rcl}
+\beta(a) = \left\{ \begin{array}{rcl}
 {d^a_{(k)}} & \mbox{for} & n=2*k, k=1, 2, 3, \ldots \\
 {(d^a_{(k)} + d^a_{(k+1)})/2} & \mbox{for} & n=2*k + 1, k=1, 2, 3, \ldots
 \end{array}\right.
 \end{align}
+资产中值一定程度上代表了“币龄”，即账户中需要至少持有该资产一半以上的时间。
 
 \subsection*{出入度指标$\gamma$}
 出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
@@ -61,63 +58,62 @@ H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w
 \noindent 如~\reffig{fig:loop}所示，其中包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
 
 \input{fig_loop.tex}
-
-在找到交易环后，需要进行去交易环处理。算法如下：{\color{red} 算法细节}
-
-\begin{algorithm}[H]
-\SetAlgoLined
-\KwResult{不含交易环的图}
- 构造有向图，初始时节点集为全体账户，弧集为空\;
- \For{按照发生时间由早到晚的顺序找出交易}{
-  将交易对应的弧加入弧集\;
-  \If{出现满足定义的交易环}{
-   找出当前图中所有交易环。\;
-   计算每个环的流量为当前图中环上所有弧的最小权值。
-   \For{按照流量由小到大的顺序处理找到的交易环}{
-   	\If{当前交易环的权值都大于0}{
-	   将交易环中每条弧的权值更新为：当前图中该弧的权值－当前图中当前交易环上所有弧的最小权值\;
-	 }
-    }
-   }
- }
- \caption{去环算法}
-\end{algorithm}
-
-
 \input{fig_no_loop.tex}
 
-{\color{red} 计算top k}
-
-对于节点$v$，其出入度指标$\gamma$为
+在找到交易环后，需要进行去交易环处理。假设$H(v)$中交易金额最小的交易为 $(s_m, t_m, w_m, \tau_m)$，即
+\[
+\forall (s, t, w, \tau) \in \mathcal{T} : w \le w_m
+\]
+\noindent 然后，需要$H(v)$中所有的交易减去该最小交易量，如果新的交易量为0，则移除该交易，即
+\[
+\mathcal{E}((s, t, w, \tau), w_m) = \left\{ \begin{array}{rcl}
+(s, t, w-w_m, \tau) & \mbox{if} & w \ne w_m \\
+\phi & \mbox{if} & w = w_m
+\end{array}\right.
+\]
 \begin{align}
-\gamma(v) = (p + q) * e^{-2\sin^2{(\pi/4 - \arctan(q/p))}}
+\Theta^{\prime}(t_0)=\Theta(t_0)-H(v) \cup \{\mathcal{E}(t), t\in\mathcal{T}\}
 \end{align}
+\noindent 如图~\ref{fig:no:loop}所示，为图~\ref{fig:loop}去掉交易环之后的交易图。
+
+
+在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
+
+记节点$v$的转入金额为$p(v)$，则
+\begin{align}
+p(v) = \sum_{(s_i, v, w_i, \tau_i) \in \Theta^{\prime\prime}(t_0)}{w_i}
+\end{align}
+\noindent 同理，节点$v$的转出金额有
+\begin{align}
+q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime\prime}(t_0)}{w_i}
+\end{align}
+\noindent 由此，
+对于节点$v$，其出入度指标$\gamma(v)$为
+\[
+\mathcal{G}(v) = (p(v) + q(v)) * e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
+\]
+\begin{align}
+\gamma(v) = (\frac{\theta*\mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
+\end{align}
+\noindent 其中$\theta, \mu, \lambda$为待定的参数。
 
 \subsection*{计算函数}
-考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，因此，具体的星云指数的计算是依赖于场景的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
+考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
 
 我们记星云指数的计算函数为\(f(x)\)，其中\(x\)
-为星云指数需要参考的因素，可以为持有的余额、币龄或账户的出入度。为了操纵星云指数，
-攻击者可以进行任意的操作，包括创建足够多的账户、进行账户之间的转账等，在诸多攻击方式中，唯一确定的事实是，
-{\color{red} 用户需要将原本属于一个账户的资金拆分为多份，并转移到其他账户中}，因此，为了抵抗操纵，
-需要保证用户在拆分资金后，其星云指数会降低，即：
+为星云指数需要参考的因素，可以为持有的余额、币龄或账户的出入度。$f(x)$需要满足两个性质，{\color{red} 性质格式}
 
 \begin{align}
-f(a + b) > f(a) + f(b).\quad a>0, b>0
+f(a + b) > f(a) + f(b)\quad a>0, b>0
 \end{align}
-
-需要注意的是，上式可能会产生另外一种可能的操纵幸运指数的方式，即多个用户通过将账户中的余额集中
-到同一个账户中，以获得更高的收益，因此，需要满足
-
 \begin{align}
-\lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b).\quad a>0, b>0
+\lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b)\quad a>0, b>0
 \end{align}
-满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数
+\noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
 \begin{align}
 f(x) = x/(1 + e^{a + b*x})
 \end{align}
-\noindent 该函数的图形如\reffig{fig-nr}所示。可以证明，当一个账户中的资金被拆分到多个账户中后，
-多个账户的星云指数之和是减少的，更进一步的，当拆分的账户越多，则这些账户的星云指数之和会越小。
+\noindent {\color{red} 证明见附录}
 
 \begin{figure}
 \centering
@@ -142,10 +138,10 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \label{fig-nr}
 \end{figure}
 
-\vspace{1em}
+\vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
 \begin{align}
-\mathcal{C} =  \frac{\beta}{1+e^{a + b * \beta}} * \frac{\gamma}{1+e^{c + d * \gamma}}
+\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b * \beta(v)}} * \frac{\gamma(v)}{1+e^{c + d * \gamma(v)}}
 \end{align}
 \noindent 其中，$a, b, c, d$为待定的参数。
 
