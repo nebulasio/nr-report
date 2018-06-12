@@ -1,0 +1,99 @@
+
+\begin{comment}
+区块链之上的加密数字货币无疑正在成为一种新的经济体~\cite{neweco}，这一经济体将包含越来越多的行为及个体，整个系统也逐渐变得更加复杂，由最初的、单纯的数字货币系统，正在逐步成为智能合约、甚至应用的基础平台。
+
+尽管区块链之上的加密数字货币是一种新型的经济体，我们认为，其仍然遵循必然的经济规律。也就是说，数字货币对应的经济体的变化仍然遵循经济学中的客观规律，
+使用传统的、严谨的经济学方法对加密数字货币进行研究依然是有效的。
+
+我们希望Nebulas能够成为一个高效的经济体，既，Nebulas能够被大家使用，用于各种场景下的交易、并支撑各种智能合约及应用。
+因此，我们需要深入的理解一个经济体是如何变得高效的，以及如何定量的描述这些指标。
+
+在传统的经济学中，存在很多指标用于描述经济系统，例如``流动性''，``流通性''，``货币流动性''等。
+我们认为使用``货币流通速度''是一个便于使用的指标，Selden~\cite{selden}指出，货币流通速度是一个时期中货币的流量与该时期
+中货币平均存量的比率。也就是说xxxx。
+\subsection{宏观模型}
+
+\end{comment}
+
+
+\begin{comment}
+\subsection{另一个版本}
+PS：这里尝试从微观经济学来给出解释模型。
+
+假设星云经济系统中，存在共计$N$个用户（或者称之为参与者，下文中两者表示同一概念）。用户$i$在任意时刻$t$需要发起数量为$x_{it}$的交易，后者$x_{it}$服从伯努利分布$B(1,p)$。对于用户$i$而言，其使用星云币进行交易的货币收益表示为$\frac{\widetilde{e}_{t+1}}{e}x_{it}$,其中$e$表示汇率，$\widetilde{e}_{t+1}$表示在t时刻星云经济系统仍然运行情况下的汇率，后者服从某个分布$G_{t+1}$。
+
+
+在任意时刻$t$用户$i$选择策略$a_{it}\in \{T,\widehat{T}\}$,即使用星云币进行交易（表示为$T$），以及其他选择（例如通过其他交易渠道进行交易,表示为$\widehat{T}$）。在经济学中，每个参与者在参与博弈时采取不同行动策略会获取不同的收益，后者可以用收益函数（Payoff function）来表示。
+
+综上，用户$i$交易行为的收益函数可以表示为：
+
+\begin{align}
+u(T;x_{it},e,\kappa_t,c_i)=\kappa_t \cdot \mathbb{E}_{it}v(\frac{\widetilde{e}_{t+1}}{e}x_{it})-c_i
+\end{align}
+
+其中$\kappa_t$表示在时刻$t$星云经济系统稳定的概率（该概率随时间增加而不断趋近于1，{\color{gray}相关证明后续需要的话会补充}），$c_i$表示用户交易产生的损失（例如额外的时间开销等），该损失存在上下限，因此对于任何用户$i$，有$c_i\in[c^-,c^+]$。
+$\mathbb{E}_{it}$表示在给定环境下时刻$t$参与者$i$效用函数（utility function）的期望，需要指出的是，所有参与者均假设为风险厌恶倾向，因此用户效用函数用弱凸函数(weakly concave function)$v$表示，即效用随着货币收益增加而增加，但增加率递减。
+
+对应用户$i$采取其他策略的收益函数表示为$u(\widehat{T};x_{it})$.
+
+这里用$a_{it}$表示用户$i$在$t$时刻的决策，当$u(T;x_{it},e,\kappa_t,c_i)\geq u(\widehat{T};x_{it})$时，用户$i$选择采用星云币完成交易，即$a_{it}=T$，反之亦然。
+
+
+因此市场需求可以表示为所有用户因为交易产生的星云币总量：
+\begin{align}
+\label{demandfunc}
+Q_t(e;x_t)=\sum_ix_{it}1\{a_{it}=T\}=\sum_i x_{it}1\{u(T;x_{it},e,\kappa_t,c_i)\geq u(\widehat{T};x_{it})\}
+\end{align}
+
+市场供应量表示为常数$\bar{B}$，{\color{gray} 类似于上面所说$S/D$不变或者变化缓慢}
+
+当达到市场均衡时，星云币的价格满足供给量与需求量相等。此时的经济系统满足如下特性：
+
+1. 根据市场结清理论（market clearing），$e_t$是当需求小于供给时的最低汇率:
+
+\begin{align}
+\label{etfunc}
+e_t=min\{e:Q_t(e;x_t)\leq\bar{B} e \}
+\end{align}
+
+2. 根据理性预期理论(rational expectations),在时刻$t$，参与者会充分利用所得信息来预期下一阶段的汇率分布$G_{t+1}$，并且该预期可被认为是合理正确的,这里用$\mu_{it}$表示用户$i$的理性预期。
+\begin{align}
+\label{me_func}
+\mu_{it}=G_{t+1}
+\end{align}
+
+
+
+定理: 存在且唯一的汇率$e^{*}(x_t)$使得供需达到平衡.
+
+
+证明：
+
+首先在某个时刻$t>\hat{t}$,假设存在所有用户都选择使用星云币发起交易，我们可以找到满足此情况的一个充分必要条件：
+\begin{align}
+\mathbb{E}v(\frac{\widetilde{Z}}{N})-c^+>u(\widehat{T};1)
+\end{align}
+
+其中$\widetilde{Z}$是服从二项分布$Bi(N,p)$的随机变量。
+
+
+
+汇率$e_t$则会趋近于：
+
+\begin{align}
+e_t=\sum_i x_{i,t} / \bar{B}
+\end{align}
+
+此时收益函数可以表示为：
+\begin{align}
+u(T;1,e,\kappa_t,c_i)=\kappa_t \cdot \mathbb{E}_{it}v(\frac{\widetilde{e}_{t+1}}{e})-c_i\geq \kappa_t \mathbb{E}_{it}v(\frac{\widetilde{e}_{t+1}}{N/\bar{B}})-c^+
+\approx \kappa_t \mathbb{E}v(\frac{\widetilde{Z}}{N})-c^+>u(\widehat{T};1)
+\end{align}
+
+即此时对于所有参与者，使用星云币交易为最优选择。
+
+根据上文，$G_{t+1}$表示$\widetilde{e}_{t+1}$的分布，在$\hat{t}$时刻，所有用户参与并使用星云币进行交易，因此$\widetilde{e}_{\hat{t}+1}$已知并且近似于$\widetilde{Z}/\bar{B}$的分布，即已知$G_{t+1}$，同理可以推出已知$G_t$。基于理性预期，市场需求可以根据公式\eqref{demandfunc}对每个用户累加求和得出。公式\eqref{demandfunc}为连续函数，且当$e$从0逐渐增大时，$Q_t(e;x_t)$从$\sum_ix_{it}$减少到趋近于0.这意味着，一定存在某个$e_t$满足公式\eqref{etfunc},即存在汇率$e_t$满足供需平衡。
+$\square$
+
+
+\end{comment}
