@@ -1,29 +1,36 @@
-\section{Nebulas Rank}
-对应与经济模型
+\section{星云指数}
+如前所述，星云指数反映了用户对经济产量的贡献，为了量化的计算星云指数，我们首先需要对系统给出形式化的模型的描述，
+然后，我们给出了一般意义上星云指数的计算方法。
 
-我们给出广泛意义上的Nebulas Rank的算法所需要满足的性质。
-假设，Nebulas Rank计算函数为\(f(x)\)，其中\(x\)
-为Nebulas Rank需要参考的因素，可以为持有的余额、币龄或账户的出入度。为了操纵Nebulas Rank的计算，
+
+\subsection{计算函数}
+考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，因此，具体的星云指数的计算是依赖于场景的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
+
+我们记星云指数的计算函数为\(f(x)\)，其中\(x\)
+为星云指数需要参考的因素，可以为持有的余额、币龄或账户的出入度。为了操纵星云指数，
 攻击者可以进行任意的操作，包括创建足够多的账户、进行账户之间的转账等，在诸多攻击方式中，唯一确定的事实是，
-{\color{red} 用户需要将原本属于一个账户的资金拆分为多份，并转移到其他账户中}，因此为了抵抗操纵，
-需要保证用户在拆分资金后，其Nebulas Rank会降低，即：
+{\color{red} 用户需要将原本属于一个账户的资金拆分为多份，并转移到其他账户中}，因此，为了抵抗操纵，
+需要保证用户在拆分资金后，其星云指数会降低，即：
 
 \begin{align}
-f(a + b) > f(a) + f(b), a>0, b>0.
+f(a + b) > f(a) + f(b).\quad a>0, b>0
 \end{align}
 
-需要注意的是，上式可能会产生另外一种可能的操纵Nebulas Rank的方式，即多个用户通过将账户中的余额集中
+需要注意的是，上式可能会产生另外一种可能的操纵幸运指数的方式，即多个用户通过将账户中的余额集中
 到同一个账户中，以获得更高的收益，因此，需要满足
 
 \begin{align}
-\lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b), a>0, b>0
+\lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b).\quad a>0, b>0
 \end{align}
-
-Nebulas Rank的计算需要满足上述两个性质，我们给出一个满足上述性质的函数
+满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数
 \begin{align}
-f(x) = x/(1 + a*e^{b + c*x})
+f(x) = x/(1 + e^{a + b*x})
 \end{align}
-\noindent 该函数的图形如\reffig{fig-nr}所示。
+\noindent 该函数的图形如\reffig{fig-nr}所示。可以证明，当一个账户中的资金被拆分到多个账户中后，
+多个账户的星云指数之和是减少的，更进一步的，当拆分的账户越多，则这些账户的星云指数之和会越小。
+
+\begin{figure}
+\centering
 \begin{tikzpicture}[
     declare function={func(\x,\mu) = (\x / (1 + exp(\mu-\x)));},
     declare function={linefunc(\x) = \x;}
@@ -32,13 +39,23 @@ f(x) = x/(1 + a*e^{b + c*x})
     axis lines=left,
     enlargelimits=upper,
 ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
-  ylabel={Nebulas Rank}
+  ylabel={星云指数},
+      legend pos=north west
 ]
+\addplot [dotted, domain=0:10, blue] {linefunc(x)};
 \addplot [smooth, domain=0:10, red] {func(x,3)};
-\addplot [smooth, domain=0:10, blue] {linefunc(x)};
+\addlegendentry{$f(x)=x$}
+\addlegendentry{$f(x)=x/(1 + e^{a + b*x})$}
 \end{axis}
-\label{fig-nr}
 \end{tikzpicture}
+\caption{星云指数计算函数曲线}
+\label{fig-nr}
+\end{figure}
+
+Nebulas Rank的计算需要满足上述两个性质，我们给出一个满足上述性质的函数
+
+
+
 
 
 NR试图衡量经济流通性
