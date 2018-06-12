@@ -137,7 +137,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \noindent 其中，$a, b, c, d$为待定的参数。
 
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据{\color{red} 计算了星云指数}，
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的正相关性达到了{\color{red} 0.8？}。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4.48*10^{-17}$。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
 
 
 \begin{figure}
@@ -146,18 +146,22 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
   \begin{axis}[
   axis y line*=left,
   axis x line=none,
-ticks=none,
-%ylabel={以太坊市值}
+%ticks=none,
+ylabel={以太坊市值（美元）},
+%xtick={0,10,20,30,40,50,60},
+%xlabel={时间（天）}
     ]
 \addplot[smooth, mark=., color=red] table [x=day, y=nr, col sep=comma] {eth_simu.csv};
 \label{plot_one}
 
 \end{axis}
   \begin{axis}[
-ticks=none,
+%ticks=none,
 legend pos=north west,
 %ylabel={星云指数},
-xlabel={时间},
+xlabel={时间（天）},
+xtick={0,10,20,30,40,50,60},
+ytick={1,2},
 axis y line*=right
     ]
     \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{星云指数}
