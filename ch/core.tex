@@ -16,7 +16,7 @@
 
 对于账户$a \in \mathcal{A}$，其核心星云指数$\mathcal{C}(a)$的计算基于$\Theta(t_0)$，即
 \begin{align}
-\mathcal{C}(a) = \Omega(\beta(a)) * \Psi(\gamma(a))
+\mathcal{C}(a) = \Omega(\beta(a)) \times{} \Psi(\gamma(a))
 \label{eq:rank}
 \end{align}
 \noindent 其中$\beta(a)$为一段时间内账户$a$持有的资产的数量的中值；$\gamma(a)$为账户$a$在一段时间内的出入度指标。
@@ -42,8 +42,8 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 其中$d^a_{(i)} < d^a_{(i+1)}, 0\le i \le {n-1}$，由此，可以得到
 \begin{align}
 \beta(a) = \left\{ \begin{array}{rcl}
-{d^a_{(k)}} & \mbox{for} & n=2*k, k=1, 2, 3, \ldots \\
-{(d^a_{(k)} + d^a_{(k+1)})/2} & \mbox{for} & n=2*k + 1, k=1, 2, 3, \ldots
+{d^a_{(k)}} & \mbox{for} & n=2\times{}k, k=1, 2, 3, \ldots \\
+{(d^a_{(k)} + d^a_{(k+1)})/2} & \mbox{for} & n=2\times{}k + 1, k=1, 2, 3, \ldots
 \end{array}\right.
 \end{align}
 资产中值一定程度上代表了“币龄”，即账户中需要至少持有该资产一半以上的时间。
@@ -90,10 +90,10 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime\prime}(t_0)}{w_i}
 \noindent 由此，
 对于节点$v$，其出入度指标$\gamma(v)$为
 \[
-\mathcal{G}(v) = (p(v) + q(v)) * e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
+\mathcal{G}(v) = (p(v) + q(v)) \times{} e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
 \]
 \begin{align}
-\gamma(v) = (\frac{\theta*\mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
+\gamma(v) = (\frac{\theta\times{}\mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
 \end{align}
 \noindent 其中$\theta, \mu, \lambda$为待定的参数。
 
@@ -111,7 +111,7 @@ f(a + b) > f(a) + f(b)\quad a>0, b>0
 \end{align}
 \noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
 \begin{align}
-f(x) = x/(1 + e^{a + b*x})
+f(x) = x/(1 + e^{a + b\times{}x})
 \end{align}
 \noindent {\color{red} 证明见附录}
 
@@ -131,7 +131,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \addplot [dotted, domain=0:10, blue] {linefunc(x)};
 \addplot [smooth, domain=0:10, red] {func(x,3)};
 \addlegendentry{$f(x)=x$}
-\addlegendentry{$f(x)=x/(1 + e^{a + b*x})$}
+\addlegendentry{$f(x)=x/(1 + e^{a + b\times{}x})$}
 \end{axis}
 \end{tikzpicture}
 \caption{星云指数计算函数曲线}
@@ -141,12 +141,12 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
 \begin{align}
-\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b * \beta(v)}} * \frac{\gamma(v)}{1+e^{c + d * \gamma(v)}}
+\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \times{} \beta(v)}} \times{} \frac{\gamma(v)}{1+e^{c + d \times{} \gamma(v)}}
 \end{align}
 \noindent 其中，$a, b, c, d$为待定的参数。
 
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据{\color{red} 计算了星云指数}，
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4.48*10^{-17}$。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4.48\times{}10^{-17}$。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
 
 
 \begin{figure}
