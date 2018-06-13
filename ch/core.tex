@@ -139,19 +139,18 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \addlegendentry{$f(x)=x/(1 + e^{a + b\times{}x})$}
 \end{axis}
 \end{tikzpicture}
-\caption{星云指数计算函数曲线}
-\label{fig-nr}
+\caption{星云指数计算函数曲线 \label{fig-nr}}
 \end{figure}
 
 \vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
-\begin{align}
+\begin{align}  \label{eq:rank-param}
 \mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \times{} \beta(v)}} \times{} \frac{\gamma(v)}{1+e^{c + d \times{} \gamma(v)}}
 \end{align}
 \noindent 其中，$a, b, c, d$为待定的参数。
 
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据{\color{red} 计算了星云指数}，
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4.48\times{}10^{-17}$。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4 \times{}10^{-17} < 0.001 $。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
 
 
 \begin{figure}
