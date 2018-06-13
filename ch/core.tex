@@ -61,11 +61,15 @@ H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w
 \input{fig_loop.tex}
 \input{fig_no_loop.tex}
 
-在找到交易环后，需要进行去交易环处理。假设$H(v)$中交易金额最小的交易为 $(s_m, t_m, w_m, \tau_m)$，即
+在找到交易环后，需要进行去交易环处理。假设系统中存在$n$个交易环，按照交易环在交易图中出现的顺序记为
 \[
-\forall (s, t, w, \tau) \in \mathcal{T} : w \le w_m
+H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
+\noindent 其中，$H^i(v_i)$中交易金额最小的交易为 $(s^i_m, t^i_m, w^i_m, \tau^i_m)$，即
+\[
+\forall (s^i, t^i, w^i, \tau^i) \in \mathcal{T} : w^i \ge w^i_m
 \]
-\noindent 然后，需要$H(v)$中所有的交易减去该最小交易量，如果新的交易量为0，则移除该交易，即
+\noindent 然后，需要依次将$H^i(v_i)$中所有的交易减去相应的最小交易量$w^i_m$，
+如果新的交易量为0，则移除该交易，即
 \[
 \mathcal{E}((s, t, w, \tau), w_m) = \left\{ \begin{array}{rcl}
 (s, t, w-w_m, \tau) & \mbox{if} & w \ne w_m \\
@@ -73,20 +77,20 @@ H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w
 \end{array}\right.
 \]
 \begin{align}
-\Theta^{\prime}(t_0)=\Theta(t_0)-H(v) \cup \{\mathcal{E}(t), t\in\mathcal{T}\}
+\Theta^{\prime}(t_0)=\Theta(t_0)-H^i(v) \cup \{\mathcal{E}(t), t\in H^i(v_i)\} \quad i = 1, 2,\dots, n
 \end{align}
-\noindent 如图~\ref{fig:no:loop}所示，为图~\ref{fig:loop}去掉交易环之后的交易图。
+\noindent 如\reffig{fig:no-loop}所示，为\reffig{fig:loop}去掉交易环之后的交易图。
 
 
-在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
+%在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
 
 记节点$v$的转入金额为$p(v)$，则
 \begin{align}
-p(v) = \sum_{(s_i, v, w_i, \tau_i) \in \Theta^{\prime\prime}(t_0)}{w_i}
+p(v) = \sum_{(s_i, v, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 \end{align}
 \noindent 同理，节点$v$的转出金额有
 \begin{align}
-q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime\prime}(t_0)}{w_i}
+q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 \end{align}
 \noindent 由此，
 对于节点$v$，其出入度指标$\gamma(v)$为
