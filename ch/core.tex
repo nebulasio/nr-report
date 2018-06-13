@@ -1,3 +1,4 @@
+% !TEX root = main.tex
 \section{核心星云指数}
 
 核心星云指数用于衡量{\textbf{一段时间内}}用户对整个经济体的贡献。
@@ -8,7 +9,7 @@
 我们使用一段时间内的链上的交易记录作为核心星云指数的数据来源。
 对于一段时间$[t_0\ −\ T,\ t_0]$内的交易记录，可以描述为集合
 \begin{align}
-\Theta(t_0) = \{(s, d, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq r \}
+\Theta(t_0) = \{(s, d, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq d \}
 \end{align}
 \noindent 基于$\Theta(t_0)$，我们可以构造有向加权图，其中节点为账户地址，一个交易为从节点$s$到节点$d$的有向边，
 边的权值的$w$，边的时间为$\tau$。
@@ -55,7 +56,7 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
 \noindent 其中，$\forall 1\le i \le {n-1} : \tau_i \le \tau_{i+1} $。
-\noindent 如~\reffig{fig:loop}所示，其中包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
+\noindent 如~\ref{fig:loop}所示，其中包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
 
 \input{fig_loop.tex}
 \input{fig_no_loop.tex}
