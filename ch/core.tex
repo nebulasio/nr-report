@@ -27,7 +27,7 @@ $\Omega$及$\Psi$的选择。
 
 {\color{gray}注意，我们并未使用技术白皮书中的计算方法。说说原因，}
 
-{\color{red}相比白皮书~\cite{Nabulas}中对于Nebulas Rank的计算方法，我们做了如下改动：1.在构造交易图时取消了采取最高$K$个交易额作为权值；2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击同时保留边的强度信息。同时LeaderRank构造矩阵后需要经过若干次迭代直至收敛计算出重要性评分，当网络稀疏时该计算尚可接受，但随着交易的增加会使计算开销增加，这与我们在后文\refsec{sec:onchain?}的设定不符。在\refsec{sec:function}中我们提出的计算函数可以压制伪造低收入节点的收益。}
+{\color{red}相比白皮书~\cite{Nabulas}中对于Nebulas Rank的计算方法，我们做了如下改动：1.在构造交易图时取消了采取最高$K$个交易额作为权值；2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击同时保留边的强度信息。\sout{同时LeaderRank构造矩阵后需要经过若干次迭代直至收敛计算出重要性评分，当网络稀疏时该计算尚可接受，但随着交易的增加会使计算开销增加，这与我们在后文\refsec{sec:onchain?}的设定不符。}对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在黄皮书中我们没有采用类拓扑排名策略，在\refsec{sec:function}中我们提出的计算函数可以有效降低伪造低收入节点的收益。}
 \subsection*{资产中值$\beta(a)$}
 对于时间段$[t_0\ −\ T,\ t_0]$，区块链系统中存在$n$个区块，记为
 \[
@@ -163,6 +163,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 综上，式~\ref{eq:rank}可以进一步写为
 
 \begin{align}
+\label{eq:rank-param}
 \mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \cdot \beta(v)}} \cdot \frac{\gamma(v)}{1+e^{c + d \cdot \gamma(v)}}
 \end{align}
 \noindent 其中，$a, b, c, d$为待定的参数。
@@ -170,7 +171,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
 
 
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
 
 
 \begin{figure}
