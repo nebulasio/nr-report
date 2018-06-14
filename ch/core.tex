@@ -127,7 +127,7 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 \lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b)\quad a>0, b>0
 \end{align}
 
-\noindent 上述特性保证了在给定交易行为的情况下，用户通过控制多个账户实现该交易行为的收益小于单一账户的收益，同时当用户资产足够大时，其拆分账户交易的损失可以忽略不计。
+\noindent 上述特性保证了在给定交易行为的情况下，用户通过控制多个账户实现该交易行为的收益小于通过单一账户实现交易的收益，同时当用户资产足够大时，其拆分账户交易的损失可以忽略不计。
 
 \noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
 \begin{align}
@@ -151,15 +151,15 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \addplot [dotted, domain=0:10, blue] {linefunc(x)};
 \addplot [smooth, domain=0:10, red] {func(x,3)};
 \addlegendentry{$f(x)=x$}
-\addlegendentry{$f(x)=x/(1 + e^{a + b\times{}x})$}
+\addlegendentry{$f(x)=x/(1 + e^{a + b\cdot x})$}
 \end{axis}
 \end{tikzpicture}
-\caption{星云指数计算函数曲线}
-\label{fig-nr}
+\caption{星云指数计算函数曲线 \label{fig-nr}}
 \end{figure}
 
 \vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
+
 \begin{align}
 \mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \cdot \beta(v)}} \cdot \frac{\gamma(v)}{1+e^{c + d \cdot \gamma(v)}}
 \end{align}
