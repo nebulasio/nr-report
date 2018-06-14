@@ -9,7 +9,7 @@
 我们使用一段时间内的链上的交易记录作为核心星云指数的数据来源。
 对于一段时间$[t_0\ −\ T,\ t_0]$内的交易记录，可以描述为集合
 \begin{align}
-\Theta(t_0) = \{(s, d, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq d \}
+\Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq t \}
 \end{align}
 \noindent 基于$\Theta(t_0)$，我们可以构造有向加权图，其中节点为账户地址，一个交易为从节点$s$到节点$d$的有向边，
 边的权值的$w$，边的时间为$\tau$。
@@ -94,11 +94,13 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 \end{align}
 \noindent 由此，
 对于节点$v$，其出入度指标$\gamma(v)$为
-\[
-\mathcal{G}(v) = (p(v) + q(v)) \times{} e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
-\]
+
 \begin{align}
-\gamma(v) = (\frac{\theta\times{}\mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
+\mathcal{G}(v) = (p(v) + q(v)) \cdot e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
+\end{align}
+
+\begin{align}
+\gamma(v) = (\frac{\theta\cdot \mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
 \end{align}
 \noindent 其中$\theta, \mu, \lambda$为待定的参数。
 
@@ -108,15 +110,28 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 我们记星云指数的计算函数为\(f(x)\)，其中\(x\)
 为星云指数需要参考的因素，可以为持有的余额、币龄或账户的出入度。$f(x)$需要满足两个性质，{\color{red} 性质格式}
 
+\begin{property}
+对于任意大于$0$的两个输入变量$a$，$b$，其计算函数之和小于其和的计算函数。
+%对于任意输入$x$，将其拆分后的计算函数之和小于原计算函数。
+\end{property}
+
 \begin{align}
-f(a + b) > f(a) + f(b)\quad a>0, b>0
+f(a+b)>f(a)+f(b) \quad a>0,b>0
 \end{align}
+
+\begin{property}
+当任意大于$0$的两个输入变量趋近于无穷大时，其计算函数之和趋近于其和的计算函数。
+\end{property}
+
 \begin{align}
 \lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b)\quad a>0, b>0
 \end{align}
+
+\noindent 上述特性保证了在给定交易行为的情况下，用户通过控制多个账户实现该交易行为的收益小于单一账户的收益，同时当用户资产足够大时，其拆分账户交易的损失可以忽略不计。
+
 \noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
 \begin{align}
-f(x) = x/(1 + e^{a + b\times{}x})
+f(x) = x/(1 + e^{a + b\cdot x})
 \end{align}
 \noindent {\color{red} 证明见附录}
 
@@ -146,12 +161,14 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
 \begin{align}
-\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \times{} \beta(v)}} \times{} \frac{\gamma(v)}{1+e^{c + d \times{} \gamma(v)}}
+\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \cdot \beta(v)}} \cdot \frac{\gamma(v)}{1+e^{c + d \cdot \gamma(v)}}
 \end{align}
 \noindent 其中，$a, b, c, d$为待定的参数。
 
-为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据{\color{red} 计算了星云指数}，
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数的关系，如图所示，二者的相关系数（Correlation coefficient）为0.84427,p值（p-value）为$4.48\times{}10^{-17}$。说明函数~\ref{eq:rank}能够有效反映用户对整个经济体的贡献。
+为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
+
+
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
 
 
 \begin{figure}
