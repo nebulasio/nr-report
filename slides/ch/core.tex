@@ -46,9 +46,10 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \frametitle{出入度指标$\gamma$}
 出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
 一个交易环在节点$v$开始并结束，是交易图中边的集合，记为$H(v)$，即，
-\[
-H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
-\]
+\[\begin{split}
+H(v) =& \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \\
+& \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
+\end{split}\]
 \noindent 其中，$\forall 1\le i \le {n-1} : \tau_i \le \tau_{i+1} $。
 \end{frame}
 
@@ -108,7 +109,7 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 
 \begin{frame}
 \frametitle{计算函数}
-考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
+%考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
 
 我们记星云指数的计算函数为\(f(x)\)，其中\(x\)
 为星云指数需要参考的因素，可以为持有的余额、币龄或账户的出入度。$f(x)$需要满足两个性质，
@@ -142,6 +143,7 @@ f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \begin{figure}
 \centering
 \begin{tikzpicture}[
+    scale=0.8,
     declare function={func(\x,\mu) = (\x / (1 + exp(\mu-\x)));},
     declare function={linefunc(\x) = \x;}
 ]
@@ -165,15 +167,17 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \begin{frame}
 \frametitle{核心星云指数验证}
 
-为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
+为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。
+%测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
 
 
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。
+%说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
 
 
 \begin{figure}
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.8]
   \begin{axis}[
   axis y line*=left,
   axis x line=none,

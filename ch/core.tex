@@ -27,7 +27,7 @@ $\Omega$及$\Psi$的选择。
 
 %{\color{gray}注意，我们并未使用技术白皮书中的计算方法。说说原因，}
 
-{\color{red}相比白皮书~\cite{Nabulas}中对于Nebulas Rank的计算方法，我们做了如下改动：1.在构造交易图时取消了采取最高$K$个交易额作为权值；2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击同时保留边的强度信息。\sout{同时LeaderRank构造矩阵后需要经过若干次迭代直至收敛计算出重要性评分，当网络稀疏时该计算尚可接受，但随着交易的增加会使计算开销增加，这与我们在后文\refsec{sec:onchain?}的设定不符。}对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在黄皮书中我们没有采用类拓扑排名策略，在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}可以有效降低伪造低收入节点的收益。}
+{\color{red}相比白皮书~\cite{Nabulas}中对于Nebulas Rank的计算方法，我们做了如下改动：1.在构造交易图时取消了采取最高$K$个交易额作为权值；2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在黄皮书中我们没有采用类拓扑排名策略，在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}可以有效降低伪造低收入节点的收益。}
 \subsection*{资产中值$\beta(a)$}
 对于时间段$[t_0\ −\ T,\ t_0]$，区块链系统中存在$n$个区块，记为
 \[
@@ -135,7 +135,7 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
-\noindent {\color{red} 证明：不难求得当$x>0$时，$f(x)$的一阶导数$f'(x)$恒大于$0$，且$\lim\limits_{x \to \infty} f'(x)=1$}
+\noindent {证明：不难求得当$x>0$时，$f(x)$的一阶导数$f'(x)$恒大于$0$，且$\lim\limits_{x \to \infty} f'(x)=1$}
 
 \begin{figure}
 \centering
