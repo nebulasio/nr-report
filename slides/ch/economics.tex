@@ -1,0 +1,56 @@
+
+\section{区块链经济模型}
+\begin{frame}
+	\frametitle{加密数字货币表示}
+  加密数字货币系统，表示为$(\mathcal{L}, \mathcal{U})$，其中
+  \begin{align}
+  \mathcal{L} = (\mathcal{A}, \mathcal{D}, \mathcal{T})
+  \end{align}
+  \begin{align}
+  \mathcal{D} = \{a \rightarrow d, a{\in}\mathcal{A}, d{\in}R^*\}
+  \end{align}
+  \begin{align}
+  \mathcal{T} = \{(s, t, w, \tau)\}
+  \end{align}
+一个账户与用户只能被唯一的用户控制，一个用户能够控制多个账户
+\begin{align}
+u \dom a. \quad u\in \mathcal{U}, a\in \mathcal{A}
+\end{align}
+\begin{align}
+A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
+\end{align}
+\begin{align}
+\forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{加密数字货币模型}
+数字货币应该具备货币属性，即交换媒介、计价单位和价值储藏手段。
+经典货币数量论：
+\begin{align}
+M\times V=P\times Y
+\label{eq:currency}
+\end{align}
+而在加密数字货币中，可以写为：
+\begin{align}
+(M + \Delta{m}) \times \frac{\sum_{(s, t, w, \tau)\in \mathcal{T}}{w}}{M} = P \times Y
+\label{eq:cur_ext}
+\end{align}
+更进一步的
+\begin{align}
+Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
+\end{align}
+\noindent 其中$\mathcal{C}(a)$表示账户$a$对整个经济产量的贡献，即星云指数。
+\end{frame}
+
+\begin{frame}
+\frametitle{星云指数}
+星云指数衡量了一个账户对经济系统的贡献。数字货币的发展依赖于社区的发展，因
+此，我们认为量化社区中每个账户对于经济总量的贡献，为正确的激励提供了必要的基
+础。
+\begin{itemize}[<+->]
+\item 核心星云指数
+\item 扩展星云指数
+\end{itemize}
+\end{frame}

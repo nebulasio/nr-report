@@ -1,34 +1,24 @@
-% !TEX root = main.tex
 \section{核心星云指数}
+\begin{frame}
+	核心星云指数用于衡量一段时间内用户对整个经济体的贡献。精确的计算这一指标是十分困难的，
+  因此，我们使用了一个近似算法。在该近似算法中，我们考虑了两个重要的因素， 即账户持有的币龄及账户在交易网络中的位置信息。
 
-核心星云指数用于衡量{\textbf{一段时间内}}用户对整个经济体的贡献。
-精确的计算这一指标是十分困难的，因此，我们使用了一个近似算法。
-在该近似算法中，我们考虑了两个重要的因素，即账户持有的币龄及账户在交易网络中的位置信息。在稍后的评测中，我们证明了这种近似算法的有效性。
+  我们使用一段时间内的链上的交易记录作为核心星云指数的数据来源：
+  \begin{align}
+  \Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq t \}
+  \end{align}
+  \noindent 基于$\Theta(t_0)$，我们可以构造有向加权图，其中节点为账户地址，一个交易为从节点$s$到节点$d$的有向边，
+  边的权值的$w$，边的时间为$\tau$。
+  对于账户$a \in \mathcal{A}$，其核心星云指数$\mathcal{C}(a)$的计算基于$\Theta(t_0)$，即
+  \begin{align}
+  \mathcal{C}(a) = \Omega(\beta(a)) \times{} \Psi(\gamma(a))
+  \label{eq:rank}
+  \end{align}
+  \noindent 其中$\beta(a)$为一段时间内账户$a$持有的资产的数量的中值；$\gamma(a)$为账户$a$在一段时间内的出入度指标。
+\end{frame}
 
-
-我们使用一段时间内的链上的交易记录作为核心星云指数的数据来源。
-对于一段时间$[t_0\ −\ T,\ t_0]$内的交易记录，可以描述为集合
-\begin{align}
-\Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ a > 0 \land s \neq t \}
-\end{align}
-\noindent 基于$\Theta(t_0)$，我们可以构造有向加权图，其中节点为账户地址，一个交易为从节点$s$到节点$d$的有向边，
-边的权值的$w$，边的时间为$\tau$。
-
-
-对于账户$a \in \mathcal{A}$，其核心星云指数$\mathcal{C}(a)$的计算基于$\Theta(t_0)$，即
-\begin{align}
-\mathcal{C}(a) = \Omega(\beta(a)) \times{} \Psi(\gamma(a))
-\label{eq:rank}
-\end{align}
-\noindent 其中$\beta(a)$为一段时间内账户$a$持有的资产的数量的中值；$\gamma(a)$为账户$a$在一段时间内的出入度指标。
-
-我们分别考虑式~\ref{eq:rank}中的三个问题，资产中值$\beta(a)$的计算，出入度指标$\gamma(a)$的计算，以及函数
-$\Omega$及$\Psi$的选择。
-
-%{\color{gray}注意，我们并未使用技术白皮书中的计算方法。说说原因，}
-
-{\color{red}相比白皮书~\cite{Nabulas}中对于Nebulas Rank的计算方法，我们做了如下改动：1.在构造交易图时取消了采取最高$K$个交易额作为权值；2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击同时保留边的强度信息。\sout{同时LeaderRank构造矩阵后需要经过若干次迭代直至收敛计算出重要性评分，当网络稀疏时该计算尚可接受，但随着交易的增加会使计算开销增加，这与我们在后文\refsec{sec:onchain?}的设定不符。}对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在黄皮书中我们没有采用类拓扑排名策略，在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}可以有效降低伪造低收入节点的收益。}
-\subsection*{资产中值$\beta(a)$}
+\begin{frame}
+\frametitle{资产中值$\beta(a)$}
 对于时间段$[t_0\ −\ T,\ t_0]$，区块链系统中存在$n$个区块，记为
 \[
 B_0, B_1, \dots, B_n
@@ -50,19 +40,25 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \end{array}\right.
 \end{align}
 资产中值一定程度上代表了“币龄”，即账户中需要至少持有该资产一半以上的时间。
+\end{frame}
 
-\subsection*{出入度指标$\gamma$}
+\begin{frame}
+\frametitle{出入度指标$\gamma$}
 出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
 一个交易环在节点$v$开始并结束，是交易图中边的集合，记为$H(v)$，即，
 \[
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
 \noindent 其中，$\forall 1\le i \le {n-1} : \tau_i \le \tau_{i+1} $。
-\noindent 如~\ref{fig:loop}所示，其中包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
+\end{frame}
 
+\begin{frame}
+\frametitle{出入度指标$\gamma$}
 \input{fig_loop.tex}
-\input{fig_no_loop.tex}
+\end{frame}
 
+\begin{frame}
+\frametitle{出入度指标$\gamma$}
 在找到交易环后，需要进行去交易环处理。假设系统中存在$n$个交易环，按照交易环在交易图中出现的顺序记为
 \[
 H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
@@ -81,11 +77,15 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \begin{align}
 \Theta^{\prime}(t_0)=\Theta(t_0)-H^i(v) \cup \{\mathcal{E}(t), t\in H^i(v_i)\} \quad i = 1, 2,\dots, n
 \end{align}
-\noindent 如\reffig{fig:no-loop}所示，为\reffig{fig:loop}去掉交易环之后的交易图。
+\end{frame}
 
+\begin{frame}
+\frametitle{出入度指标$\gamma$}
+\input{fig_no_loop.tex}
+\end{frame}
 
-%在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
-
+\begin{frame}
+\frametitle{出入度指标$\gamma$}
 记节点$v$的转入金额为$p(v)$，则
 \begin{align}
 p(v) = \sum_{(s_i, v, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
@@ -104,9 +104,10 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 \begin{align}
 \gamma(v) = (\frac{\theta\cdot \mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
 \end{align}
-\noindent 其中$\theta, \mu, \lambda$为待定的参数。
+\end{frame}
 
-\subsection{计算函数 \label{sec:function}}
+\begin{frame}
+\frametitle{计算函数}
 考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，然而，我们可以总结出一般意义上的星云指数计算函数的性质。
 
 我们记星云指数的计算函数为\(f(x)\)，其中\(x\)
@@ -129,13 +130,14 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 \lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b)\quad a>0, b>0
 \end{align}
 
-\noindent 上述特性保证了在给定交易行为的情况下，用户通过控制多个账户实现该交易行为的收益小于通过单一账户实现交易的收益，同时当用户资产足够大时，其拆分账户交易的损失可以忽略不计。
+\end{frame}
 
+\begin{frame}
+\frametitle{计算函数}
 \noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
-\noindent {\color{red} 证明：不难求得当$x>0$时，$f(x)$的一阶导数$f'(x)$恒大于$0$，且$\lim\limits_{x \to \infty} f'(x)=1$}
 
 \begin{figure}
 \centering
@@ -158,15 +160,10 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \end{tikzpicture}
 \caption{星云指数计算函数曲线 \label{fig-nr}}
 \end{figure}
+\end{frame}
 
-\vspace{2em}
-综上，式~\ref{eq:rank}可以进一步写为
-
-\begin{align}
-\label{eq:rank-param}
-\mathcal{C}(v) =  \frac{\beta(v)}{1+e^{a + b \cdot \beta(v)}} \cdot \frac{\gamma(v)}{1+e^{c + d \cdot \gamma(v)}}
-\end{align}
-\noindent 其中，$a, b, c, d$为待定的参数。
+\begin{frame}
+\frametitle{核心星云指数验证}
 
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
 
@@ -209,3 +206,4 @@ axis y line*=right
 \caption{以太坊之上的星云指数及以太坊市值}
 \label{fig-eth-simu}
 \end{figure}
+\end{frame}

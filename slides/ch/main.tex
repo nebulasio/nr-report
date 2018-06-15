@@ -1,0 +1,87 @@
+\documentclass[10pt, mathserif]{beamer} % font and normalsize
+\usetheme{Antibes}
+\usepackage{xeCJK}
+%\usepackage{charter}
+\usepackage{comment}
+%\usepackage[colorlinks=false]{hyperref}
+
+\usepackage[title,titletoc]{appendix}
+\usepackage{pagecolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage{ulem}
+%\usepackage{siunitx}
+%\sisetup{per=slash, load=abbr}
+
+%\mode<presentation>
+%{
+%    \setbeamercovered{dynamic}  % translucent when using pause
+%    \setbeamertemplate{navigation symbols}{}    % hide navigation bars
+%    \setbeamertemplate{caption}[numbered]   % numerate captions
+%    \setbeamertemplate{background}{\includegraphics[height=\paperheight]{ISEE.pdf}} % set background image
+%    \setbeamertemplate{footline}{\footnotesize \insertframenumber/\inserttotalframenumber \hfill}   % display page number at bottom left corner
+%}
+
+
+
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{snakes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes,arrows,chains}
+\usepgfplotslibrary{patchplots,colormaps}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning, fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{intersections}
+
+
+%\setCJKmainfont[BoldFont = STSongti-SC-Bold]{STSongti-SC-Regular}
+
+\newcommand{\reffig}[1]{图\ref{#1}}
+\newcommand{\refsec}[1]{\S \ref{#1}}
+
+
+\newcommand{\nrcore}{Core Nebulas Rank}
+\newcommand{\nrext}{Extended Nebulas Ranks}
+\newcommand{\dom}{{\; \texttt{dom}\;}}
+
+%\setCJKsansfont[BoldFont = STHeitiSC-Medium]{STHeitiSC-Light}
+
+
+\input{common.tex}
+
+
+\begin{document}
+
+\title[abbreviation]{ 星云指数}
+\author{ Nebulas Team}
+
+\date{June, 2018}
+
+\AtBeginSection[]
+{
+\begin{frame}
+    \tableofcontents[currentsection, currentsubsection]
+\end{frame}
+}
+
+\begin{frame}
+    \titlepage	% make the cover page here
+\end{frame}
+
+\input{intro.tex}
+\input{background.tex}
+\input{economics.tex}
+\input{core.tex}
+\input{anti.tex}
+\input{more.tex}
+
+\section{Thanks 致谢}
+\begin{frame}
+	Thanks for your listening. \\
+	感谢！
+\end{frame}
+\end{document}

@@ -1,0 +1,35 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\pgfmathsetmacro{\XTD}{1.8}
+\pgfmathsetmacro{\XMD}{1.2}
+\pgfmathsetmacro{\YTD}{3.8}
+
+
+\tikzset{
+oblock/.style={draw, rectangle, on grid, align=center, minimum height=2ex},
+nblock/.style={draw, rectangle, on grid, align=center, minimum height=2ex},
+  node/.style={draw, circle, on grid, align=center, minimum height=2ex},
+  thread/.style={draw, rectangle, on grid, align=center,color=gray!30,
+  fill=gray!30,
+  rounded corners,
+  minimum height=3ex,fit=#1},
+}
+
+\node[oblock, fill=gray!30] (g) at (0, 0){$Genesis$};
+\node[oblock] (v1) at (\XTD, 0) {$B_1$};
+\node at (1.5*\XTD, 0) {$\dots$};
+\node[oblock] at (2.5*\XTD, 0) {$Block_i$};
+\node[nblock] at (3.5*\XTD, 0) {$\begin{aligned}
+     \mathcal{C}(v, a, b, c, d, \theta, \mu, \lambda)
+  \end{aligned}$};
+
+\node at (4*\XTD, 0) {$\dots$};
+\node[oblock] at (6*\XTD, 0) {$Block_i$};
+
+
+
+\end{tikzpicture}
+\label{fig:loop}
+\caption{交易图中的交易环}
+\end{figure}
