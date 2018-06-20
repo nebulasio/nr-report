@@ -11,6 +11,7 @@
 \usepackage{amsfonts}
 \usepackage{ulem}
 \usepackage{siunitx}
+\usepackage{amsthm}
 \sisetup{per=slash, load=abbr}
 
 \usepackage{pgfplots}
@@ -69,7 +70,7 @@
 \renewcommand{\tablename}{表}
 \renewcommand{\baselinestretch}{1.5}
 \renewcommand{\appendixname}{附录}
-
+\renewcommand{\proofname}{证明}
 
 \pagecolor{yellow!30}
 
@@ -95,7 +96,7 @@
 \bibliography{reference}
 
 \begin{appendices}
-
+\input{proof}
 \end{appendices}
 
 \end{document}
