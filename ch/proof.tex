@@ -56,43 +56,42 @@ h(x_1,x_2)=\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{
 
 因此~\eqref{eq:fx_proof}对于$x_1$和$x_2$的极限可以表示为：
 \[
-\lim_{x_1 \to \infty,x_2\to \infty}(f(x_1+x_2)-f(x_1)-f(x_2))=\lim_{x_1 \to \infty,x_2\to \infty}g(x_1,x_2)+\lim_{x_1 \to \infty,x_2\to \infty}h(x_1,x_2)
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)
 \]
 
 其中
 \[
 \begin{aligned}
-\lim_{x_1 \to \infty,x_2\to \infty}g(x_1,x_2)&=\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}\\
-&=\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1-e^{b\cdot x_2})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}\\
-&<\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1+e^{a+b\cdot x_1})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}=\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1}}\\
-&<\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{a+b\cdot x_1}}=\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1}{1+\frac{1}{e^{a+b\cdot x_1}}}
-
+g(x_1,x_2)&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}\\
+&=\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1-e^{b\cdot x_2})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1+e^{a+b\cdot x_1})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}=\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1}}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{a+b\cdot x_1}}=\frac{x_1}{1+\frac{1}{e^{a+b\cdot x_1}}}
 \end{aligned}
 \]
 
-根据洛必达法则，
+对$\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}$求极限，根据洛必达法则，
 \[
 \begin{aligned}
-\lim_{x_1 \to \infty,x_2\to \infty}\frac{x_1}{1+\frac{1}{e^{a+b\cdot x_1}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
-&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}=0
-
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
+&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}\\
+&=0
 \end{aligned}
 \]
 
-根据~\ref{proof:one}，有$g(x_1,x_2)>0$，因此有：
+根据~\ref{proof:one}，有$g(x_1,x_2)>0$，因此根据夹逼定理有：
 
 \[
-\lim_{x_1 \to \infty,x_2\to \infty}g(x_1,x_2)=0
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)=0
 \]
 
 同理，可以求得：
 \[
-\lim_{x_1 \to \infty,x_2\to \infty}h(x_1,x_2)=0
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)=0
 \]
 
 因此，
 \[
-\lim_{x_1 \to \infty,x_2\to \infty}(f(x_1+x_2)-f(x_1)-f(x_2))=0
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=0
 \]
 
 
