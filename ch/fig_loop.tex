@@ -1,37 +1,5 @@
 \begin{figure}
 \centering
-\begin{tikzpicture}
-\pgfmathsetmacro{\XTD}{3.8}
-\pgfmathsetmacro{\XMD}{1.2}
-\pgfmathsetmacro{\YTD}{3.8}
-
-
-\tikzset{
-  node/.style={draw, circle, on grid, align=center, minimum height=2ex},
-  thread/.style={draw, rectangle, on grid, align=center,color=gray!30,
-  fill=gray!30,
-  rounded corners,
-  minimum height=3ex,fit=#1},
-}
-
-\node[node] (v) at (0, 0) {$v$};
-\node[node] (v1) at (0, \YTD) {$v_1$};
-\node[node] (v2) at (\XTD, \YTD) {$v_2$};
-\node[node] (v3) at (\XTD, 0) {$v_3$};
-
-\draw[->,>=stealth'] (v) to [out=135, in=225] node[left, midway] {$w=100$,$\tau=1$} (v1);
-\draw[->,>=stealth'] (v1) to [out=45, in=135] node[above, midway] {$w=10$,$\tau=2$} (v2);
-\draw[->,>=stealth'] (v1) to [out=315, in=225] node[below, midway] {$w=100$,$\tau=5$} (v2);
-\draw[->,>=stealth'] (v2) to [out=315, in=45] node[right, midway] {$w=10$,$\tau=3$} (v3);
-\draw[->,>=stealth'] (v3) to [out=225, in=315] node[below, midway] {$w=10$,$\tau=4$} (v);
-
-\node at (2.5*\XTD, 0.5*\YTD) {
-$\begin{aligned}
-     H(v) = \{&(v, v1, 100, 1),\\
-     &(v1, v2, 10, 2), \\
-     &(v2, v3, 10, 3), \\
-     &(v3, v, 10, 4) \}
-  \end{aligned}$};
-\end{tikzpicture}
+  \input{../common/fig_loop_content.tex}
 \caption{交易图中的交易环 \label{fig:loop}}
 \end{figure}

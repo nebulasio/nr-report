@@ -27,7 +27,7 @@ $\Omega$及$\Psi$的选择。
 
 %{\color{gray}注意，我们并未使用技术白皮书中的计算方法。说说原因，}
 
-{\color{red}相比星云技术白皮书~\cite{Nabulas}中对于星云指数的计算方法，我们做了如下改动：\\
+\whitepaper{相比星云技术白皮书~\cite{Nabulas}中对于星云指数的计算方法，我们做了如下改动：\\
 1.在构造交易图时取消了采取最高$K$个交易额作为权值；\\
 2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。\\
 首先,我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击,并同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在本黄皮书中我们没有采用类拓扑排名策略。在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}将可以有效降低伪造低收入节点的收益。}
@@ -106,11 +106,18 @@ q(v) = \sum_{(v, t_i, w_i, \tau_i) \in \Theta^{\prime}(t_0)}{w_i}
 \begin{align}
 \mathcal{G}(v) = (p(v) + q(v)) \cdot e^{-2\sin^2{(\frac{\pi}{4} - \arctan\frac{q(v)}{p(v)})}}
 \end{align}
+\noindent 该函数图形如~\reffig{fig-surf}所示。
+\begin{figure}
+  \centering
+  \input{../common/fig_surf.tex}
+\caption{出入度计算函数曲线 \label{fig-surf}}
+\end{figure}
 
 \begin{align}
 \gamma(v) = (\frac{\theta\cdot \mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
 \end{align}
 \noindent 其中$\theta, \mu, \lambda$为待定的参数。
+
 
 \subsection{计算函数 \label{sec:function}}
 考虑到不同的使用场景及不同的性质，星云指数的计算是十分复杂的，然而，我们可以总结出一般意义上的星云指数计算函数的特征。
@@ -167,6 +174,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 \caption{星云指数计算函数曲线 \label{fig-nr}}
 \end{figure}
 
+
 \vspace{2em}
 综上，式~\ref{eq:rank}可以进一步写为
 
@@ -195,7 +203,8 @@ ylabel={以太坊市值（美元）},
 %xtick={0,10,20,30,40,50,60},
 %xlabel={时间（天）}
     ]
-\addplot[smooth, mark=., color=red] table [x=day, y=nr, col sep=comma] {eth_simu.csv};
+\addplot[smooth, mark=., color=red] table [x=day, y=nr, col sep=comma]
+    {../common/eth_simu.csv};
 \label{plot_one}
 
 \end{axis}
@@ -210,7 +219,8 @@ axis y line*=right
     ]
     \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{星云指数}
 
-    \addplot[smooth, mark=x] table [x=day, y=cap, col sep=comma] {eth_simu.csv};
+    \addplot[smooth, mark=x] table [x=day, y=cap, col sep=comma]
+    {../common/eth_simu.csv};
     \label{plot_two}
       \addlegendentry{以太坊市值}
 \end{axis}
