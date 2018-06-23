@@ -29,7 +29,8 @@ $\Omega$及$\Psi$的选择。
 
 \whitepaper{相比星云技术白皮书~\cite{Nabulas}中对于星云指数的计算方法，我们做了如下改动：\\
 1.在构造交易图时取消了采取最高$K$个交易额作为权值；\\
-2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。首先,我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击,并同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在本黄皮书中我们没有采用类拓扑排名策略。在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}将可以有效降低伪造低收入节点的收益。}
+2.取消了LeaderRank中通过计算与背景节点有向边权重来获取重要性评分的方式。\\
+首先,我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击,并同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在本黄皮书中我们没有采用类拓扑排名策略。在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}将可以有效降低伪造低收入节点的收益。}
 
 下面，我们将分别考虑~\ref{eq:rank}中的三个问题：资产中值$\beta(a)$的计算、出入度指标$\gamma(a)$的计算，以及函数$\Omega$及$\Psi$的选择。
 
@@ -57,7 +58,7 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 资产中值一定程度上代表了“币龄”，即账户中需要至少持有该资产一半以上的时间。
 
 \subsection{出入度指标$\gamma(a)$}
-出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
+考虑到恶意操控者会利用“环形转账”行为提升自己的出入度指标，因为对于出入度指标的计算首先需要对交易图进行“去交易环”处理。交易环（forwarding loop）是指一组按时间顺序进行的交易行程的环路。
 一个交易环在节点$v$开始并结束，是交易图中边的集合，记为$H(v)$，即，
 \[
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
@@ -149,7 +150,7 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
-\noindent {证明：不难求得当$x>0$时，$f(x)$的一阶导数$f'(x)$恒大于$0$，且$\lim\limits_{x \to \infty} f'(x)=1$}
+\noindent {证明：详细见附录~\ref{sec:appendix_proof}}
 
 \begin{figure}
 \centering
