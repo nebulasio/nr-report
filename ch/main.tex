@@ -1,32 +1,7 @@
 \documentclass[12pt]{article}
-\usepackage{charter}
-\usepackage{fullpage}
-\usepackage[colorlinks=false]{hyperref}
-\usepackage{ifthen}
-\usepackage{comment}
-\usepackage{xeCJK}
-\usepackage[title,titletoc]{appendix}
-\usepackage{pagecolor}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{ulem}
-\usepackage{siunitx}
-\usepackage{amsthm}
-\sisetup{per=slash, load=abbr}
 
-\usepackage{pgfplots}
-\usetikzlibrary{positioning}
-\usetikzlibrary{fit}
-\usetikzlibrary{snakes}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{patterns}
-\usetikzlibrary{shapes,arrows,chains}
-\usepgfplotslibrary{patchplots,colormaps}
-\usetikzlibrary{calc}
-\usetikzlibrary{positioning, fit}
-\usetikzlibrary{backgrounds}
-\usetikzlibrary{intersections}
-
+\input{../common/common.tex}
+\usepackage{indentfirst}
 
 \setCJKmainfont[BoldFont = STSongti-SC-Bold]{STSongti-SC-Regular}
 \setCJKfamilyfont{hei}{SIL-Hei-Med-Jian}		%宋体
@@ -45,11 +20,11 @@
 \newcommand{\reffig}[1]{图\ref{#1}}
 \newcommand{\refsec}[1]{\S \ref{#1}}
 
-\usepackage{setspace}
 \onehalfspacing   % ----------设置1.5倍行距（可能有意义，待调整）
 
-\parindent=20pt  % -------------------首行缩进大小，英文分段就直接0pt了吧。
-
+%\parindent=20pt  % -------------------首行缩进大小，英文分段就直接0pt了吧。
+\setlength{\parindent}{2.1em}
+\setlength{\parskip}{0.5\baselineskip}
 \newcommand{\nrcore}{Core Nebulas Rank}
 \newcommand{\nrext}{Extended Nebulas Ranks}
 \newcommand{\dom}{{\; \texttt{dom}\;}}
@@ -57,11 +32,11 @@
 \setCJKsansfont[BoldFont = STHeitiSC-Medium]{STHeitiSC-Light}
 
 
-\bibliographystyle{unsrt}
-\input{common.tex}
+\newtheorem{property}{特征}
 %\addbibresource{reference.bib}
 
 \begin{document}
+\pagestyle{empty}
 \renewcommand{\contentsname}{目录}
 \renewcommand{\abstractname}{摘要}
 \renewcommand{\refname}{参考文献}
@@ -74,15 +49,31 @@
 
 \pagecolor{yellow!30}
 
-\title{星云指数 \\
-  Nebulas Rank
-}
+\begin{titlepage}
+  \begin{center}
+    \vspace*{5.5cm}
+    \includegraphics[scale=0.5]{../common/Nebulas.png}
+    \vspace{0.5cm}
 
-\author {Nebulas Team}
-\date{2018年6月}
 
-\maketitle
+    \textbf{\huge{星云指数}}
 
+    \vspace{0.5cm}
+    星云研究院
+    \vfill
+    2018年6月 \\
+    版本号:1.0
+    \textbf{}
+  \end{center}
+
+\end{titlepage}
+\setcounter{page}{0}
+%\thispagestyle{empty}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagestyle{fancy}
+\vspace*{0.01cm}
 \input{intro.tex}
 \input{background.tex}
 \input{economic.tex}
@@ -97,6 +88,7 @@
 
 \begin{appendices}
 \input{proof}
+\input{changelog.tex}
 \end{appendices}
 
 \end{document}
