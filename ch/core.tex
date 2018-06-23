@@ -163,9 +163,10 @@ f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
     enlargelimits=upper,
 ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
   ylabel={星云指数},
-      legend pos=north west
+      legend pos=north west,
+legend style={fill=none}
 ]
-\addplot [dotted, domain=0:10, blue] {linefunc(x)};
+\addplot [dashed, domain=0:10, blue] {linefunc(x)};
 \addplot [smooth, domain=0:10, red] {func(x,3)};
 \addlegendentry{$f(x)=x$}
 \addlegendentry{$f(x)=x/(1 + e^{a + b\cdot x})$}
@@ -202,6 +203,7 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 ylabel={以太坊市值（美元）},
 %xtick={0,10,20,30,40,50,60},
 %xlabel={时间（天）}
+legend style={fill=none}
     ]
 \addplot[smooth, mark=., color=red] table [x=day, y=nr, col sep=comma]
     {../common/eth_simu.csv};
@@ -215,7 +217,8 @@ legend pos=north west,
 xlabel={时间（天）},
 xtick={0,10,20,30,40,50,60},
 ytick={1,2},
-axis y line*=right
+axis y line*=right,
+legend style={fill=none}
     ]
     \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{星云指数}
 
