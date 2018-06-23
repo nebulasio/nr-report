@@ -63,7 +63,7 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \[
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
-\noindent 其中，$\forall 1\le i \le {n-1} : \tau_i \le \tau_{i+1} $。
+\noindent 其中，$\forall 1\le i \le n : \tau_i \le \tau_{i+1} $。
 \noindent 如~\ref{fig:loop}所示，包含了一个交易环，注意，其中$(v_1, v_2, 100, 5)$并不包含在交易环中。
 
 \input{fig_loop.tex}
@@ -187,7 +187,9 @@ ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
 
 
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献。
+\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，其中黑色标记实线为通过ETH日均交易量以及ETH日均价格计算得出的以太坊市值（对美元），而红色实线则是根据公式\ref{eq:rank-param}计算所有以太坊用户的星云指数之和。
+
+可以看出，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献，即体现出星云指数的真实性。
 
 
 \begin{figure}
