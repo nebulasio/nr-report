@@ -1,3 +1,100 @@
 % !TEX root = main.tex
 \section{Proof}
 \label{sec:appendix_proof}
+\subsection{Characteristics\ref{prop:one}Proof}
+\begin{proof}
+\label{proof:one}
+For any $x_1>0$，$x_2>0$，有
+
+\[
+\begin{aligned}
+f(x_1+x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=\frac{x_1}{1+e^{a+b\cdot (x_1+x_2)}}+\frac{x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}+\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}\\
+\end{aligned}
+\]
+
+In formula \ref{eq:rank-param}，we have $b<0$，so $0<e^{b\cdot x_1}<1$，$0<e^{b\cdot x_2}<1$，moreover，
+
+\[
+\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}>\frac{x_1}{1+ e^{a+b\cdot {x_1}}}=f(x_1)
+\]
+
+\[
+\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}>\frac{x_2}{1+ e^{a+b\cdot {x_2}}}=f(x_2)
+\]
+
+is actually:
+\[
+f(x_1+x_2)>f(x_1)+f(x_2)
+\]
+\end{proof}
+
+\subsection{Characteristics\ref{prop:two}Proof}
+\begin{proof}
+For any $x_1>0$，$x_2>0$，we have
+
+\begin{equation}
+\label{eq:fx_proof}
+\begin{aligned}
+f(x_1+x_2)-f(x_1)-f(x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}-\frac{x_1}{1+e^{a+b\cdot x_1}}-\frac{x_2}{1+e^{a+b\cdot x_2}}\\
+%&=\frac{x_1}{1+e^{a+b\cdot (x_1+x_2)}}+\frac{x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=(\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}})\\
+&\quad +(\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{a+b\cdot x_2}})\\
+\end{aligned}
+\end{equation}
+
+Here we use function $g(x_1,x_2)$ represents the left part，$h(x_1,x_2)$ represents the right part，即：
+
+\begin{equation}
+\label{eq:gx_func_proof}
+g(x_1,x_2)=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}
+\end{equation}
+
+\begin{equation}
+\label{eq:hx_func_proof}
+h(x_1,x_2)=\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{a+b\cdot x_2}}
+\end{equation}
+
+So ~\eqref{eq:fx_proof} for $x_1$and$x_2$, their limits can be represented as:
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)
+\]
+
+we have
+\[
+\begin{aligned}
+g(x_1,x_2)&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}\\
+&=\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1-e^{b\cdot x_2})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1+e^{a+b\cdot x_1})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}=\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1}}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{a+b\cdot x_1}}=\frac{x_1}{1+\frac{1}{e^{a+b\cdot x_1}}}
+\end{aligned}
+\]
+
+Calculate limit for $\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}$, according to L'Hospital's rule,
+\[
+\begin{aligned}
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
+&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}\\
+&=0
+\end{aligned}
+\]
+
+According to ~\ref{proof:one}，we have $g(x_1,x_2)>0$, so according to sandwich theorem:
+
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)=0
+\]
+
+Similarly, we can get:
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)=0
+\]
+
+So,
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=0
+\]
+
+
+\end{proof}

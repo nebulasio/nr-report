@@ -1,1 +1,17 @@
-\section{Extension}
+\section{Extended Nebulas Rank}
+Core Nebulas Rank is used to evaluate an individual account’s contribution to the economy aggregate, it’s very important to our Proof of Devotion (PoD) and Developer Incentive Plan (DIP), and the Core Nebulas Rank actually matches with their use cases. However, as we also noticed, there are some other use cases that they may need a different evaluation, as a result, we also designed Extended Nebulas Rank. Extended Nebulas Rank is based on the Core Nebulas Rank, to guarantee continuous incentive to the whole nebulas economy even under different use cases.
+
+\subsection{Smart Contract Oriented Extended Nebulas Rank}
+In the whole economy, the rank of smart contract plays an important role, on one hand, it helps user find high quality DApps, on the other hand, it will motivate the developers whoever built the high quality DApps as well. So the economy can grow healthy and stably.
+
+The rank of smart contract depends on two truths: the call from user’s account address to smart contract, and the calls between different smart contracts. The call from user’s account address to smart contract reflects the truth that the user’s account address is actually distributing its contribution against the economy aggregate to all the smart contracts, since then, each smart contract has it’s own initial NR. The calls between smart contracts can also be treated as a directed acyclic graph, therefore, we use Page Rank algorithm to calculate NR for each smart contract.
+
+
+\subsection{Multi-dimension Extended Nebulas Rank}
+We also found out that some applications need multi-dimensional data, in order to compute the correlation between different kinds of data on chain. For example, in a blockchain based advertisement system, we need to get the correlation between the advertisement and the user from different dimensions. Under this situation, Extended Nebulas Rank is multi-dimensional, we can represent it as a vector, while the Core Nebulas Rank is one of the dimensions.
+
+Extended Nebulas Rank is multi-dimensional, except the Core Nebulas Rank, the other dimensions all depend on the concrete the application. How to use those dimensions also depends on the application itself. Nevertheless, the calculation algorithms can always be referred to the algorithm of calculating the Core Nebulas Rank.
+
+\vspace{2em}
+
+Starting from a real use case that we designed the Extended Nebulas Rank for smart contract, we have described an implementation method of Extended Nebulas Rank, we also illustrated the corresponding evaluation mechanism, moreover, we also proposed the Multi-dimension Extended Nebulas Rank, which shows the possibility that our evaluation mechanism can be used under other use cases.
