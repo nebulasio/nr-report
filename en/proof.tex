@@ -1,10 +1,10 @@
 % !TEX root = main.tex
 \section{Proof}
 \label{sec:appendix_proof}
-\subsection{Characteristics\ref{prop:one}Proof}
+\subsection{Characteristics \ref{prop:one}Proof}
 \begin{proof}
 \label{proof:one}
-For any $x_1>0$，$x_2>0$，有
+For any $x_1>0$, $x_2>0$, we have
 
 \[
 \begin{aligned}
@@ -14,7 +14,7 @@ f(x_1+x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
 \end{aligned}
 \]
 
-In formula \ref{eq:rank-param}，we have $b<0$，so $0<e^{b\cdot x_1}<1$，$0<e^{b\cdot x_2}<1$，moreover，
+In formula \ref{eq:rank-param}, we have $b<0$, so $0<e^{b\cdot x_1}<1$, $0<e^{b\cdot x_2}<1$, moreover,
 
 \[
 \frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}>\frac{x_1}{1+ e^{a+b\cdot {x_1}}}=f(x_1)
@@ -30,9 +30,9 @@ f(x_1+x_2)>f(x_1)+f(x_2)
 \]
 \end{proof}
 
-\subsection{Characteristics\ref{prop:two}Proof}
+\subsection{Characteristics \ref{prop:two}Proof}
 \begin{proof}
-For any $x_1>0$，$x_2>0$，we have
+For any $x_1>0$, $x_2>0$, we have
 
 \begin{equation}
 \label{eq:fx_proof}
@@ -44,7 +44,7 @@ f(x_1+x_2)-f(x_1)-f(x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}-\frac{x_1}{1+
 \end{aligned}
 \end{equation}
 
-Here we use function $g(x_1,x_2)$ represents the left part，$h(x_1,x_2)$ represents the right part，即：
+Here we use function $g(x_1,x_2)$ represents the left part, $h(x_1,x_2)$ represents the right part:
 
 \begin{equation}
 \label{eq:gx_func_proof}
@@ -56,7 +56,7 @@ g(x_1,x_2)=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{
 h(x_1,x_2)=\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{a+b\cdot x_2}}
 \end{equation}
 
-So ~\eqref{eq:fx_proof} for $x_1$and$x_2$, their limits can be represented as:
+So ~\eqref{eq:fx_proof} for $x_1$ and $x_2$, their limits can be represented as:
 \[
 \mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)
 \]
@@ -80,7 +80,7 @@ Calculate limit for $\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}$, according to L'Hospi
 \end{aligned}
 \]
 
-According to ~\ref{proof:one}，we have $g(x_1,x_2)>0$, so according to sandwich theorem:
+According to ~\ref{proof:one}, we have $g(x_1,x_2)>0$, so according to sandwich theorem:
 
 \[
 \mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)=0
