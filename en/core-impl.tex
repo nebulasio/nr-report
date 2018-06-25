@@ -1,1 +1,23 @@
-\section{Impl}
+\section{Implementation of Core Nebulas Rank}
+The complete implementation of Core Nebulas Rank is out of scope of this proposal, so we will just discuss the key points of the implementation here.
+
+\subsection{On chain or not? \label{sec:onchain}}
+As being explained in previous chapters, the Core Nebulas Rank actually shows each account’s contribution to the overall economic aggregation. Normally, each node can calculate the contribution for any specific account, however, do we really need to put NR on chain periodically?
+
+In our opinion, it’s unnecessary to put NR on chain, because:
+\begin{itemize}
+\item NR data size will be huge, while it’s certainly unsuitable to put it on chain. Even for  IPFS, Genaro etc~\cite{IPFS}~\cite{Genaro}, it’s inappropriate to store every account’s NR periodically either, even data storage is actually their focus. 
+\item It will affect the performance of block generation. The computing complexity of core nebulas rank is high, so it will significantly affect the block generation and verification performance, and eventually, TPS is affected.
+\end{itemize}
+\noindent Overally speaking, we suggest that each node can calculate the Core Nebulas Rank individually.
+
+However, if each node do the calculation individually, how can we make sure that the Core Nebulas Rank is reliable and trustful. For instance, the node may viciously modify the NR calculation result, and then gives out incentive based on the NR calculation result. For important applications, we should verify the NR calculation result, to assure the fairness of the calculation result; on the other hand, for those applications not so important, it depends on the applications themselves that how they use the NR result and whether they want to verify the NR result.
+
+The other important situation we should also consider is: the node may refuse to calculate the NR with the concern of power consumption. Thinking of that, a trustful Core Nebulas Rank service can be introduced, so, repeated calculation can be avoided. We can either offer the service for free, or charge by number of times. Complete implementation and service detail are out of scope here.
+
+\subsection{Core Nebulas Rank Upgrade}
+As we all know, Core Nebulas Rank is associated with the economy of whole encrypted digital currency. As the economy is changing, the algorithm of Core Nebulas Rank calculation will also need to be changed, especially the parameters. It’s very important that we need to figure out the way that how we can update the algorithm rapidly. Our solution is: we will upgrade the Nebulas Rank calculation algorithm through Nebulas Force.
+
+More specifically, we will upgrade the block data structure, the new structure will include the Core Nebulas Rank algorithm and parameters (based on LLVM IR). Nebulas Virtual Machine (NVM) will be the execution engine of the algorithm: it fetches the algorithm code and parameters from the block, then execute the code, and eventually obtain the Core Nebulas Rank within the node.
+
+Whenever the algorithm or the parameters need to be updated, we will be working together with the community, making sure the new algorithm and parameters will be included in the new blocks, so the update will be timely and smooth, potential fork can be avoided down the road.
