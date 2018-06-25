@@ -25,7 +25,7 @@ For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank$\mathcal{C
 2. Don't rely on the weight of nodes in LeaderRank to get the importance of the node. \\
 First, we remove the loops before we calculate the in-and-out degree $\beta$, so it can resist from loops attack, in the same time still consider the strength of the edge. for some cases of homogeneous topology graph, PageRank and some other symatric function (such as LeaderRank) has been proof that they can't resist from sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking stratigies. We proposed a asymatic calculation function\ref{eq:rank-param} which is effective reduce the rewards by faking the low stake nodes in \refsec{sec:function}.} 
 
-Below, we are going to discuss three issues in ~\ref{eq:rank}: Account Median Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and choose of function $\Omega$ and $\Psi$.
+Below, we are going to discuss three issues in ~\ref{eq:rank}: Account Median Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
 \subsection{Account Median Stake$\beta(a)$}
 In time period of $[t_0\ −\ T,\ t_0]$, there are $n$ blocks in the blockchain system, marked as
