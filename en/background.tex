@@ -1,3 +1,60 @@
 % !TEX root = main.tex
 
 \section{Background}
+
+\subsection{The development status of blockchain}
+In this section, we introduce the background of blockchain and associated technology. Due to the absence of measure of value, we discuss the implementation of some typical ranking algorithms in area of blockchain and it's drawbacks
+
+Satoshi Nakmoto published Bitcoin whitepaper~\cite{Nakamoto2008} in October of 2008. As the earliest application of blockchain, Bitcoin is the moststriking example of the idea that being a "decentralized cryptocurrency system". The production of Bitcoin is depend on massive computations which based on a special algorithm instead of any organization, and the consistency is guaranteed in the distributed ledger system.
+
+By introducing specific scripting language, Bitcoin can be used in third-party payments, efficient micro-payments, and so on. Then, a wave of experiments originate from Bitcoin emerged which include features more than currency property. For example, the early Namecoin~\cite{Namecoin} represented a distributed Domain Name System. Besides, others like the OpenAssets~\cite{OpenAssets} based on "Colored coins", is  also copy of intelligence assets which follow the traceability of Bitcoin.
+
+Unfortunately, the scripting language of Bitcoin has many desgin flaws, such as lacking of instructions and failed being Turing-complete, which makes it ideal for use in constrained environments.
+
+With the development of blockchain, more successors are merged and tryed to extend the functions related to applications. The most significant one is Ethereum~\cite{buterin2013ethereum} which providing Turing-complete smart contracts in a breakthrough, therefore it extends the applications.
+
+Smart contract is the contract enforced by technical method in blockchain system. The Ethereum smart contracts run on the Ethereum Virtual Machine (EVM), which isn't in the control of any entity and ensuring the consistency of output as well as itself via consensus algorithm.
+
+People can develop distributed applications (DApp) with complex functions based on the Ethereum smart contract. These Dapps provide the solutions for various fields except basic transaction, such as voting, crowdfunding, lending, property rights and so on.
+
+However, even if Ethereum extends the possibility of blockchain, there is no killer apps in Ethereum platform for the lack of value measurement.
+
+For the system that supports smart contract, there are two kinds of account, externally owned account (EOA) and smart contract account. And both lack resonable value measurement. In the meantime, invaluable information are usually concealed in the invocation process of smart contract. These information has more dimensions compared with traditional transaction data, and cannot be evaluated by classical value measurements.
+
+In the early 2015, Chris Skinner came up with the idea of "value web"~\cite{ChrisSkinner}, noting that a value ecosystem should include value exchanges, value stores and value management systems. And Chris points out that, there are clear difference between cryptocurrency platform and traditional society in value measurement which makes it a challenge to evaluate the value in cryptocurrency platform.
+
+\subsection{Node ranking algorithm based on graph}
+The new generation of blockchain projects such as Ethereum build a complex ecosystem, not just being cryptocurrency trading platform. The reasonable method method to evaluate the value of entity on chain does not exist. For example, we have no idea about which one has the bigger contribution to the blockchain system and how to measure these contributions.
+
+We introduce PageRank algorithm~\cite{page1999pagerank}, a typical reputation measurement in Internet at first. As early Google's core algoritm, PageRank is proposed to solve the ranking problem in web link analysis. With the development of the researches on PageRank, it has been widely used in every field, such as importance ranking of academic papers, web crawler, keywords extraction, user reputation ranking in social networks and so on.
+
+Some researches, such as Fleder, Kester, Pillai etc. use PageRank to discover the Bitcoin account address and analaze its' activities. However, their main method is just manual analytical work with the help of PageRank.
+
+As the classical ranking algorithm formed in web 2.0, PageRank suffers the limitation in online reputation evaluation.
+
+More modified study emerge based on PageRank, and one of the most famous is LeaderRank~\cite{Li2014}. LeaderRank improves the transition probability by introducing ground node and weighted bidirectional links instead of using the same transition probability in PageRank, which makes the nodes have different transition in and out probability.
+
+...
+
+Note that the kinds of PageRank algorithm are not resistant to Sybil attacks~\cite{cheng2006manipulability} which is the strategy that adversary subvertes the reputation system in symmetric network by creating a large number of pseudonymous identities.
+
+
+\subsection{Manipulation Resistance}
+The ability of resisting manipulation, a.k.a. truthfulness, is the most significant and challenging goal of Nebulas Rank. 
+
+Hopcroft et al. found that PageRank is failed at evaluating user reputation under the manipulation~\cite{hopcroft2007manipulation}.
+
+Zhang et al. point out, the adversary can diminish the degree of non-sybil users reputation effectively even if the evaluation index of node repution is build~\cite{zhang2016truetop}.
+
+That is because that the kinds of PageRank algorithm work based on the network topology, while the adversary could get the same or higher reputation with creating an image network~\cite{cheng2005sybilproof}~\cite{cheng2006manipulability}.
+
+In blockchain system, some manipulation methods are as follows:
+\begin{enumerate}
+\item Loop transfer. The attacker transfers along a loop topology, which allows the same money flow over same edges repeatedly. By this means, the attacker hopes to raise the weight of related edges;
+\item Transfer to random addresses, so that the out-degree of sybil node is increased, and the propagation of fund is increased as well;
+\item Form an independent network component with addresses controlled by the attacker. So the attacker can pretend to be a central node;
+\item Interact with authoritative Exchange service addresses frequently, i.e. transfer the same money in and out an authoritative Exchange service address repeatedly, so that the attacker can acquire better structural position in the network.
+\end{enumerate}
+
+We should take these into consideration to keep the fairness of core nebulas rank during the design stage.
+
