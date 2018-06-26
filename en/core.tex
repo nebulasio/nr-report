@@ -1,19 +1,19 @@
 % !TEX root = main.tex
 \section{Core Nebulas Rank}
 
-Core Nebulas Rank is used to measure the contributions a user to the whole economy {\textbf{in a certain period of time}}.
+Core Nebulas Rank is used to measure the contributions of a user to the whole economy {\textbf{in a certain period of time}}.
 It is quite complicate to calculate the contribution precicesly, so we provide an approximation algorithm for it.
-In this approximation algorithm, we consider two critical factors, the coinage and the position information in the transaction network. We will proof the effectiveness of the approximation algorithm in the evluation section below.
+In this approximation algorithm, we consider two critical factors, the coinage and the account position information in the transaction network. And we will proof the effectiveness of the approximation algorithm in the evluation section below.
 
 We use the transaction history on the mainnet in a certain period as the data source of Core Nebulas Rank.
-All the transactions in a period of time $[t_0-T,\ t_0]$, can be specify as a set
+All the transactions in a period of time $[t_0-T,\ t_0]$, can be specify as a set:
 \begin{align}
 \Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ w > 0 \land s \neq t \}
 \end{align}
 \noindent Based on $\Theta(t_0)$, we can define a weighted directed graph, the node is the address of the account, the edge from node $s$ to node $d$ represents one transaction,
-the weight of the edge is $w$, the time of the edge is$\tau$.
+the weight of the edge is $w$, the time of the edge is $\tau$.
 
-For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank$\mathcal{C}(a)$ is based on $\Theta(t_0)$, which is
+For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank$\mathcal{C}(a)$ is based on $\Theta(t_0)$, which can be represented as:
 \begin{align}
 \mathcal{C}(a) = \Omega(\beta(a)) \times{} \Psi(\gamma(a))
 \label{eq:rank}
