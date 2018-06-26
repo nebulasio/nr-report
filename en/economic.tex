@@ -1,11 +1,11 @@
 % !TEX root = main.tex
 \section{Economic Model}
-The cryptocurrency is endowed with economic significance, either as a kind of trading medium or intelligent asset. Therefore, a reasonable economic model can help us to establish a value measurement standard on the blockchain, which is also the objective of core nebulas rank. This chapter first introduces the mathematical representation of cryptocurrency, and then analyzes the cryptocurrency with a simple but well-recognized monetary model. During the analysis, we introduce the core nebulas rank as an important argument.
+The cryptocurrency is endowed with economic significance, either as a kind of trading medium or intelligent asset. Therefore, a reasonable economic model can help us to establish a value measurement standard on the blockchain, which is also the objective of \nrcore. This chapter first introduces the mathematical representation of cryptocurrency, and then analyzes the cryptocurrency with a simple but well-recognized monetary model. During the analysis, we introduce the Core Nebulas Rank as an important argument.
 
 \subsection{Representation of Cryptocurrency}
 The biggest difference between cryptocurrency and traditional economy is that all the transactions on the cryptocurrency can be traceable. This provides the data sources for us to analyze the impact of each transaction on the economic system.
 
-In general, a cryptocurrency system can be defined as a pair $(\mathcal{L}, \mathcal{U})$, where $\mathcal{L}$ is the ledger system, and $\mathcal{U}$ is the users of cryptocurrency. Further, the ledger system can be described as a triple as below:
+In general, a cryptocurrency system can be defined as a pair $(\mathcal{L}, \mathcal{U})$, where $\mathcal{L}$ is the ledger system, and $\mathcal{U}$ is the set of cryptocurrency users. Further, the ledger system can be described as a triple as below:
 
 \begin{align}
 \mathcal{L} = (\mathcal{A}, \mathcal{D}, \mathcal{T})
@@ -40,16 +40,16 @@ A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
 \forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
 \end{align}
 
-To be notified, the model described above is a reasonable simplification of any ecryptocurrency system. In the model, we do not distinguish the on-chain data from off-chain data, do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are typically specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions which will be recorded on the chain and intra-exchange transactions which will not be recorded in a centralized database of the exchange. This leads to that we will lose the intra-exchange transactions if we only obtain the data from the chain. 
+Note that the model described above is a reasonable simplification of any cryptocurrency system. In the model, we do not distinguish the on-chain data from off-chain data, do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are typically specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions which will be recorded on the chain and intra-exchange transactions which will not be recorded in a centralized database of the exchange. This leads to that we will lose the intra-exchange transactions if we only obtain the data from the chain. 
 However, if the intra-exchange transactions can be obtained with the cooperation of the exchange, we can further map an exchange account into multiple accounts, so as to use the model above.
 
 
 \subsection{Model of Cryptocurrency}
-Although the cryptocurrency differs largely from the traditinal commodity money and fiat money, the classical monetary theory still has the instruction value. As the current money of a new economic entity~\cite{swan2015blockchain}, cryptocurrency has the attributes of the money and three functions of money: medium of exchange, store of value, and unit of account. 
+Although the cryptocurrency differs largely from the traditinal commodity currency and fiat money, the classical monetary theory still has the practical leading meaning nowadays. As the current money of a new economic entity~\cite{swan2015blockchain}, cryptocurrency is born with the attributes of the money and has three functions of money: medium of exchange, store of value, and unit of account. 
 
-Hereby, we establish a simple and classic monetary model to help us understand the physical significance of nebulas rank.
+Hereby, we establish a simple and classic monetary model to help us understand the physical significance of \nr.
 
-First of all, we try to give the indicator to measure the `velocity factor' in the cryptocurrency ecosystem. 
+First of all, we try to give the indicator to measure the \emph{velocity factor} in the cryptocurrency ecosystem. 
 
 Another concept needed to be differentiated from the `velocity factor' in the economics is `liquidity'. `Liquidity' is used to describe the difficulty level of exchanging the assets for the medium of exchange. As the money itself is a medium of exchange in the economics, the money is the assets with the best `liquidity'.
 
@@ -84,7 +84,7 @@ With regard to the real economical output $Y$, it is usually represented as real
 Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
 \end{align}
 
-\noindent where $\mathcal{C}(a)$ represents the contributions made by account $a$ to the economical output, namely nebulas rank.
+\noindent where $\mathcal{C}(a)$ represents the contributions made by account $a$ to the economical output, namely \nr.
 
 The development of cryptocurrency relies on the development of the community. Therefore, we consider that quantifying the contribution made by each acocunt is the basis of designing the reasonal incentive mechanism. Based on this, the economical system can create either explicit incentives (e.g., Proof of Devotion in nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines). 
 The directive and primitive incentives in the cryptocurrency is the additional issuance of money, which is different from that in the traditional monetary theory.

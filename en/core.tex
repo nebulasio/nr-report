@@ -6,7 +6,7 @@ It is quite complicate to calculate the contribution precicesly, so we provide a
 In this approximation algorithm, we consider two critical factors, the coinage and the position information in the transaction network. We will proof the effectiveness of the approximation algorithm in the evluation section below.
 
 We use the transaction history on the mainnet in a certain period as the data source of Core Nebulas Rank.
-All the transactions in a period of time $[t_0\ −\ T,\ t_0]$, can be specify as a set
+All the transactions in a period of time $[t_0-T,\ t_0]$, can be specify as a set
 \begin{align}
 \Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ w > 0 \land s \neq t \}
 \end{align}
@@ -28,7 +28,7 @@ First, we remove the loops before we calculate the in-and-out degree $\beta$, so
 Below, we are going to discuss three issues in ~\ref{eq:rank}: Account Median Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
 \subsection{Account Median Stake$\beta(a)$}
-In time period of $[t_0\ −\ T,\ t_0]$, there are $n$ blocks in the blockchain system, marked as
+In time period of $[t_0-T, t_0]$, there are $n$ blocks in the blockchain system, marked as
 \[
 B_0, B_1, \dots, B_n
 \]
@@ -82,7 +82,6 @@ if the latest transaction amount is 0, then remove this transaction, which is
 \end{align}
 \noindent As shown in \reffig{fig:no-loop} is a transaction graph \reffig{fig:loop} after remove the forwarding loop.
 
-%在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
 
 Set the transfer-in amount of node $v$ is $p(v)$, then
 \begin{align}
@@ -176,11 +175,13 @@ In summary, ~\ref{eq:rank} can be simply as below
 \end{align}
 \noindent $a, b, c, d$ are parameters to be determined.
 
+
 In order to verify the effectiveness of the function, we calculate the Nebulas Rank for all the accounts in Ethereum in certain period of time. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), beside the transaction data, we also collected average daily price (to USD) and volumns ~\cite{coinmarketcap}.
 
 \reffig{fig-eth-simu} shows the trending of price and Nebulas rank of the Ethereum, as shown in the picture, the black solid lines are daily volumn and average price (to USA dollar) of Ethereum, while the red solid lines represents the overall Nebulas Rank score in whole Ethereum using\ref{eq:rank-param}.
 
 We can see, the Nebulas Rank reflects the the price changes of Ethereum very well, The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank}reflects the contributions of the users very well. In the other words, it demostratet the correctness of Nebulas Rank. 
+
 
 \begin{figure}
 \centering
@@ -189,7 +190,7 @@ We can see, the Nebulas Rank reflects the the price changes of Ethereum very wel
   axis y line*=left,
   axis x line=none,
 %ticks=none,
-ylabel={Price of Ethereum(USA Dollars)},
+ylabel={Price of Ethereum (USA Dollars) },
 %xtick={0,10,20,30,40,50,60},
 %xlabel={Time(Day)}
 legend style={fill=none}
@@ -203,7 +204,7 @@ legend style={fill=none}
 %ticks=none,
 legend pos=north west,
 %ylabel={Nebulas Rank},
-xlabel={Time（day）},
+xlabel={Time (day) },
 xtick={0,10,20,30,40,50,60},
 ytick={1,2},
 axis y line*=right,
@@ -221,3 +222,5 @@ legend style={fill=none}
 \caption{The price and Nebulas Rank of Ethereum}
 \label{fig-eth-simu}
 \end{figure}
+
+
