@@ -27,7 +27,7 @@ The new generation of blockchain projects such as Ethereum build a complex ecosy
 
 Here, we introduce PageRank algorithm~\cite{page1999pagerank}, a typical reputation measurement on the Internet at first. As early Google's core algorithm, PageRank is proposed to solve the ranking problem in web link analysis. With the development of researches on PageRank, it has been widely used in many fields, such as importance ranking of academic papers, web crawler, keywords extraction, user reputation ranking in social networks and so on.
 
-Some research focus on using PageRank on blockchain. Fleder, Kester, Pillai et al. use PageRank to discover the Bitcoin account address and analaze its activities. However, their main method is just manual analytical work with the help of PageRank.
+Some research focus on using PageRank on blockchain. Fleder, Kester, Pillai et al. use PageRank to discover the Bitcoin account address and analaze its activities~\cite{Fleder2015}. However, their main method is just manual analytical work with the help of PageRank.
 
 As the classical ranking algorithm formed in web 2.0, PageRank suffers the limitation in online reputation evaluation.
 
@@ -37,6 +37,8 @@ More research improving on the PageRank emerges, and one of the most famous is L
 %The basic idea of LeaderRank is to create a strongly connected graph by adding a ground node to the existing nodes  in the network 
 
 Note that the kinds of PageRank algorithms are not resistant to Sybil attacks~\cite{cheng2006manipulability} which is the strategy that adversary subvertes the reputation system in symmetric network by creating a large number of pseudonymous identities.
+
+The most relevant work with Nebulas Rank is NEM~\cite{nem}. Different from Bitcoin's Proof-of-Work and Ethereum's Proof-of-Stake consensus strategy, NEM adopts Proof-of-Importance consensus protocol and NCDawareRank~\cite{Nikolakopoulos2013} as the ranking algorithm. The NCDawareRank exploits the clustering effect of network topology with clustering algorithm based on SCAN algorithm~\cite{xu2007scan}\cite{shiokawa2015scan}\cite{chang2017mathsf}. Although community structure does exist in transaction graph and should be helpful to handle with spam nodes, it does not guarantee that all nodes on blockchain controlled by one entity in the real world are mapped into one cluster, which leads to large room for manipulation.
 
 
 \subsection{Manipulation Resistance}
