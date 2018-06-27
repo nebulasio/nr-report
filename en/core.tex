@@ -2,8 +2,8 @@
 \section{Core Nebulas Rank}
 
 Core Nebulas Rank is used to measure the contributions of a user to the whole economy {\textbf{in a certain period of time}}.
-It is quite complicate to calculate the contribution precicesly, so we provide an approximation algorithm for it.
-In this approximation algorithm, we consider two critical factors, the coinage and the account position information in the transaction network. And we will proof the effectiveness of the approximation algorithm in the evluation section below.
+It is quite complicate to calculate the contribution precisely, so we provide an approximation algorithm for it.
+In this approximation algorithm, we consider two critical factors, the coinage and the account position information in the transaction network. And we will proof the effectiveness of the approximation algorithm in the evaluation section below.
 
 We use the transaction history on the mainnet in a certain period as the data source of Core Nebulas Rank.
 All the transactions in a period of time $[t_0-T,\ t_0]$, can be specify as a set:
@@ -23,7 +23,7 @@ For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank$\mathcal{C
 \whitepaper{Different from the way we calculate the Core Nebulas Rank in Nebulas white paper~\cite{Nabulas}, we made some updates blow:\\
 1. Don't use the top $K$ highest transaction amount as the weight when building the transaction graph; \\ 
 2. Don't rely on the weight of nodes in LeaderRank to get the importance of the node. \\
-First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist from loop attack, in the same time still consider the strength of the edge. for some cases of homogeneous topology graph, PageRank and some other symatric function (such as LeaderRank) has been proof that they can't resist from sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking stratigies. We proposed a asymmetric calculation function\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in \refsec{sec:function}.} 
+First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist from loop attack, in the same time still consider the strength of the edge. for some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proof that they can't resist from sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking strategies. We proposed a asymmetric calculation function\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in \refsec{sec:function}.} 
 
 Below, we are going to discuss three issues in ~\ref{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
@@ -69,7 +69,7 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \[
 \forall (s^i, t^i, w^i, \tau^i) \in \mathcal{T} : w^i \ge w^i_m
 \]
-\noindent Then, for each transaction in $H^i(v_i)$, we need ot minus the minimal transcation amount $w^i_m$ accordingly and remove this transaction if the latest transaction amount is 0, which is
+\noindent Then, for each transaction in $H^i(v_i)$, we need ot minus the minimal transaction amount $w^i_m$ accordingly and remove this transaction if the latest transaction amount is 0, which is
 \[
 \mathcal{E}((s, t, w, \tau), w_m) = \left\{ \begin{array}{rcl}
 (s, t, w-w_m, \tau) & \mbox{if} & w \ne w_m \\
@@ -100,7 +100,7 @@ for node $v$, its in-and-out degree $\gamma(v)$ is
 \begin{align}
 \gamma(v) = (\frac{\theta\cdot \mathcal{G}(v)}{\mathcal{G}(v) + \mu})^{\lambda}
 \end{align}
-\noindent where $\theta, \mu, \lambda$ are the paramaters to be determined.
+\noindent where $\theta, \mu, \lambda$ are the parameters to be determined.
 
 
 And ~\reffig{fig-surf} shows the curve of the function~\ref{eq:dgr_func}.
@@ -111,13 +111,13 @@ And ~\reffig{fig-surf} shows the curve of the function~\ref{eq:dgr_func}.
 \end{figure}
 
 \subsection{Calculation Function \label{sec:function}}
-It would be extremently complicated to calculate Core Nebulas Rank if we consider different usage case and its properities. However, we can provide a general function for Nebulas Rank.
+It would be extremely complicated to calculate Core Nebulas Rank if we consider different usage case and its properities. However, we can provide a general function for Nebulas Rank.
 
-We define the Core Nebulas Rank funciton as \(f(x)\), where \(x\) is the factor of Core Nebulas Rank, it can be account stake, coinage or the in-and-out degree. $f(x)$ need to satisfy flowing two properties:
+We define the Core Nebulas Rank function as \(f(x)\), where \(x\) is the factor of Core Nebulas Rank, it can be account stake, coinage or the in-and-out degree. $f(x)$ need to satisfy flowing two properties:
 
 \begin{property}
 \label{prop:one}
-For any two vailables $a$ and $b$, which are both larger than $0$, the sum of the two functions is smaller than the function of sum of two availables.
+For any two variables $a$ and $b$, which are both larger than $0$, the sum of the two functions is smaller than the function of sum of two variables.
 %对于任意输入$x$，将其拆分后的计算函数之和小于原计算函数。
 \end{property}
 
