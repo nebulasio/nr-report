@@ -5,20 +5,20 @@ In this chapter, we introduce the background of blockchain and associated techno
 
 \subsection{The Development Status of Blockchain}
 
-Satoshi Nakmoto published Bitcoin whitepaper~\cite{Nakamoto2008} in October of 2008. As the earliest application of blockchain, Bitcoin is the most striking example of the idea that being a \emph{decentralized cryptocurrency system}. The production of Bitcoin is depend on massive computations executing a special algorithm instead of any organization, which guarantees the consistency in a distributed ledger system.
+Satoshi Nakamoto published Bitcoin whitepaper~\cite{Nakamoto2008} in October of 2008. As the earliest application of blockchain, Bitcoin is the most striking example of the idea that being a \emph{decentralized cryptocurrency system}. The production of Bitcoin is depend on massive computations executing a special algorithm instead of any organization, which guarantees the consistency in a distributed ledger system.
 
 With specific scripting language, Bitcoin can be used in third-party payments, efficient micro-payments, and so on. Then, a wave of experiments originate from Bitcoin emerged which include features more than currency property. For example, the early Namecoin~\cite{Namecoin} represented a distributed Domain Name System and others like the OpenAssets~\cite{OpenAssets} based on \emph{colored coins}, both are copy of intelligence assets which follow the traceability of Bitcoin.
 
-Unfortunately, the scripting language of Bitcoin has many desgin flaws, such as lacking of instructions and failed in Turing-complete, limiting its usefulness.
+Unfortunately, the scripting language of Bitcoin has many design flaws, such as lacking of instructions and failed in Turing-complete, limiting its usefulness.
 
-With the development of blockchain technology, more successors are merged and tryed to extend the functions related to applications. The most significant one is Ethereum~\cite{buterin2013ethereum}, providing Turing-complete smart contracts in a breakthrough, which opens up scenes of applications.
+With the development of blockchain technology, more successors are merged and tried to extend the functions related to applications. The most significant one is Ethereum~\cite{buterin2013ethereum}, providing Turing-complete smart contracts in a breakthrough, which opens up scenes of applications.
 
 Smart contract is the contract enforced by technical method in blockchain system. The Ethereum smart contract runs on the Ethereum Virtual Machine (EVM), which isn't in the control of any entity, and EVM ensures the consistency of output as well as smart contract itself via consensus algorithm.
 
 People can develop distributed applications (DApp) with complex functions based on the Ethereum smart contract. These Dapps provide the solutions for various fields except basic transaction, such as voting, crowdfunding, lending, property rights and so on.
 However, even if Ethereum extends the possibility of blockchain application, there is no killer apps in Ethereum platform for the lack of value measurement.
 
-For the system that supports smart contract, there are two kinds of account, externally owned account (EOA) and smart contract account, and both lack resonable value measurement. In the meantime, invaluable information are usually concealed in the invocation process of smart contract. The information has more dimensions compared with traditional transaction data, and cannot be evaluated by classical value measurements.
+For the system that supports smart contract, there are two kinds of account, externally owned account (EOA) and smart contract account, and both lack reasonable value measurement. In the meantime, invaluable information are usually concealed in the invocation process of smart contract. The information has more dimensions compared with traditional transaction data, and cannot be evaluated by classical value measurements.
 
 In the early 2015, Chris Skinner came up with the idea of \emph{value web}~\cite{ChrisSkinner}, noting that a value ecosystem should include value exchanges, value stores and value management systems. And Chris points out that, there are clear difference between cryptocurrency platform and traditional society in value measurement, which makes it a challenge to evaluate the value of data and information in the cryptocurrency platform.
 
@@ -27,7 +27,7 @@ The new generation of blockchain projects such as Ethereum build a complex ecosy
 
 Here, we introduce PageRank algorithm~\cite{page1999pagerank}, a typical reputation measurement on the Internet at first. As early Google's core algorithm, PageRank is proposed to solve the ranking problem in web link analysis. With the development of researches on PageRank, it has been widely used in many fields, such as importance ranking of academic papers, web crawler, keywords extraction, user reputation ranking in social networks and so on.
 
-Some research focus on using PageRank on blockchain. Fleder, Kester, Pillai et al. use PageRank to discover the Bitcoin account address and analaze its activities~\cite{Fleder2015}. However, their main method is just manual analytical work with the help of PageRank.
+Some research focus on using PageRank on blockchain. Fleder, Kester, Pillai et al. use PageRank to discover the Bitcoin account address and analyze its activities~\cite{Fleder2015}. However, their main method is just manual analytical work with the help of PageRank.
 
 As the classical ranking algorithm formed in web 2.0, PageRank suffers the limitation in online reputation evaluation.
 
@@ -36,7 +36,7 @@ More research improving on the PageRank emerges, and one of the most famous is L
 
 %The basic idea of LeaderRank is to create a strongly connected graph by adding a ground node to the existing nodes  in the network 
 
-Note that the kinds of PageRank algorithms are not resistant to Sybil attacks~\cite{cheng2006manipulability} which is the strategy that adversary subvertes the reputation system in symmetric network by creating a large number of pseudonymous identities.
+Note that the kinds of PageRank algorithms are not resistant to Sybil attacks~\cite{cheng2006manipulability} which is the strategy that adversary subverts the reputation system in symmetric network by creating a large number of pseudonymous identities.
 
 The most relevant work with Nebulas Rank is NEM~\cite{nem}. Different from Bitcoin's Proof-of-Work and Ethereum's Proof-of-Stake consensus strategy, NEM adopts Proof-of-Importance consensus protocol and NCDawareRank~\cite{Nikolakopoulos2013} as the ranking algorithm. The NCDawareRank exploits the clustering effect of network topology with clustering algorithm based on SCAN algorithm~\cite{xu2007scan}\cite{shiokawa2015scan}\cite{chang2017mathsf}. Although community structure does exist in transaction graph and should be helpful to handle with spam nodes, it does not guarantee that all nodes on blockchain controlled by one entity in the real world are mapped into one cluster, which leads to large room for manipulation.
 
@@ -44,7 +44,7 @@ The most relevant work with Nebulas Rank is NEM~\cite{nem}. Different from Bitco
 \subsection{Manipulation Resistance}
 The ability of resisting manipulation, a.k.a. truthfulness, is the most significant and challenging goal of Nebulas Rank. 
 
-Hopcroft et al. find that PageRank is failed at evaluating user reputation under the manipulation~\cite{hopcroft2007manipulation}. Zhang et al. point out that, the adversary can diminish the degree of non-sybil users reputation effectively even if the evaluation index of node repution is build~\cite{zhang2016truetop}.
+Hopcroft et al. find that PageRank is failed at evaluating user reputation under the manipulation~\cite{hopcroft2007manipulation}. Zhang et al. point out that, the adversary can diminish the degree of non-sybil users reputation effectively even if the evaluation index of node reputation is build~\cite{zhang2016truetop}.
 
 This is because that the kinds of PageRank algorithms work based on the network topology, while the adversary could get the same or higher reputation score with creating an image network~\cite{cheng2005sybilproof}~\cite{cheng2006manipulability}.
 
