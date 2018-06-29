@@ -13,7 +13,7 @@ All the transactions in a period of time $[t_0-T,\ t_0]$, can be specified as a 
 \noindent Based on $\Theta(t_0)$, we can define a weighted directed graph, the node is the address of the account, the edge from node $s$ to node $d$ represents one transaction,
 the weight of the edge is $w$, the time of the edge is $\tau$.
 
-For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank$\mathcal{C}(a)$ is based on $\Theta(t_0)$, which can be represented as:
+For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank $\mathcal{C}(a)$ is based on $\Theta(t_0)$, which can be represented as:
 \begin{align}
 \mathcal{C}(a) = \Omega(\beta(a)) \times{} \Psi(\gamma(a))
 \label{eq:rank}
@@ -178,7 +178,7 @@ In summary, equation ~\ref{eq:rank} can be expressed further as below:
 
 In order to verify the effectiveness of the function, we calculate the Core Nebulas Rank for all the accounts in Ethereum in certain period of time. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), besides, we also collected average daily ETH token price (in USD) and transaction volumes ~\cite{coinmarketcap}.
 
-\reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
+\reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
 
 We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} shows the success in depicting the contributions of users to the economic system on chain, which demonstrates the validity of Core Nebulas Rank. 
 
