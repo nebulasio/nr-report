@@ -110,10 +110,10 @@ And ~\reffig{fig-surf} shows the curve of the function~\ref{eq:dgr_func}.
 \caption{The curve of the In-and-Out degree function \label{fig-surf}}
 \end{figure}
 
-\subsection{Calculation Function \label{sec:function}}
+\subsection{Wilbur Function \label{sec:function}}
 It would be extremely complicated to calculate Core Nebulas Rank if we consider different usage case and its properities. However, we can provide a general function for Nebulas Rank.
 
-We define the Core Nebulas Rank function as \(f(x)\), where \(x\) is the factor of Core Nebulas Rank, it can be account stake, coinage or the in-and-out degree. $f(x)$ need to satisfy flowing two properties:
+We define the Core Nebulas Rank calculation function as \(f(x)\), name it \emph{Wilbur Function}\footnote{The name \emph{Sybil Attack} derives from 1970's TV mini-series Sybil, in which an young woman is diagnosed as suffering from muliple personalities and receives treatment from psychiatrist named Dr. Cornelia Wilbur.},where \(x\) is the factor of Core Nebulas Rank, it can be account stake, coinage or the in-and-out degree. $f(x)$ need to satisfy flowing two properties:
 
 \begin{property}
 \label{prop:one}
@@ -127,7 +127,7 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 
 \begin{property}
 \label{prop:two}
-For any two availables are infinity, the sum of the two functions is approximately equal to the function of the sum of the two variables.
+For any two variables are infinity, the sum of the two functions is approximately equal to the function of the sum of the two variables.
 \end{property}
 
 \begin{align}
@@ -136,7 +136,7 @@ For any two availables are infinity, the sum of the two functions is approximate
 
 These properties described above ensure, under given transaction behaviors, the benefits of splitting stakes into smaller accounts is smaller than keep them in single account. At same time, when the stake is larger enough, the cost of splitting the stakes into small accounts can be ignored. 
 
-There are more than one functions satisfy the two properities above, Here, we provide a succinct function, the curve of the function is shown in \reffig{fig-nr}.
+There are more than one functions satisfy the two properties above, Here, we provide a succinct function, the curve of the function is shown in \reffig{fig-nr}.
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
@@ -180,7 +180,7 @@ In order to verify the effectiveness of the function, we calculate the Core Nebu
 
 \reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
 
-We can see that the Core Nebulas Rank reflects the market capitaliazation changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} shows the success in depicting the contributions of users to the economic system on chain, which demonstrates the validity of Core Nebulas Rank. 
+We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} shows the success in depicting the contributions of users to the economic system on chain, which demonstrates the validity of Core Nebulas Rank. 
 
 
 \begin{figure}
