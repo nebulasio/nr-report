@@ -8,72 +8,55 @@ blockchain, has proven it's significance to digital assets, while Ethereum has
 proven how important is decentralization to DApps. And there are more and more
 blockchain projects explore how they can leverage decentralization.
 
-Obviously, the backbone of decentralization in blockchain is the openness and the
-anonymous.
+Obviously, the backbone of decentralization in blockchain is the openness and features of anonymity.
 %These features in someway secures the trading and data on
 %blockchain. Consequently, no one can change users' data or get the owner of some data
 %without getting users' private key.
 
 
-Yet, the openness and the anonymous obstruct the emergence of value
+Yet, openness and anonymity obstruct the emergence of value
 measurements~\cite{meiklejohn2013fistful}. There are two aspects. First, it is
 difficult to infer if some accounts belong to the same user, which means it is
-difficult to build a mechanism like HTTP Cookie~\cite{Cookie}, or using
-traditional data analysis technologies to understand characteristics of users.
+difficult to build a mechanism like HTTP Cookie~\cite{Cookie}, or to use 
+traditional data analysis technologies to understand user characteristics.
 Second, the openness of blockchain makes it vulnerable to manipulation,
 especially for value measurements. Attackers can easily get all details about the
 value measurements, and figure out the weakness of the whole system. This
 largely differs from traditional value measurements which are close or
 independent.
 
-We believe that the effective value measurement are the foundations of
-blockchains' prosperity. Both the lack of value measurements and the
-ineffectiveness value measurements may confine blockchains to limited
-scenarios.
+We believe that the effective value measurement is the foundations of
+blockchain's prosperity. Both the lack of and ineffectiveness of value measurement may confine blockchains to limited use cases.
 
-First of all, we need a methodology to quantify the value of the data,
+First of all, we need a methodology to quantify the value of data,
 applications and accounts on blockchains. The root cause is cooperations on
 blockchain keeps scaling up, and the requirements of efficiency
-keeps growing. Without value measurements, such cooperations may be affected or
-out of control.
+keeps growing. Without value measurement, such collaboration may be negatively affected.
 
 Second, blockchains are still at the very early stage, and the value of data
-and assets on the blockchains are still underground and waiting to be found.
-And effective value measurements will uncover the value and empower more
-applications and enable more scenarios, for example, loans, credit, data
-search, personalized recommendation and cross-chain interaction.
+and assets on the blockchains is still underground and waiting to be found.
+Effective value measurements will uncover the value and empower more applications and enable more application scenarios, for example, loans, credit, data search, personalized recommendation and cross-chain interaction.
 
-Third, incentive, which is based on value means, is necessary to healthy
-ecosystems on blockchains. Without effective value measurements, incentive may
-lead a blockchain system to corruption and collapse eventually.
+Third, incentives, which is based on value means, is necessary to healthy blockchain ecosystems. Without effective value measurements, incentives may lead a blockchain system to corruption and eventual collapse.
 
-As a conclusion, a effective value measurement for blockchain needs to be
+As a conclusion, an effective value measurement for blockchain needs to be
 \begin{itemize}
-\item{truthful} the rank needs to measure some characteristic of a
-blockchain system, and thus can be trusted in some way;
-\item{justical} this means the rank need to be manipulation resistant, and
-it is the core of the rank algorithm;
-\item{diverse} there will be different ranking requirements from different
-applications on blockchain, thus a good rank algorithm should cover different
-scenarios.
+\item{\textbf{Truthful.}} The rank needs to measure some characteristic of a blockchain system, and thus can be trusted in some way;
+\item{\textbf{Fair.}} This means the rank need to be manipulation-resistant, and it is the core of the rank algorithm;
+\item{\textbf{Diverse.}} There will be different ranking requirements from different applications on blockchain, thus a good rank algorithm should cover different scenarios.
 \end{itemize}
 
-We believe Nebulas Rank shall be a effective value measurement for
+We believe Nebulas Rank shall be an effective value measurement for
 blockchains.
 
 For truthfulness, we define Nebulas Rank to be quantification of an account's
-contribution to the blockchain systems after considering many different
+contribution to the blockchain system after considering many different
 metrics.
 
-We believe that cryptocurrencies should have the attributes of money and
+We believe that cryptocurrencies should have the attributes of money, and
 three functions of money: medium of exchange, store of value, and unit of
-account since blockchains themselves are economic systems and the classical
-monetary theory still has the instruction value.
-Furthermore, we believe the value of cryptocurrencies come from the
-liquidity. Specifically, each transaction between users increases the
-liquidity of cryptocurrencies, and endows the value of
-cryptocurrency eventually. Thus, the on-chain transactions are effective and
-natural data sources for effective value measurements.
+account. Blockchains themselves are economic systems and the classical monetary theory still has the instruction value. Furthermore, we believe the value of cryptocurrencies comes from the liquidity. Specifically, each transaction between users increases the liquidity of cryptocurrencies, and endows the value of cryptocurrency eventually. Thus, the on-chain transactions are effective and natural data sources for effective value measurement.
+
 
 To evaluation the effectiveness of Nebulas Rank, we calculate the sum of all
 accounts' Nebulas Rank on Ethereum, and compare it with the market capital
@@ -82,25 +65,23 @@ correlation between them, about $0.84$. That means Nebulas can measure
 accounts' contribution at the micro-level, while it can measure the
 value of blockchain systems at the macro-level.
 
-For justice, we involve a special function to resist manipulation,
-and our analysis demonstrate its performance on manipulation
-resistant.
+For justness, we involve a special function to resist manipulation, and our analysis demonstrates its performance to be manipulation-resistant.
 
 Based on the theory of Nebulas Rank, we divide Nebulas Rank into Core Nebulas
 Rank and Extended Nebulas Rank for different applications and scenarios.
 
 Core Nebulas Rank defines the algorithm to calculate an account's contribution
 to the whole blockchain system in a certain period of time. And such
-calculate involves two factors, the median stake of an account in a certain
-period and the in-and-out degree of the account in a certain period.
+calculate involves two factors: the median stake of an account in a certain
+period, and the in-and-out degree of the account in a certain period.
 
 Extended Nebulas Rank is for different applications and scenarios,
-and it bases on Core Nebulas Rank. For example, we show how to rank smart
-contracts based on Core Nebulas Rank. We also show how to extend Core
-Nebulas Rank to a multi-dimension vector.
+and it is based on Core Nebulas Rank. For example, we show how to rank smart
+contracts based on Core Nebulas Rank; we also show how to extend Core Nebulas Rank to a multi-dimensional vector.
 
-Beside theory and methodology of Nebulas Rank, we also present our
-consideration about how to implement Nebulas Rank, including wether
+
+Besides theory and methodology of Nebulas Rank, we also present our
+consideration about how to implement Nebulas Rank, including whether to 
 put ranking scores on-chain, how to update the algorithm of Nebulas Rank,
 and our future work on Nebulas Rank.
 
@@ -110,5 +91,6 @@ and our future work on Nebulas Rank.
   whitepaper (version 1.02 released on April 2018)~\cite{Nabulas}. This is because we keep
   thinking and verifying the algorithm in our whitepaper. And now we are more
   confident and capable to make it more rigorous. We use a different format
-  (like this paragraph) to emphasize the difference in this yellow paper.
+  (like this paragraph) to emphasize the relevant updates presented in this yellow paper.
+
 }

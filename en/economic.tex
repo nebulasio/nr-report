@@ -1,6 +1,6 @@
 % !TEX root = main.tex
 \section{Economic Model}
-The cryptocurrency is endowed with economic significance, either as a kind of trading medium or intelligent asset. Therefore, a reasonable economic model can help us to establish a value measurement standard on the blockchain, which is also the objective of \nrcore. This chapter first introduces the mathematical representation of cryptocurrency, and then analyzes the cryptocurrency with a simple but well-recognized monetary model. During the analysis, we introduce the Core Nebulas Rank as an important argument.
+Cryptocurrencies are endowed with economic significance, either as a kind of trading medium or intelligent asset. Therefore, a reasonable economic model can help us to establish a value measurement standard on the blockchain, which is also the objective of \nrcore. This chapter first introduces the mathematical representation of cryptocurrency, and then analyzes the cryptocurrency with a simple but well-recognized monetary model. During the analysis, we introduce the Core Nebulas Rank as an important argument.
 
 \subsection{Representation of Cryptocurrency}
 The biggest difference between cryptocurrency and traditional economy is that all the transactions on the cryptocurrency can be traceable. This provides the data sources for us to analyze the impact of each transaction on the economic system.
@@ -40,7 +40,7 @@ A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
 \forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
 \end{align}
 
-Note that the model described above is a reasonable simplification of any cryptocurrency system. In the model, we do not distinguish the on-chain data from off-chain data, do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are typically specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions which will be recorded on the chain and intra-exchange transactions which will not be recorded in a centralized database of the exchange. This leads to that we will lose the intra-exchange transactions if we only obtain the data from the chain. 
+Note that the model described above is a reasonable simplification of any cryptocurrency system. In the model, we do not distinguish the on-chain data from off-chain data, and do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are type-specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions that will be recorded on the chain, and intra-exchange transactions that will not be recorded in a centralized database of the exchange. This leads to an outcome where we will lose the intra-exchange transactions if we only obtain the data from the chain. 
 However, if the intra-exchange transactions can be obtained with the cooperation of the exchange, we can further map an exchange account into multiple accounts, so as to use the model above.
 
 
@@ -51,11 +51,11 @@ Hereby, we establish a simple and classic monetary model to help us understand t
 
 First of all, we try to give the indicator to measure the \emph{velocity factor} in the cryptocurrency ecosystem. 
 
-Another concept needed to be differentiated from the \emph{velocity factor} in the economics is \emph{liquidity}. \emph{Liquidity} is used to describe the difficulty level of exchanging the assets for the medium of exchange. As the money itself is a medium of exchange in the economics, the money is the assets with the best \emph{liquidity}.
+Another concept needed to be differentiated from the \emph{velocity factor} in the economics is \emph{liquidity}. \emph{Liquidity} is used to describe the difficulty level of exchanging the assets for the medium of exchange. As money itself is a medium of exchange in the economics, money is the assets with the best \emph{liquidity}.
 
 \whitepaper{In the Nebulas Technical White Paper~\cite{Nabulas}, we used the word \emph{liquidity}. However, there is no rigid definition of \emph{liquidity}, whose meaning is very broad even in the economics. For example, the entries to explain the \emph{liquidity} includes three totally different aspects in \emph{The New Palgrave: A Dictionary of Economics}. R. S. Kroszner pointed out that there were 2795 independent papers mentioning \emph{liquidity} during the past 6 months, each of which raised a typically different statement though~\cite{randall}. The \emph{liquidity} in this yellow paper is referred to as the \textbf{velocity of money}, meaning the turnover times of a monetary unit within a certain period of time. }
 
-We use the velocity of money to represent the turnover rate of cryptocurrency~\cite{selden}, namely the turnover times of a monetary unit within a certain period of time (one day in this paper), which is represented with $V$. According to the classical quantity theory of money, the equation is expressed as below:
+We use the velocity of money to represent the turnover rate of cryptocurrency~\cite{selden}, namely the turnover of a monetary unit within a certain period of time (one day in this paper), which is represented with $V$. According to the classical quantity theory of money, the equation is expressed as below:
 
 \begin{align}
 M\times V=P\times Y
@@ -64,7 +64,7 @@ M\times V=P\times Y
 
 \noindent where $M$, $V$, $P$ and $Y$ represent the total monetary amount of the economical system, the velocity of money, the price level (measured by the money of unit economical output, thus the money price is $\frac{1}{P}$), and real economical output (real GDP) respectively. The equation illustrates that the product of monetary amount and velocity of money equals the product of price of goods and their output.
 
-As for the monetary amount $M$, the Nebulas is similar to Ethereum that the monetary amount maintains steady growth (the additional issuance percentage of nebulas money is set as 4\% at present), which is different from Bitcoin as the total monetary amount of latter will be stable at 21 billion at last. The velocity of money $V$ can be described as the ratio of the circulated monetary amount and the monetary supply. As a result, the equation~\ref{eq:currency} can be further expressed as:
+As for the monetary amount $M$, Nebulas is similar to Ethereum in that the monetary amount maintains steady growth (the additional issuance percentage of Nebulas money is set as 4\% at present), which is different from Bitcoin as the total monetary amount of latter will be stable at 21 billion at last. The velocity of money $V$ can be described as the ratio of the circulated monetary amount and the monetary supply. As a result, the equation~\ref{eq:currency} can be further expressed as:
 
 \begin{align}
 (M + \Delta{m}) \times \frac{\sum_{(s, t, w, \tau)\in \mathcal{T}}{w}}{M} = P \times Y
@@ -86,5 +86,5 @@ Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
 
 \noindent where $\mathcal{C}(a)$ represents the contributions made by account $a$ to the economical output, namely \nrcore.
 
-The development of cryptocurrency relies on the development of the community. Therefore, we consider that quantifying the contribution made by each account is the basis of designing the reasonable incentive mechanism. Based on this, the economical system can create either explicit incentives (e.g., Proof of Devotion in nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines). 
+The development of cryptocurrency relies on the development of the community. Therefore, we consider that quantifying the contribution made by each account is the basis of designing the reasonable incentive mechanism. Based on this, the economical system can create either explicit incentives (e.g., Proof of Devotion in Nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines). 
 The directive and primitive incentives in the cryptocurrency is the additional issuance of money, which is different from that in the traditional monetary theory.
