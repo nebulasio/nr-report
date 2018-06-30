@@ -62,7 +62,7 @@
 需要指出的是，PageRank类排名算法无法应对女巫攻击（sybil attacks）~\cite{cheng2006manipulability}，女巫攻击是指攻击者通过创建大量的假名标识来破坏对等网络的评价系统，从而获得虚假的高重要性评分。
 
 
-和星云指数最相关的项目是NEM~\cite{nem}，不同于比特币的Proof-of-Work以及以太坊的Proof-of-Stake共识策略，NEM设计了Proof-of-Importance 共识机制，其中排名算法NCDawareRank~\cite{Nikolakopoulos2013}利用了网络拓扑的社群效应。Proof-of-Importance使用SCAN~\cite{xu2007scan}\cite{shiokawa2015scan}\cite{chang2017mathsf}作为社群聚类算法。虽然社区结构在交易网络的确存在并且可以帮助应对欺诈节点，却 无法保证同一个实体对应节点一定可以映射到相同社群，因此利用社区划分的结果会提供一定的可操纵空间。
+和星云指数最相关的项目是NEM~\cite{nem}，不同于比特币的Proof-of-Work以及以太坊的Proof-of-Stake共识策略，NEM设计了Proof-of-Importance 共识机制，其中排名算法NCDawareRank~\cite{Nikolakopoulos2013}利用了网络拓扑的社群效应。Proof-of-Importance使用SCAN~\cite{xu2007scan}~\cite{shiokawa2015scan}~\cite{chang2017mathsf}作为社群聚类算法。虽然社区结构在交易网络的确存在并且可以帮助应对欺诈节点，却 无法保证同一个实体对应节点一定可以映射到相同社群，因此利用社区划分的结果会提供一定的可操纵空间。
 
 %Nebulas Rank 的加权机 制部分参考了 Li et al. [32] 的设计，使得入度更大的点更有可能被随机跳转到达。通过添加 LeaderRank 算法中的背景节点，可以取得更符合区块链场景的排名结果。
 

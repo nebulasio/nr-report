@@ -29,7 +29,7 @@
 \whitepaper{相比星云技术白皮书~\cite{Nabulas}中对于星云指数的计算方法，我们做了如下改动：\\
 1.在构造交易图时取消了采取最高$K$个交易额作为权值；\\
 2.取消了LeaderRank中通过计算背景节点有向边权重来获取重要性评分的方式。\\
-首先，我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击，并同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在本黄皮书中我们没有采用类拓扑排名策略。在\refsec{sec:function}中我们构造的非对称计算函数\ref{eq:rank-param}将可以有效降低伪造低收入节点的收益。}
+首先，我们在计算出入度指标$\beta$时采用了去环处理，因此已经可以抵抗环形转账攻击，并同时保留边的强度信息。对于存在同构图的拓扑结构，PageRank等对称函数（包括LeaderRank）被证明无法有效抵抗女巫攻击~\cite{cheng2005sybilproof}。因此在本黄皮书中我们没有采用类拓扑排名策略。在~\refsec{sec:function}中我们构造的非对称计算函数~\ref{eq:rank-param}将可以有效降低伪造低收入节点的收益。}
 
 下面，我们将分别考虑~\ref{eq:rank}中的三个问题：资产中值$\beta(a)$的计算、出入度指标$\gamma(a)$的计算，以及函数$\Omega$及$\Psi$的选择。
 
@@ -86,7 +86,7 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \begin{align}
 \Theta^{\prime}(t_0)=\Theta(t_0)-H^i(v) \cup \{\mathcal{E}(t), t\in H^i(v_i)\} \quad i = 1, 2,\dots, n
 \end{align}
-\noindent 如\reffig{fig:no-loop}所示，为\reffig{fig:loop}去掉交易环之后的交易图。
+\noindent 如~\reffig{fig:no-loop}所示，为~\reffig{fig:loop}去掉交易环之后的交易图。
 
 
 %在去除所有的交易环后，对交易图中的每个节点，我们仅保留交易量最高的$k$个出边及入边，由此得到新的交易图$\Theta^{\prime\prime}(t_0)$。
@@ -145,7 +145,7 @@ f(a+b)>f(a)+f(b) \quad a>0,b>0
 
 \noindent 上述特性保证了在给定交易行为的情况下，用户通过控制多个账户实现该交易行为的收益小于通过单一账户实现交易的收益，同时当用户资产足够大时，其拆分账户交易的损失可以忽略不计。
 
-\noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如\reffig{fig-nr}所示。
+\noindent 满足上述两个性质的函数有很多，在此，我们仅给出一个满足上述性质的函数，该函数的图形如~\reffig{fig-nr}所示。
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
@@ -187,7 +187,7 @@ legend style={fill=none}
 为了验证该函数的有效性，我们根据以太坊中的数据，计算了以太坊中地址的星云指数，并根据其市值变化计算了两者的相关性。测试数据包括了以太坊从2017年5月1日起至2017年6月30日（3629091区块至3955158区块）的所有交易记录，以及ETH日均价格（对美元）和日均总交易量~\cite{coinmarketcap}。
 
 
-\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，其中黑色标记实线为通过ETH日均交易量以及ETH日均价格计算得出的以太坊市值（对美元），而红色实线则是根据公式\ref{eq:rank-param}计算所有以太坊用户的星云指数之和。
+~\reffig{fig-eth-simu}表示了以太坊的市值与星云指数随时间变化趋势，如图所示，其中黑色标记实线为通过ETH日均交易量以及ETH日均价格计算得出的以太坊市值（对美元），而红色实线则是根据公式~\ref{eq:rank-param}计算所有以太坊用户的星云指数之和。
 
 可以看出，星云指数能够有效反映以太坊市值变化，二者的相关系数（Correlation coefficient）为0.84427，$p$值（p-value）为$4.48\times{}10^{-17}<0.001$。说明函数~\ref{eq:rank}能够有效表示用户对整个经济体的贡献，即体现出星云指数的真实性。
 

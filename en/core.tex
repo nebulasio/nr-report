@@ -23,7 +23,7 @@ For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank $\mathcal{
 \whitepaper{Different from the way we calculate the Core Nebulas Rank in Nebulas white paper~\cite{Nabulas}, we made some updates blow:\\
 1. We don't use the top $K$ highest transaction amount as the weight when building the transaction graph; \\ 
 2. We don't rely on the weight of nodes in LeaderRank to get the importance of the node. \\
-First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist a loop attack. At the same time we still consider the strength of the edge. For some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking strategies. We propose a asymmetric calculation function\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in \refsec{sec:function}.} 
+First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist a loop attack. At the same time we still consider the strength of the edge. For some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking strategies. We propose a asymmetric calculation function~\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in ~\refsec{sec:function}.} 
 
 Below, we are going to discuss three issues in equation~\ref{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
@@ -79,7 +79,7 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \begin{align}
 \Theta^{\prime}(t_0)=\Theta(t_0)-H^i(v) \cup \{\mathcal{E}(t), t\in H^i(v_i)\} \quad i = 1, 2,\dots, n
 \end{align}
-\noindent \reffig{fig:no-loop} shows the non-loop transaction graph after removing the forwarding loop in \reffig{fig:loop}.
+\noindent ~\reffig{fig:no-loop} shows the non-loop transaction graph after removing the forwarding loop in ~\reffig{fig:loop}.
 
 
 Set the transfer-in amount of node $v$ as $p(v)$, then
@@ -136,7 +136,7 @@ For any two variables are infinity, the sum of the two functions is approximatel
 
 These properties described above ensure, under given transaction behaviors, the benefits of splitting stakes into smaller accounts is smaller than keep them in single account. At same time, when the stake is larger enough, the cost of splitting the stakes into small accounts can be ignored. 
 
-There is more than one function that satisfies the two properties above. Here, we provide a succinct function, the curve of the function is shown in \reffig{fig-nr}.
+There is more than one function that satisfies the two properties above. Here, we provide a succinct function, the curve of the function is shown in ~\reffig{fig-nr}.
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
@@ -178,7 +178,7 @@ In summary, equation ~\ref{eq:rank} can be expressed further as below:
 
 In order to verify the effectiveness of the function, we calculate the Core Nebulas Rank for all the accounts in Ethereum in certain period of time. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), besides, we also collected average daily ETH token price (in USD) and transaction volumes ~\cite{coinmarketcap}.
 
-\reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
+~\reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
 
 We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} shows the success in depicting the contributions of users to the economic system on chain, which demonstrates the validity of Core Nebulas Rank. 
 
