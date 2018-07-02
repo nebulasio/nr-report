@@ -117,21 +117,21 @@ We define the Core Nebulas Rank calculation function as \(f(x)\), namely \emph{W
 
 \begin{property}
 \label{prop:one}
-For any two variables $a$ and $b$, which are both larger than $0$, the sum of the two functions is smaller than the function of sum of two variables.
+For any two variables $x_1$ and $x_2$, which are both larger than $0$, the sum of the two functions is smaller than the function of sum of two variables.
 %对于任意输入$x$，将其拆分后的计算函数之和小于原计算函数。
 \end{property}
 
 \begin{align}
-f(a+b)>f(a)+f(b) \quad a>0,b>0
+f(x_1+x_2)>f(x_1)+f(x_2) \quad x_1>0,x_2>0
 \end{align}
 
 \begin{property}
 \label{prop:two}
-For any two variables are infinity, the sum of the two functions is approximately equal to the function of the sum of the two variables.
+For any two variables $x_1$ and $x_2$ are infinity, the sum of the two functions is approximately equal to the function of the sum of the two variables.
 \end{property}
 
 \begin{align}
-\lim\limits_{a \to \infty, b\to \infty} f(a+b) = f(a) + f(b)\quad a>0, b>0
+\lim\limits_{x_1 \to \infty, x_2\to \infty} f(x_1+x_2) = f(x_1) + f(x_2)\quad x_1>0, x_2>0
 \end{align}
 
 These properties described above ensure, under given transaction behaviors, the benefits of splitting stakes into smaller accounts is smaller than keep them in single account. At same time, when the stake is larger enough, the cost of splitting the stakes into small accounts can be ignored. 

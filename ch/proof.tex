@@ -75,8 +75,15 @@ g(x_1,x_2)&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^
 \[
 \begin{aligned}
 \lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
-&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}\\
-&=0
+&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}
+\end{aligned}
+\]
+
+在公式\ref{eq:rank-param}中，有$b<0$，因此$\lim_{x \to \infty}-b\cdot e^{-a-b\cdot x}=\infty$，因此，
+
+\[
+\begin{aligned}
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}=0
 \end{aligned}
 \]
 

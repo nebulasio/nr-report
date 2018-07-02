@@ -75,8 +75,15 @@ Calculate limit for $\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}$, according to L'Hospi
 \[
 \begin{aligned}
 \lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
-&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}\\
-&=0
+&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}
+\end{aligned}
+\]
+
+In formula \ref{eq:rank-param}, we have $b<0$, so $\lim_{x \to \infty}-b\cdot e^{-a-b\cdot x}=\infty$, moreover,
+
+\[
+\begin{aligned}
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}=0
 \end{aligned}
 \]
 
