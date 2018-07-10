@@ -1,23 +1,28 @@
+% !TEX root = main.tex
+
 \section{Implementation of Core Nebulas Rank}
-The complete implementation of Core Nebulas Rank is out of scope of this proposal, so we will just discuss the key points of the implementation here.
+The complete implementation of Core Nebulas Rank is out of scope of this proposal, so we will just introduce the key points of the Core Nebulas Rank implementation below.
 
 \subsection{On chain or not? \label{sec:onchain}}
-As explained in previous chapters, the Core Nebulas Rank actually shows each account’s contribution to the overall economic aggregation. Normally, each node can calculate the contribution for any specific account, however, do we really need to put NR on chain periodically?
+As explained in previous chapters, the Core Nebulas Rank depicts each account’s contribution to overall economic aggregation. Normally, each node can calculate the contribution for any specific account, however, we raise the question: do we need to put NR on chain periodically?
 
-In our opinion, it’s unnecessary or unsuitable to put NR on chain, because:
+In our opinion, it’s both unnecessary and unsuitable to put NR on chain, due to:
 \begin{itemize}
-\item NR data size will be huge, while it’s certainly unsuitable to put it on chain. Even for  IPFS, Genaro etc~\cite{IPFS}~\cite{Genaro}, it’s inappropriate to store every account’s NR periodically either, even data storage is actually their focus. 
-\item It will affect the performance of block generation. The computing complexity of Core Nebulas Rank is high, so it will significantly affect the block generation and verification performance, and eventually, TPS is affected.
+\item NR data size will be huge, while it’s certainly unsuitable to put it on chain. Even for IPFS, Genaro etc~\cite{IPFS}~\cite{Genaro}, it’s inappropriate to store every account’s NR periodically either, even data storage is actually their focus. 
+\item It will negatively affect block generation performance. The computing complexity of Core Nebulas Rank is high, so it will significantly affect the block generation and verification performance, and eventually, affect TPS.
 \end{itemize}
 \noindent Overally, we suggest that each node can calculate the Core Nebulas Rank individually.
 
-However, if each node does the calculation individually, how can we make sure that the Core Nebulas Rank is reliable and trustful. For instance, the node may viciously modify the NR calculation result, and then gives out incentive based on the NR calculation result. For important applications, we should verify the NR calculation result, to assure the fairness of the calculation result; on the other hand, for those applications that are not so important, it depends on the applications themselves that how they use the NR result and whether they want to verify the NR result.
+However, if each node does the calculation individually, there is little assurance that the calculated Core Nebulas Rank is reliable and trustful. For instance, a node may viciously modify NR calculation result, and then gives out incentive based on the NR calculation result. For important applications, we will verify the NR calculation result, to assure the fairness of the calculation result. In contrast, for those applications that are not so important, it depends upon the applications themselves that how they use the NR result and whether they want to verify the NR result.
 
-The other important situation we should also consider is: the node may refuse to calculate the NR with the concern of power consumption. Thinking about that, a trustful Core Nebulas Rank service can be introduced, so, repeated calculation can be avoided. We can either offer the service for free, or charge by number of times. Complete implementation and service detail are out of scope in this paper.
+The other important situation we should also consider is: a node may refuse to calculate the NR with the concern of power consumption. Considering this, a trustful Core Nebulas Rank service may be introduced, so, repeated calculation can be avoided. We can either offer the service for free, or charge dependent upon the number of times calculated. Complete implementation and service detail are out of scope in this paper.
 
 \subsection{Core Nebulas Rank Upgrade}
-As we all know, Core Nebulas Rank is associated with the economy of a whole encrypted digital currency. As the economy changes, the algorithm of Core Nebulas Rank calculation will also need to be changed, especially its parameters. It’s very important to figure how we can update the algorithm rapidly. Our solution is: upgrade the Nebulas Rank calculation algorithm through Nebulas Force.
+Core Nebulas Rank is associated with the economy of a whole encrypted digital currency. As the economy changes, the algorithm of Core Nebulas Rank calculation will also need to be changed, especially its parameters. It’s very important to figure how we can update the algorithm rapidly. Our proposed solution: upgrade the Nebulas Rank calculation algorithm through Nebulas Force.
 
-More specifically, we will upgrade the block data structure, the new structure will include the Core Nebulas Rank algorithm and parameters (based on LLVM IR). Nebulas Virtual Machine (NVM) will be the execution engine of the algorithm: it fetches the algorithm code and parameters from the block, then execute the code, and eventually obtains the Core Nebulas Rank within the node.
+More specifically, we upgrade the block data structure, the new structure will include the Core Nebulas Rank algorithm and parameters (based on LLVM IR). Nebulas Virtual Machine (NVM) will be the execution engine of the algorithm: it fetches the algorithm code and parameters from the block, then executes the code, and eventually obtains the Core Nebulas Rank within the node.
 
-Whenever the algorithm or the parameters need to be updated, we will work together with the community, making sure the new algorithm and parameters are included in the new blocks, so the update will be timely and smooth, such that potential forks can be avoided down the road.
+%Whenever the algorithm or the parameters need to be updated, we will work together with the community, ensuring the new algorithm and parameters are included in the new blocks, so the update will be timely and smooth, such that potential forks can be avoided down the road.
+Whenever the algorithm or the parameters need updating, we will work together with the community, ensuring any alterations to the algorithm and/or parameters are included in new blocks. This will ensure a timely and smooth update, so as to avoid potential forks in the future.
+
+

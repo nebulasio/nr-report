@@ -1,16 +1,17 @@
 % !TEX root = main.tex
 \section{Core Nebulas Rank}
 
-Core Nebulas Rank is used to measure the contributions of a user to the whole economy {\textbf{in a certain period of time}}.
-It is quite complicated to calculate the contribution precisely, so we provide an approximation algorithm for it.
-In this approximation algorithm, we consider two critical factors, the coinage and the account position information in the transaction network. And we will proof the effectiveness of the approximation algorithm in the evaluation section below.
+Core Nebulas Rank is used to measure the contributions of a user in reference to the entire economy {\textbf{over a certain period of time}}.
+The precise calculation is relatively complicated, so we propose an approximation algorithm for its calculation.
+In this approximation algorithm, we consider two critical factors, the coinage and the account position information in the transaction network. The evaluation section below provides evidence of the accuracy of our approximation algorithm.
+%And we will proof the effectiveness of the approximation algorithm in the evaluation section below.
 
-We use the transaction history on the mainnet in a certain period as the data source of Core Nebulas Rank.
+We use the transaction history on the mainnet over a certain time period as the data source of Core Nebulas Rank.
 All the transactions in a period of time $[t_0-T,\ t_0]$, can be specified as a set:
 \begin{align}
 \Theta(t_0) = \{(s, t, w, \tau)\ |\ t_0 - T \le \tau \le t_0\ \land \ w > 0 \land s \neq t \}
 \end{align}
-\noindent Based on $\Theta(t_0)$, we can define a weighted directed graph, the node is the address of the account, the edge from node $s$ to node $d$ represents one transaction,
+\noindent Based on $\Theta(t_0)$, we can define a weighted directed graph, the node refers to the address of the account, the edge from node $s$ to node $d$ represents one transaction,
 the weight of the edge is $w$, the time of the edge is $\tau$.
 
 For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank $\mathcal{C}(a)$ is based on $\Theta(t_0)$, which can be represented as:
@@ -20,23 +21,23 @@ For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank $\mathcal{
 \end{align}
 \noindent $\beta(a)$ is the median stake of account $a$ in a certain period; $\gamma(a)$ is the in-and-out degree of account $a$ in a certain period.
 
-\whitepaper{Different from the way we calculate the Core Nebulas Rank in Nebulas white paper~\cite{Nabulas}, we made some updates blow:\\
-1. We don't use the top $K$ highest transaction amount as the weight when building the transaction graph; \\ 
-2. We don't rely on the weight of nodes in LeaderRank to get the importance of the node. \\
-First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist a loop attack. At the same time we still consider the strength of the edge. For some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we didn't use the Topology-like ranking strategies. We propose a asymmetric calculation function~\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in ~\refsec{sec:function}.} 
+\whitepaper{Different from the method we calculate the Core Nebulas Rank in Nebulas white paper~\cite{Nabulas}, we have made some updates detailed below:\\
+1. We no longer use the top $K$ highest transaction amount as the weight when building the transaction graph; \\ 
+2. We no longer rely on the weight of nodes in LeaderRank to attain the importance of the node. \\
+First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist a loop attack. At the same time we still consider the strength of the edge. For some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we no longer use the Topology-like ranking strategy. We propose an asymmetric calculation function~\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in ~\refsec{sec:function}.} 
 
-Below, we are going to discuss three issues in equation~\ref{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
+Below, we discuss three issues in equation~\ref{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
 \subsection{Median Account Stake $\beta(a)$}
 In time period of $[t_0-T, t_0]$, there are $n$ blocks in the blockchain system, marked as:
 \[
 B_0, B_1, \dots, B_n
 \]
-\noindent $B_{i}$ is the parent block of $B_{i+1}$. For account $a \in \mathcal{A}$, the balance of the account at end of each block is
+\noindent $B_{i}$ refers to the parent block of $B_{i+1}$. For account $a \in \mathcal{A}$, the balance of the account at end of each block is
 \[
 d^a_0, d^a_1, \dots, d^a_n
 \]
-We can get a new list by sorting the items ascending 
+We can get a new list by sorting the items in ascending order: 
 \[
 d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \]
@@ -50,14 +51,14 @@ d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 The median account stake represents the coinage in a certain way, that means the account need to hold the stake for more than half of the time period.
 
 \subsection{In-and-Out Degree $\gamma(a)$}
-Consider the adversary would increase the in-and-out degree by using loop attack, so, we will need to remove the forwarding loop before we calculate the In-and-Out degree for the transaction graph. Forwarding loop is a loop of transaction in a sequence of time.
+Consider the adversary would increase the in-and-out degree by utilising a loop attack. To avoid this situation we must to remove the forwarding loop before we calculate the In-and-Out degree for the transaction graph. The forwarding loop is a loop of transaction in a sequence of time.
 It starts and ends on same node $v$, which is a set of edges in the transaction graph. A forwarding loop can be marked as $H(v)$, which is
 
 \[
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
 \noindent where $\forall 1\le i \le n : \tau_i \le \tau_{i+1} $.
-\noindent As shown in ~\reffig{fig:loop}, there is a forwarding loop, and note that transaction $(v_1, v_2, 100, 5)$ is not included in the forwarding loop.
+\noindent As shown in ~\reffig{fig:loop}, there is a forwarding loop, and note that transaction $(v_1, v_2, 100, 5)$ is not included within the forwarding loop.
 
 \input{fig_loop.tex}
 \input{fig_no_loop.tex}
@@ -69,7 +70,7 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \[
 \forall (s^i, t^i, w^i, \tau^i) \in \mathcal{T} : w^i \ge w^i_m
 \]
-\noindent Then, for each transaction in $H^i(v_i)$, we need ot minus the minimal transaction amount $w^i_m$ accordingly and remove this transaction if the latest transaction amount is 0, which is
+\noindent Then, for each transaction in $H^i(v_i)$, we need ot minus the minimum transaction amount $w^i_m$ accordingly and remove this transaction if the latest transaction amount is 0, which is
 \[
 \mathcal{E}((s, t, w, \tau), w_m) = \left\{ \begin{array}{rcl}
 (s, t, w-w_m, \tau) & \mbox{if} & w \ne w_m \\
@@ -111,7 +112,7 @@ And ~\reffig{fig-surf} shows the curve of the function~\ref{eq:dgr_func}.
 \end{figure}
 
 \subsection{Wilbur Function \label{sec:function}}
-It would be extremely complicated to calculate Core Nebulas Rank if we consider different usage case and its properities. However, we can provide a general function for Nebulas Rank.
+It is extremely complicated to calculate Core Nebulas Rank if we consider an array of different usage case and its properities. However, we can provide a more general function for Nebulas Rank.
 
 We define the Core Nebulas Rank calculation function as \(f(x)\), namely \emph{Wilbur Function}\footnote{The name \emph{Sybil Attack} derives from 1970's TV mini-series Sybil, in which an young woman is diagnosed as suffering from muliple personalities and receives treatment from psychiatrist named Dr. Cornelia Wilbur.},where \(x\) is the factor of Core Nebulas Rank, it can be account stake, coinage or the in-and-out degree. $f(x)$ satisfies flowing two properties:
 
@@ -134,7 +135,7 @@ For any two variables $x_1$ and $x_2$ are infinity, the sum of the two functions
 \lim\limits_{x_1 \to \infty, x_2\to \infty} f(x_1+x_2) = f(x_1) + f(x_2)\quad x_1>0, x_2>0
 \end{align}
 
-These properties described above ensure, under given transaction behaviors, the benefits of splitting stakes into smaller accounts is smaller than keep them in single account. At same time, when the stake is larger enough, the cost of splitting the stakes into small accounts can be ignored. 
+These properties described above ensure, under given transaction behaviors, the benefit of splitting stakes into smaller accounts is comparatively smaller than keeping them within a single account. At the same time, when the stake is large enough, the cost of splitting the stakes into small accounts can be ignored. 
 
 There is more than one function that satisfies the two properties above. Here, we provide a succinct function, the curve of the function is shown in ~\reffig{fig-nr}.
 \begin{align}
@@ -176,11 +177,11 @@ In summary, equation ~\ref{eq:rank} can be expressed further as below:
 \noindent where $a, b, c, d$ are parameters to be determined.
 
 
-In order to verify the effectiveness of the function, we calculate the Core Nebulas Rank for all the accounts in Ethereum in certain period of time. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), besides, we also collected average daily ETH token price (in USD) and transaction volumes ~\cite{coinmarketcap}.
+In order to verify the effectiveness of the function, we calculate the Core Nebulas Rank for all accounts on the Ethereum blockchain over a certain time period. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), in addition, we also collected average daily ETH token price (in USD) and transaction volumes ~\cite{coinmarketcap}.
 
-~\reffig{fig-eth-simu} shows the trending of ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates the market capitalization (in USD) of Ethereum, while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
+~\reffig{fig-eth-simu} shows the trend between ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates Ethereum market capitalization (in USD), while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
 
-We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} shows the success in depicting the contributions of users to the economic system on chain, which demonstrates the validity of Core Nebulas Rank. 
+We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} illustrates the success in depicting the contributions of users to the economic system on chain, which demonstrates both the validity and accuracy of Core Nebulas Rank. 
 
 
 \begin{figure}
