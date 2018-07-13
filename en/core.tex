@@ -22,11 +22,17 @@ For account $a \in \mathcal{A}$, the calculation of Core Nebulas Rank $\mathcal{
 \noindent $\beta(a)$ is the median stake of account $a$ in a certain period; $\gamma(a)$ is the in-and-out degree of account $a$ in a certain period.
 
 \whitepaper{Different from the method we calculate the Core Nebulas Rank in Nebulas white paper~\cite{Nabulas}, we have made some updates detailed below:\\
-1. We no longer use the top $K$ highest transaction amount as the weight when building the transaction graph; \\ 
+1. We no longer use the top $K$ highest transaction amount as the weight when building the transaction graph; \\
 2. We no longer rely on the weight of nodes in LeaderRank to attain the importance of the node. \\
-First, we remove the transaction loops before we calculate the in-and-out degree $\beta$, so it can resist a loop attack. At the same time we still consider the strength of the edge. For some cases of homogeneous topology graph, PageRank and some other symmetric function (such as LeaderRank) has been proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In this yellow paper, we no longer use the Topology-like ranking strategy. We propose an asymmetric calculation function~\ref{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in ~\refsec{sec:function}.} 
+First, we remove the transaction loops before we calculate the in-and-out
+degree $\beta$, so it can resist a loop attack. At the same time we still
+consider the strength of the edge. For some cases of homogeneous topology
+graph, PageRank and some other symmetric function (such as LeaderRank) has been
+proved to not be able to resist sybil attack~\cite{cheng2005sybilproof}. In
+this yellow paper, we no longer use the Topology-like ranking strategy. We
+propose an asymmetric calculation \refeq{eq:rank-param} which is effective for reducing the rewards by faking the low stake nodes in~\refsec{sec:function}.}
 
-Below, we discuss three issues in equation~\ref{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
+Below, we discuss three issues in \refeq{eq:rank}: Median Account Stake $\beta(a)$, In-and-Out Degree $\gamma(a)$, and selection of function $\Omega$ and $\Psi$.
 
 \subsection{Median Account Stake $\beta(a)$}
 In time period of $[t_0-T, t_0]$, there are $n$ blocks in the blockchain system, marked as:
@@ -37,7 +43,7 @@ B_0, B_1, \dots, B_n
 \[
 d^a_0, d^a_1, \dots, d^a_n
 \]
-We can get a new list by sorting the items in ascending order: 
+We can get a new list by sorting the items in ascending order:
 \[
 d^a_{(0)}, d^a_{(1)}, \dots, d^a_{(n)}
 \]
@@ -58,7 +64,7 @@ It starts and ends on same node $v$, which is a set of edges in the transaction 
 H(v) = \{(v, v_1, w_1, \tau_1), (v_1, v_2, w_2, \tau_2), \dots, (v_i, v_{i+1}, w_{i}, \tau_i), \dots, (v_n, v, w_{n+1}, \tau_{n+1})\}
 \]
 \noindent where $\forall 1\le i \le n : \tau_i \le \tau_{i+1} $.
-\noindent As shown in ~\reffig{fig:loop}, there is a forwarding loop, and note that transaction $(v_1, v_2, 100, 5)$ is not included within the forwarding loop.
+\noindent As shown in \reffig{fig:loop}, there is a forwarding loop, and note that transaction $(v_1, v_2, 100, 5)$ is not included within the forwarding loop.
 
 \input{fig_loop.tex}
 \input{fig_no_loop.tex}
@@ -80,7 +86,7 @@ H^1(v_1), H^2(v_2), \dots, H^n(v_n)\]
 \begin{align}
 \Theta^{\prime}(t_0)=\Theta(t_0)-H^i(v) \cup \{\mathcal{E}(t), t\in H^i(v_i)\} \quad i = 1, 2,\dots, n
 \end{align}
-\noindent ~\reffig{fig:no-loop} shows the non-loop transaction graph after removing the forwarding loop in ~\reffig{fig:loop}.
+\noindent \reffig{fig:no-loop} shows the non-loop transaction graph after removing the forwarding loop in \reffig{fig:loop}.
 
 
 Set the transfer-in amount of node $v$ as $p(v)$, then
@@ -104,7 +110,7 @@ for node $v$, its in-and-out degree $\gamma(v)$ is
 \noindent where $\theta, \mu, \lambda$ are the parameters to be determined.
 
 
-And ~\reffig{fig-surf} shows the curve of the function~\ref{eq:dgr_func}.
+And \reffig{fig-surf} shows the curve of the \refeq{eq:dgr_func}.
 \begin{figure}
   \centering
   \input{../common/fig_surf.tex}
@@ -135,9 +141,9 @@ For any two variables $x_1$ and $x_2$ are infinity, the sum of the two functions
 \lim\limits_{x_1 \to \infty, x_2\to \infty} f(x_1+x_2) = f(x_1) + f(x_2)\quad x_1>0, x_2>0
 \end{align}
 
-These properties described above ensure, under given transaction behaviors, the benefit of splitting stakes into smaller accounts is comparatively smaller than keeping them within a single account. At the same time, when the stake is large enough, the cost of splitting the stakes into small accounts can be ignored. 
+These properties described above ensure, under given transaction behaviors, the benefit of splitting stakes into smaller accounts is comparatively smaller than keeping them within a single account. At the same time, when the stake is large enough, the cost of splitting the stakes into small accounts can be ignored.
 
-There is more than one function that satisfies the two properties above. Here, we provide a succinct function, the curve of the function is shown in ~\reffig{fig-nr}.
+There is more than one function that satisfies the two properties above. Here, we provide a succinct function, the curve of the function is shown in \reffig{fig-nr}.
 \begin{align}
 f(x) = x/(1 + e^{a + b\cdot x}) \quad a>1,b<0
 \end{align}
@@ -168,7 +174,7 @@ legend style={fill=none}
 
 
 \vspace{2em}
-In summary, equation ~\ref{eq:rank} can be expressed further as below:
+In summary, \refeq{eq:rank} can be expressed further as below:
 
 \begin{align}
 \label{eq:rank-param}
@@ -179,9 +185,14 @@ In summary, equation ~\ref{eq:rank} can be expressed further as below:
 
 In order to verify the effectiveness of the function, we calculate the Core Nebulas Rank for all accounts on the Ethereum blockchain over a certain time period. We collected all the transaction records from May 1st 2017 to June 30th 2017 (block height: from 3629091 to 3955158), in addition, we also collected average daily ETH token price (in USD) and transaction volumes ~\cite{coinmarketcap}.
 
-~\reffig{fig-eth-simu} shows the trend between ETH market capitalization and Core Nebulas Rank of the Ethereum, where the black solid line indicates Ethereum market capitalization (in USD), while the red solid line represents the summation of all accounts' Core Nebulas Rank based on function~\ref{eq:rank-param}.
+\reffig{fig-eth-simu} shows the trend between ETH market capitalization and
+Core Nebulas Rank of the Ethereum, where the black solid line indicates
+Ethereum market capitalization (in USD), while the red solid line represents
+the summation of all accounts' Core Nebulas Rank based on \refeq{eq:rank-param}.
 
-We can see that the Core Nebulas Rank reflects the market capitalization changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$ (p-value) is $4.48\times{}10^{-17}<0.001$. That means, the function ~\ref{eq:rank} illustrates the success in depicting the contributions of users to the economic system on chain, which demonstrates both the validity and accuracy of Core Nebulas Rank. 
+We can see that the Core Nebulas Rank reflects the market capitalization
+changes of Ethereum precisely. The correlation coefficient is 0.84427, $p$
+(p-value) is $4.48\times{}10^{-17}<0.001$. That means, the \refeq{eq:rank} illustrates the success in depicting the contributions of users to the economic system on chain, which demonstrates both the validity and accuracy of Core Nebulas Rank.
 
 
 \begin{figure}

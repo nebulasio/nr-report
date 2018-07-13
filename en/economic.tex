@@ -40,16 +40,16 @@ A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
 \forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
 \end{align}
 
-Note that the model described above is a reasonable simplification of any cryptocurrency system. In this model, we do not distinguish the on-chain data from off-chain data, and do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are type-specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions that will be recorded on the chain, and intra-exchange transactions that will not be recorded in a centralized database of the exchange. This leads to an outcome where we will lose the intra-exchange transactions if we only obtain the data from the chain. 
+Note that the model described above is a reasonable simplification of any cryptocurrency system. In this model, we do not distinguish the on-chain data from off-chain data, and do not introduce either transaction price or invocations of smart contracts and so on. In addition, the accounts of exchanges are type-specific. Generally speaking, the transactions in an exchange can be divided as two categories: normal transactions that will be recorded on the chain, and intra-exchange transactions that will not be recorded in a centralized database of the exchange. This leads to an outcome where we will lose the intra-exchange transactions if we only obtain the data from the chain.
 However, if the intra-exchange transactions can be obtained with the cooperation of the exchange, we can further map an exchange account into multiple accounts, so as to use the model outlined above.
 
 
 \subsection{Model of Cryptocurrency}
-Although cryptocurrency differs largely from traditinal commodity currency and fiat money, the classical monetary theory still has the practical leading meaning nowadays. As a modern form of money borne out of a new economic entity~\cite{swan2015blockchain}, cryptocurrency is born with the attributes of traditional money and retaining its three necessary features: medium of exchange, store of value, and unit of account. 
+Although cryptocurrency differs largely from traditinal commodity currency and fiat money, the classical monetary theory still has the practical leading meaning nowadays. As a modern form of money borne out of a new economic entity~\cite{swan2015blockchain}, cryptocurrency is born with the attributes of traditional money and retaining its three necessary features: medium of exchange, store of value, and unit of account.
 
 Hereby, we establish both a simple and classic monetary model assist in understanding the physical significance of \nr.
 
-First of all, we try to give the indicator to measure the \emph{velocity factor} within the cryptocurrency ecosystem. 
+First of all, we try to give the indicator to measure the \emph{velocity factor} within the cryptocurrency ecosystem.
 
 Another essential concept needed to be differentiated from the \emph{velocity factor} in the economics is \emph{liquidity}. \emph{Liquidity} describes the difficulty level in exchanging the assets for the medium of exchange. As money itself is a medium of exchange in economics, money is the assets with the best \emph{liquidity}.
 
@@ -64,21 +64,34 @@ M\times V=P\times Y
 
 \noindent where $M$, $V$, $P$ and $Y$ represent the total monetary amount of the economic system, the velocity of money, the price level (measured by the money of unit economical output, thus the money price is $\frac{1}{P}$), and real economical output (real GDP) respectively. The equation illustrates that the product of monetary amount and velocity of money equals the product of price of goods and their output.
 
-As for the monetary amount $M$, Nebulas is similar to Ethereum in that the monetary amount maintains steady growth (the additional issuance percentage of Nebulas money (NAS) is set as 4\% at present), which is different from Bitcoin in that the total monetary amount of latter will be stable once the total at 21 million coins have been mined. The velocity of money $V$ can be described as the ratio of the circulated monetary amount and the monetary supply. As a result, the equation~\ref{eq:currency} can be further expressed as:
+As for the monetary amount $M$, Nebulas is similar to Ethereum in that the
+monetary amount maintains steady growth (the additional issuance percentage of
+Nebulas money (NAS) is set as 4\% at present), which is different from Bitcoin
+in that the total monetary amount of latter will be stable once the total at 21
+million coins have been mined. The velocity of money $V$ can be described as
+the ratio of the circulated monetary amount and the monetary supply. As a
+result, the \refeq{eq:currency} can be further expressed as:
 
 \begin{align}
 (M + \Delta{m}) \times \frac{\sum_{(s, t, w, \tau)\in \mathcal{T}}{w}}{M} = P \times Y
 \label{eq:cur_ext}
 \end{align}
 
-\noindent where $\Delta{m}$ is the additional monetary supply. 
+\noindent where $\Delta{m}$ is the additional monetary supply.
 
 In terms of price level $P$, it is acceptable that the value of price is determined by the relationship between the monetary supply and demand, both by classical theories of money and New Keynesian Models. In the long term, the total price level will be adjusted to ensure monetary supply and demand remain at the equilibrium point.
 
 However, the total price level does not always remain at the equilibrium point between monetary supply and demand in the short term. In a healthy economical system, the growth rate in price is traditionally smaller than that of velocity of money. By increasing the monetary supply (in other words by reducing interest rates), both the price level $P$ and goods/service demands $Y$ will increase in the meantime. On the other side, the increase speed of price level should be controlled, to prohibit the users from holding the cryptocurrency for a long time, thus reducing the velocity. The rationale for the users to hold the cryptocurrency is that they expect over time the price of cryptocurrency will rise.
 
 
-With regard to real economic output $Y$, it is traditionally represented by economists as real GDP, namely \emph{a monetary measure of the market value of all final goods and services produced in a period of time}. We believe that the value of cryptocurrency is based on its velocity, namely each transaction contributes to the total economic aggregate to a certain extent. In other words, once a transaction takes place, it both increases the velocity of cryptocurrency and individual's approval and belief of cryptocurrency to some degree. As a result, we think that $Y$ in the equation~\ref{eq:cur_ext} is consisted of each transaction. Given that the subjects of a economic system are accounts, we can also explain $Y$ as the transactions issued by each account as below:
+With regard to real economic output $Y$, it is traditionally represented by
+economists as real GDP, namely \emph{a monetary measure of the market value of
+all final goods and services produced in a period of time}. We believe that the
+value of cryptocurrency is based on its velocity, namely each transaction
+contributes to the total economic aggregate to a certain extent. In other
+words, once a transaction takes place, it both increases the velocity of
+cryptocurrency and individual's approval and belief of cryptocurrency to some
+degree. As a result, we think that $Y$ in the \refeq{eq:cur_ext} is consisted of each transaction. Given that the subjects of a economic system are accounts, we can also explain $Y$ as the transactions issued by each account as below:
 
 \begin{align}
 Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
@@ -86,5 +99,5 @@ Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
 
 \noindent where $\mathcal{C}(a)$ represents the contributions made by account $a$ to total economic output, namely \nrcore.
 
-The development of cryptocurrency relies upon continued community development. Therefore, we consider that quantifying the contribution made by each account is the basis of designing the reasonable incentive mechanism. Based on this, the economic system can create either explicit incentives (e.g., Proof of Devotion in Nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines). 
+The development of cryptocurrency relies upon continued community development. Therefore, we consider that quantifying the contribution made by each account is the basis of designing the reasonable incentive mechanism. Based on this, the economic system can create either explicit incentives (e.g., Proof of Devotion in Nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines).
 The directive and primitive incentives in the cryptocurrency refers to the additional issuance of money, which is a differentiating factor from that in traditional monetary theories.
