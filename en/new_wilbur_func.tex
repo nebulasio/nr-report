@@ -1,8 +1,10 @@
 % !TEX root = main.tex
-\section{其他Wilbur函数}
-\label{sec:other_wilbur_func}
-在星云NOVA 1.0版本中，我们采用了如下所示的Wilbur函数形式。
+\section{Another Wilbur function \label{sec:other_wilbur_func}}
+
+A new Wilbur function is adopted in Nebulas NOVA 1.0 version.
+
 \begin{align}
+\label{al:new_wilbur}
 f(x) = x/(1 + (\frac{a}{x})^b) \quad a>0,0<b<1
 \end{align}
 
@@ -16,7 +18,7 @@ f(x) = x/(1 + (\frac{a}{x})^b) \quad a>0,0<b<1
     axis lines=left,
     enlargelimits=upper,
 ticks=none,axis x line=bottom,axis y line=left,xlabel={Nebulas Rank Factor},
-  ylabel={星云指数},
+  ylabel={Nebulas Rank},
       legend pos=north west,
 legend style={fill=none}
 ]
@@ -26,11 +28,13 @@ legend style={fill=none}
 \addlegendentry{$f(x) = x/(1 + (\frac{a}{x})^b)$}
 \end{axis}
 \end{tikzpicture}
-\caption{星云指数计算函数曲线}
+\caption{The curve of the Nebulas Rank function}
 \label{fig:new_wilbur}
 \end{figure}
 
-其函数图形如图\ref{fig:new_wilbur}所示，易证其满足\refsec{sec:function}中特征\ref{prop:one}和特征\ref{prop:two}。
+
+As Figure \ref{fig:new_wilbur} shows, it is easy to demonstrate that the function satisfies the two properties \ref{prop:one} and \ref{prop:two} in \refsec{sec:function} as well.
+
 
 
 
