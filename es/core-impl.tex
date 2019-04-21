@@ -1,0 +1,25 @@
+% !TEX root = main.tex
+
+\section{Implementación de Core Nebulas Rank}
+La implementación completa de Core Nebulas Rank está fuera del alcance de esta sección, de modo que nos limitaremos a introducir sus aspectos clave.
+
+\subsection{¿Dentro o fuera del blockchain? \label{sec:onchain}}
+Tal como se explicó en capítulos anteriores, Core Nebulas Rank es una muestra de la contribución de cada cuenta al agregado económico global. Normalmente, cada nodo puede calcular la contribución de cualquier cuenta específica; sin embargo, es preciso plantear si es necesario colocar NR en el blockchain de forma periódica.
+
+En nuestra opinión, es a la vez innecesario e inapropiado, debido a que:
+\begin{itemize}
+\item El tamaño de los datos generados por NR será inmenso, por lo que no será apropiado mantenerlos en el blockchain. Incluso para sistemas tales como IPFS o Genaro \cite{IPFS}~\cite{Genaro} no sería apropiado almacenar el valor NR de cada cuenta periódicamente, incluso cuando son sistemas orientados a almacenar datos.
+\item Esto afectará negativamente la performance de la generación de bloques. La complejidad de cómputo de Core Nebulas Rank es alta, de modo que afectaría significativamente la generación de bloques y la performance de las validaciones y, eventualmente, afectaría también el valor de las transacciones por segundo (TPS).
+\end{itemize}
+\noindent En líneas generales, sugerimos que cada nodo calcule el valor Core Nebulas Rank de forma individual.
+
+No obstante, si cada nodo realiza el cómputo de forma individual, no hay seguridad alguna de que el valor calculado sea confiable. Por ejemplo, un modo podría modificar maliciosamente el cálculo NR basar en ellos los incentivos. Para las aplicaciones críticas se verificarán todos los cálculos NR con el fin de garantizar la equidad de los resultados. En contraste, para aquellas aplicaciones que no son tan importantes, dependerá de ellas mismas decidir si el uso que le dan al valor NR amerita o no una verificación.
+
+Existe otra situación importante a tener en cuenta, que es que un nodo podría negarse a realizar el cómputo del valor NR basándose en el costo de la operación. Debido a esto, se considerará la creación de un servicio Core Nebulas Rank que evite la repetición innecesaria de los cómputos, que se podrá ofrecer de forma gratuita o bien a cambio de un pago, dependiendo del número de veces que se requiera realizar el cálculo. Los detalles de tal servicio, y su completa implementación, están fuera del alcance de este documento.
+
+\subsection{Actualización de Core Nebulas Rank}
+Core Nebulas Rank está asociado íntimamente a la economía de una criptodivisa. A medida que la economía cambia, el algoritmo de Core Nebulas Rank necesitará actualizaciones, especialmente sus parámetros. Es sumamente importante determinar la mejor manera de actualizar rápidamente el algoritmo. Nuestra propuesta es la de actualizar el algoritmo de Nebulas Rank mediante el uso de Nebulas Force.
+
+Específicamente actualizamos la estructura de los bloques de datos, que incluirá el algoritmo de Core Nebulas Rank y sus parámetros (basados en LLVM IR). La máquina virtual de Nebulas (NVM) será el motor de ejecución del algoritmo: éste obtiene su código —junto con sus parámetros— desde el blockchain, ejecuta el código, y eventualmente obtiene el Core Nebulas Rank dentro del nodo.
+
+Siempre que el algoritmo o sus parámetros requieran una actualización, el equipo de Nebulas trabajará junto a la comunidad, asegurando que esas modificaciones se incluyan en los nuevos bloques. Esto garantizará una actualización suave y oportuna, que impida la creación de \textit{forks} en el futuro.

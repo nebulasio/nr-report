@@ -1,0 +1,15 @@
+% !TEX root = main.tex
+\section{Extended Nebulas Rank}
+\textit{Core Nebulas Rank} se utiliza para evaluar la contribución de una cuenta individual a la economía agregada, y es una parte vital tanto del algoritmo de consenso \textit{Proof of Devotion} (PoD) como del \textit{Developer Incentive Protocol} (DIP). No obstante, como hemos notado, existen otros casos de uso que podrían requerir una metodología de evaluación diferente; para esos casos hemos diseñado \textit{Extended Nebulas Rank} —que se basa en Core Nebulas Rank— para garantizar la continuidad de los incentivos en toda la economía de Nebulas y en todos los casos de uso posibles.
+
+\subsection{Extended Nebulas Rank orientado a contratos inteligentes}
+La valuación de contratos inteligentes juega un rol importante dentro de la economía. Por un lado ayuda a los usuarios a encontrar {\dapp}s de alta calidad; por otro lado también motiva a que los desarrolladores escriban {\dapp}s de esas características, con lo que la economía puede expandirse de forma estable y continua.
+
+Ahora bien, esa valuación depende de dos factores: las llamadas que los usuarios —desde sus cuentas— realizan a los contratos inteligentes, y las llamadas entre diferentes contratos inteligentes. Las llamadas de usuarios a contratos reflejan el hecho de que desde esas direcciones (de usuarios) se está contribuyendo, de forma distribuida, a la economía agregada de todos los contratos inteligentes, ya que cada contrato inteligente tiene su propio valor NR asignado inicialmente. Las llamadas entre contratos inteligentes pueden ser tratadas también como un grafo acíclico dirigido. Por lo tanto, utilizamos el algoritmo de Page Rank para calcular el valor NR de cada contrato inteligente.
+
+\subsection{Extended Nebulas Rank multidimensional}
+Hemos visto también que algunas aplicaciones requieren datos multidimensionales para computar la correlación entre diferentes tipos de datos en el blockchain. Por ejemplo, en un sistema de publicidad basado en blockchain, es necesario obtener la correlación entre la publicidad y el usuario desde distintas dimensiones. En esa situación hacemos uso de Extended Nebulas Rank, ya que es multidimensional y se puede representar como un vector; en este caso, Core Nebulas Rank es una de sus dimensiones, y el resto de ellas dependen de cada aplicación en particular. Sin perjuicio de ello, los algoritmos de cálculo siempre podrán referenciar a aquellos del algoritmo Core Nebulas Rank.
+
+\vspace{2em}
+
+Comenzando por un caso de uso real, diseñamos el algoritmo Extended Nebulas Rank para su uso por parte de contratos inteligentes; hemos descripto también un método de implementación de Extended Nebulas Rank. También hemos ilustrado con ejemplos el mecanismo de evaluación correspondiente a este algoritmo, y hemos propuesto el sistema multidimensional Extended Nebulas Rank, que muestra la posibilidad de usar nuestro mecanismo de evaluación en otros casos de uso.

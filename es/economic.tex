@@ -1,0 +1,109 @@
+% !TEX root = main.tex
+\section{Modelo económico}
+Las criptodivisas están dotadas de importancia económica, ya sea como medios de transacción o como activos inteligentes. Por lo tanto, un modelo económico razonable nos puede ayudara establecer un estándar de medición de valor en el blockchain, lo que es también el objetivo de \nrcore.
+
+Este capítulo presenta en primer lugar la representación matemática de las criptodivisas y luego las analiza mediante un modelo monetario simple pero reconocido. Durante el análisis, presentaremos Core Nebulas Rank como una parte importante de la argumentación.
+
+\subsection{Representación de las criptodivisas}
+La mayor diferencia entre las criptodivisas y la economía tradicional es que todas las transacciones con criptodivisa poseen trazabilidad. Esto provee fuentes de datos cruciales para que podamos analizar el impacto de cada transacción sobre el sistema económico en su conjunto.
+
+En general, un sistema de cripptodivisa se puede definir como un par $(\mathcal{L}, \mathcal{U})$, donde $\mathcal{L}$ denota el sistema contable, y $\mathcal{U}$ es el conjunto de sus usuarios. Más aún, el sistema contable puede ser descripto como una tripla, de este modo:
+
+\begin{align}
+\mathcal{L} = (\mathcal{A}, \mathcal{D}, \mathcal{T})
+\end{align}
+
+\noindent donde $\mathcal{A}$ representa el conjunto de cuentas, $\mathcal{D}$ es el conjunto de balances iniciales de cada cuenta, y $\mathcal{T}$ es el conjunto de transacciones. Cada transacción se puede registrar como un cuaternión de esta forma:
+
+\begin{align}
+\mathcal{D} = \{a \rightarrow d, a{\in}\mathcal{A}, d{\in}R^*\}
+\end{align}
+\begin{align}
+\mathcal{T} = \{(s, t, w, \tau)\}
+\end{align}
+
+\noindent donde $a \rightarrow d$ representa el balance $d$ correspondiente a la cuenta $a$ ($d$ es un número real positivo; en otras palabras, no tomamos en consideración las cuentas con balance cero). $s$, $t$, $w$ y $\tau$ representan la cuenta origen, la cuenta destino, el monto y el tiempo de una transacción. respectivamente.
+
+Una cuenta está controlada por un usuario relevante, quien propone una transacción con otra cuenta, lo que se puede escribir como:
+
+\begin{align}
+u \dom a. \quad u\in \mathcal{U}, a\in \mathcal{A}
+\end{align}
+
+\noindent Por un lado, un usuario puede controlar múltiples cuentas:
+
+\begin{align}
+A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
+\end{align}
+
+\noindent Por otro lado, una cuenta sólo puede ser controlada por un único usuario:
+
+\begin{align}
+\forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
+\end{align}
+
+Nótese que el modelo descrito arriba es una simplificación razonable de cualquier sistema de criptodivisas.
+
+En este modelo no distinguimos los datos dentro del blockchain de los datos fuera del mismo, y no introducimos ni el precio de transacción ni las invocaciones de contratos inteligentes, etc. Además, las cuentas de las casas de cambio son de un tipo específico. En términos generales, las transacciones en una casa de cambio se pueden dividir en dos categorías: transacciones normales que se registran en el blockchain y transacciones internas que se registrarán en una base de datos centralizada y propietaria. Esto nos lleva a un resultado en el que no disponemos de las transacciones internas de la casa de cambio si sólo obtenemos los datos del blockchain.
+
+Sin embargo, si las transacciones internas son accesibles con la cooperación de la casa de cambio, podemos mapear la cuenta de una casa de cambio en múltiples cuentas, de modo de utilizar el modelo descrito anteriormente.
+
+\subsection{Modelo de criptodivisa}
+A pesar de que las criptodivisas difieren de la moneda comercial y el dinero fiduciario, la teoría monetaria clásica sigue teniendo un significado práctico hoy en día. Como una forma moderna de dinero nacida de una nueva entidad económica \cite{swan2015blockchain}, las criptodivisas nacieron con los atributos del dinero tradicional tres de sus funciones: sirven como medio de cambio, como ahorro, y como unidades de contabilidad.
+
+En virtud de ello, estableceremos un modelo monetario simple y clásico que ayude a comprender el significado físico de \nr.
+
+Primero, trataremos de brindar un indicador para medir el \emph{factor de velocidad} dentro del ecosistema de las criptodivisas.
+
+Otro concepto esencial que necesita ser diferenciado del \emph{factor de velocidad} en la economía es la \emph{liquidez}.
+
+La \emph{Liquidez} describe el nivel de dificultad que existe en cambiar los activos por otro medio de cambio. Como en economía el dinero en sí mismo es un medio de cambio, podemos definir el dinero como uno de los activos con mayor \emph{liquidez}.
+
+\whitepaper{En el Libro Blanco Técnico de Nebulas \cite{Nabulas}, utilizamos la palabra \emph{liquidez} frecuentemente. No obstante, no existe una definición rígida para tal concepto, cuyo significado es muy amplio incluso en Economía. Por ejemplo, en \emph{The New Palgrave: A Dictionary of Economics} las entradas que explican la \emph{liquidez} incluyen tres aspectos totalmente distintos. R. S. Kroszner indica que se crearon 2795 papers independientes que mencionan la palabra \emph{liquidez} durante los últimos seis meses, cada uno de los cuales, sin embargo, planteó una declaración diferente \cite{randall}. El concepto de \emph{liquidez} en este libro amarillo se refiere a la \textbf{velocidad del dinero}, queriendo significar con esto \textit{los tiempos de rotación de una unidad monetaria durante un determinado período de tiempo}.}
+
+We use the velocity of money to represent the turnover rate of cryptocurrency~\cite{selden}, namely the turnover of a monetary unit over a certain period of time (one day in this paper), which is represented with $V$. According to the classical quantity theory of money, the equation is expressed as below:
+
+\begin{align}
+M\times V=P\times Y
+\label{eq:currency}
+\end{align}
+
+\noindent where $M$, $V$, $P$ and $Y$ represent the total monetary amount of the economic system, the velocity of money, the price level (measured by the money of unit economical output, thus the money price is $\frac{1}{P}$), and real economical output (real GDP) respectively. The equation illustrates that the product of monetary amount and velocity of money equals the product of price of goods and their output.
+
+As for the monetary amount $M$, Nebulas is similar to Ethereum in that the
+monetary amount maintains steady growth (the additional issuance percentage of
+Nebulas money (NAS) is set as 4\% at present), which is different from Bitcoin
+in that the total monetary amount of latter will be stable once the total at 21
+million coins have been mined. The velocity of money $V$ can be described as
+the ratio of the circulated monetary amount and the monetary supply. As a
+result, the \refeq{eq:currency} can be further expressed as:
+
+\begin{align}
+(M + \Delta{m}) \times \frac{\sum_{(s, t, w, \tau)\in \mathcal{T}}{w}}{M} = P \times Y
+\label{eq:cur_ext}
+\end{align}
+
+\noindent where $\Delta{m}$ is the additional monetary supply.
+
+In terms of price level $P$, it is acceptable that the value of price is determined by the relationship between the monetary supply and demand, both by classical theories of money and New Keynesian Models. In the long term, the total price level will be adjusted to ensure monetary supply and demand remain at the equilibrium point.
+
+However, the total price level does not always remain at the equilibrium point between monetary supply and demand in the short term. In a healthy economical system, the growth rate in price is traditionally smaller than that of velocity of money. By increasing the monetary supply (in other words by reducing interest rates), both the price level $P$ and goods/service demands $Y$ will increase in the meantime. On the other side, the increase speed of price level should be controlled, to prohibit the users from holding the cryptocurrency for a long time, thus reducing the velocity. The rationale for the users to hold the cryptocurrency is that they expect over time the price of cryptocurrency will rise.
+
+
+With regard to real economic output $Y$, it is traditionally represented by
+economists as real GDP, namely \emph{a monetary measure of the market value of
+all final goods and services produced in a period of time}. We believe that the
+value of cryptocurrency is based on its velocity, namely each transaction
+contributes to the total economic aggregate to a certain extent. In other
+words, once a transaction takes place, it both increases the velocity of
+cryptocurrency and individual's approval and belief of cryptocurrency to some
+degree. As a result, we think that $Y$ in the \refeq{eq:cur_ext} is consisted of each transaction. Given that the subjects of a economic system are accounts, we can also explain $Y$ as the transactions issued by each account as below:
+
+\begin{align}
+Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
+\end{align}
+
+\noindent where $\mathcal{C}(a)$ represents the contributions made by account $a$ to total economic output, namely \nrcore.
+
+The development of cryptocurrency relies upon continued community development. Therefore, we consider that quantifying the contribution made by each account is the basis of designing the reasonable incentive mechanism. Based on this, the economic system can create either explicit incentives (e.g., Proof of Devotion in Nebulas technical white paper) or implicit incentives (e.g., the sorted search results provided by search engines).
+The directive and primitive incentives in the cryptocurrency refers to the additional issuance of money, which is a differentiating factor from that in traditional monetary theories.

@@ -1,0 +1,48 @@
+% !TEX root = main.tex
+
+\section{Introducción}
+
+A medida que las tecnologías blockchain evolucionan, más y más industrias se benefician de la \emph{descentralización}, que es el corazón de los sistemas blockchain. Por ejemplo: Bitcoin, el primer proyecto blockchain en salir a la luz pública, ha demostrado su importancia para los activos digitales, mientras que Ethereum demostró cuán importante es la descentralización para las {\dapp}s. A medida que el tiempo corre, hay más y más proyectos blockchain estudiando cómo aprovechar este fenómeno.
+
+Obviamente, la columna vertebral de la descentralización en blockchain reside tanto en su apertura y en su capacidad inherente de brindar anonimato.
+
+Aun así, el anonimato y la apertura obstaculizan la emergencia de mediciones de valuación \cite{meiklejohn2013fistful}. Existen dos aspectos que contribuyen a esta obstrucción. En primer lugar es difícil inferir si un grupo de cuentas pertenecen a la misma persona, haciendo casi imposible construir un mecanismo similar al de las cookies HTTP \cite{Cookie} o utilizar tecnologías tradicionales de análisis de datos para comprender las características de los usuarios.
+En segundo lugar, la apertura de los blockchains los hace vulnerables a la manipulación,
+en especial a la medición de valor. Un atacante podría fácilmente obtener detalles sobre los mecanismos de la medición de valor, y descubrir debilidades en el sistema. Esto difiere en gran medida de las mediciones de valor tradicionales, que son cerradas o independientes.
+
+Creemos que la medición del valor efectivo es la base de la prosperidad de los blockchains. Tanto la falta de mediciones del valor como su ineficacia pueden limitar el potencial de los blockchains a sólo unos pocos usos prácticos.
+
+En primer lugar, necesitamos una metodología para cuantificar el valor de los datos, las aplicaciones y las cuentas en los blockchains. La cooperación en los blockchains se sigue ampliando, y los requisitos de eficiencia siguen creciendo. Sin mediciones de valor, dicha colaboración puede verse afectada negativamente.
+
+En segundo lugar, la tecnología de blockchains se encuentra en una fase muy temprana de desarrollo y uso, y el valor de los datos y activos en ellos todavía está bajo tierra y esperando ser encontrado. Las mediciones efectivas de valor permitirán potenciar más aplicaciones y crear más escenarios de uso; préstamos, crédito, búsqueda de datos, recomendaciones personalizadas e interacción entre blockchains.
+
+En tercer lugar, los incentivos, que se basan en medidas de valor, son necesarios para mantener un ecosistema saludable en el blockchain. Sin mediciones efectivas de valor, los incentivos pueden llevar al blockchain a un esquema de corrupción, y a un eventual colapso.
+
+Como conclusión, una medida efectiva de valor que satisfaga las necesidades de los blockchains debe ser:
+\begin{itemize}
+\item{\textbf{Veraz.}} La valuación necesita medir con certeza algunas características del sistema blockchain, y por lo tanto, debe ser fiable;
+\item{\textbf{Equitativa.}} La medición necesita ser resistente a las manipulaciones;
+\item{\textbf{Diversa.}} Existen diferentes requerimientos de valuación para las distintas aplicaciones en el blockchain, de modo que un algoritmo de valuación de calidad debe ser capaz de cubrir distintos escenarios.
+\end{itemize}
+
+Creemos que el Nebulas Rank será una medida de valor efectiva para los blockchains.
+
+En cuanto a veracidad, después de considerar muchas métricas diferentes, elegimos Nebulas Rank como la cuantificación de la contribución de una cuenta al sistema de blockchains.
+
+Creemos que las criptodivisas deben tener los mismos atributos que el dinero; en particular, funcionar como medio de cambio, como depósito de valor y como unidad de contabilidad. Los blockchains en sí son sistemas económicos y la teoría monetaria clásica todavía tiene vigencia. Además, creemos que el valor de las criptodivisas proviene de su liquidez. Específicamente hablando, cada transacción entre usuarios aumenta la liquidez de las criptodivisas, y las dota de valor eventualmente. Por lo tanto, las transacciones en un blockchain son fuentes de datos efectivas y naturales para una medición efectiva del valor.
+
+Para evaluar la efectividad de Nebulas Rank, calculamos la suma del valor NR de todas las cuentas en Ethereum, y lo comparamos con la capitalización de mercado dada por \texttt{coinmarketcap.com}. Nuestra evaluación muestra una fuerte correlación entre ellos, aproximadamente $0.84$. Esto significa que Nebulas es eficaz para medir la contribución de las cuentas a nivel micro, mientras que también es capaz de medir el valor de los sistemas blockchain a nivel macro.
+
+En cuanto a equidad, desarrollamos una función especial para generar resistencia a la manipulación; nuestros análisis demostraron que su performance es resistente a ellas.
+
+Basándonos en la teoría de Nebulas Rank, podemos dividir Nebulas Rank a su vez en Core Nebulas Rank y Extended Nebulas Rank, con el fin de cubrir distintos escenarios y aplicaciones.
+
+Core Nebulas Rank se define como el algoritmo que calcula la contribución de una cuenta al sistema blockchain entero durante un periodo de tiempo dado. Tal cálculo involucra dos factores: la participación media de una cuenta durante ese periodo, y el grado de entrada y salida de la cuenta durante ese lapso.
+
+Extended Nebulas Rank es adecuado para diferentes aplicaciones y escenarios, y se basa estrechamente en Core Nebulas Rank. Por ejemplo, podemos mostrar cómo valuar contratos inteligentes basándonos en Core Nebulas Rank; también podemos mostrar cómo extender Core Nebulas Rank a un vector multidimensional.
+
+Más allá de la teoría y la metodología de Nebulas Rank, también presentamos nuestra consideración sobre cómo implementar Nebulas Rank, lo que incluye de qué manera se introducen los puntajes de valuación en el blockchain, cómo actualizar su algoritmo, y los planes a futuro para el mismo.
+
+\whitepaper{
+  Nota: el contenido de este libro amarillo podría diferir de las descripciones vertidas en nuestro  libro blanco (concretamente de la versión 1.02, lanzada en abril de 2018) \cite{Nebulas}. Esto es así debido a que el algoritmo descripto está sometido a un permanente desarrollo y mejora. Ahora tenemos más confianza y capacidad para hacerlo más riguroso. Utilizamos un formato distinto (como este párrafo) para enfatizar las actualizaciones relevantes presentadas en este documento.
+}

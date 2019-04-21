@@ -1,0 +1,107 @@
+% !TEX root = main.tex
+\section{Pruebas}
+\label{sec:appendix_proof}
+\subsection{Prueba de propiedad \ref{prop:one}}
+\begin{proof}
+\label{proof:one}
+Para todo $x_1>0$, $x_2>0$ tenemos:
+
+\[
+\begin{aligned}
+f(x_1+x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=\frac{x_1}{1+e^{a+b\cdot (x_1+x_2)}}+\frac{x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}+\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}\\
+\end{aligned}
+\]
+
+En la ecuación \ref{eq:rank-param} tenemos $b<0$, de modo que $0<e^{b\cdot x_1}<1$, $0<e^{b\cdot x_2}<1$, por otra parte:
+
+\[
+\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}>\frac{x_1}{1+ e^{a+b\cdot {x_1}}}=f(x_1)
+\]
+
+\[
+\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}>\frac{x_2}{1+ e^{a+b\cdot {x_2}}}=f(x_2)
+\]
+
+es, en realidad:
+\[
+f(x_1+x_2)>f(x_1)+f(x_2)
+\]
+\end{proof}
+
+\subsection{Prueba de propiedad \ref{prop:two}}
+\begin{proof}
+Para todo $x_1>0$, $x_2>0$ tenemos:
+
+\begin{equation}
+\label{eq:fx_proof}
+\begin{aligned}
+f(x_1+x_2)-f(x_1)-f(x_2)&=\frac{x_1+x_2}{1+e^{a+b\cdot (x_1+x_2)}}-\frac{x_1}{1+e^{a+b\cdot x_1}}-\frac{x_2}{1+e^{a+b\cdot x_2}}\\
+%&=\frac{x_1}{1+e^{a+b\cdot (x_1+x_2)}}+\frac{x_2}{1+e^{a+b\cdot (x_1+x_2)}}\\
+&=(\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}})\\
+&\quad +(\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{a+b\cdot x_2}})\\
+\end{aligned}
+\end{equation}
+
+Aquí la función $g(x_1,x_2)$ representa —dentro del segundo miembro de \ref{eq:fx_proof}— el primer término, y $h(x_1,x_2)$ el segundo término:
+
+\begin{equation}
+\label{eq:gx_func_proof}
+g(x_1,x_2)=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}
+\end{equation}
+
+\begin{equation}
+\label{eq:hx_func_proof}
+h(x_1,x_2)=\frac{x_2}{1+e^{b\cdot x_1}\cdot e^{a+b\cdot {x_2}}}-\frac{x_2}{1+e^{a+b\cdot x_2}}
+\end{equation}
+
+De modo que \eqref{eq:fx_proof} para $x_1$ y $x_2$, sus límites pueden ser representados como:
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)
+\]
+
+tenemos
+\[
+\begin{aligned}
+g(x_1,x_2)&=\frac{x_1}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot {x_1}}}-\frac{x_1}{1+e^{a+b\cdot x_1}}\\
+&=\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1-e^{b\cdot x_2})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}\cdot(1+e^{a+b\cdot x_1})}{(1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1})\cdot(1+e^{a+b\cdot x_1})}=\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{b\cdot x_2}\cdot e^{a+b\cdot x_1}}\\
+&<\frac{x_1\cdot e^{a+b\cdot x_1}}{1+e^{a+b\cdot x_1}}=\frac{x_1}{1+\frac{1}{e^{a+b\cdot x_1}}}
+\end{aligned}
+\]
+
+Se calcula el límite para $\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}$, de acuerdo a la regla de L'Hôpital:
+\[
+\begin{aligned}
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}&=\lim_{x \to \infty}\frac{1}{(e^{-a-b\cdot x})'}\\
+&=\lim_{x \to \infty}\frac{1}{-b\cdot e^{-a-b\cdot x}}
+\end{aligned}
+\]
+
+En la ecuación \ref{eq:rank-param} tenemos $b<0$, por lo que $\lim_{x \to \infty}-b\cdot e^{-a-b\cdot x}=\infty$; por otra parte,
+
+\[
+\begin{aligned}
+\lim_{x \to \infty}\frac{x}{1+\frac{1}{e^{a+b\cdot x}}}=0
+\end{aligned}
+\]
+
+De acuerdo a \ref{proof:one}, tenemos $g(x_1,x_2)>0$, por lo que de acuerdo al teorema del emparedado:
+
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}g(x_1,x_2)=0
+\]
+
+Similarmente, podemos obtener:
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}h(x_1,x_2)=0
+\]
+
+Por lo que:
+\[
+\mathop {\lim }\limits_{\scriptstyle x_1 \to \infty  \hfill \atop  \scriptstyle x_2 \to \infty  \hfill}[f(x_1+x_2)-f(x_1)-f(x_2)]=0
+\]
+
+
+\end{proof}
