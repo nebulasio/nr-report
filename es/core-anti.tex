@@ -1,0 +1,55 @@
+% !TEX root = main.tex
+
+\section{Resistencia a la manipulación de Core Nebulas Rank}
+
+Este capítulo analiza la resistencia a la manipulación de Core Nebulas Rank, es decir, la equidad que ofrece Nebulas Rank.
+
+\emph{Manipulación} refiere a las acciones deshonestas de un atacante en beneficio propio. Las acciones que pueden tomar los atacantes incluyen: lanzar transferencias de activos, lo que implica hacer uso de activos y cuentas controladas por ellos y otros individuos deshonestos. Entre esas transferencias, el total de activos no excede los activos que el atacante posee; el origen de las transferencias puede ser el de cuentas controladas por el atacante y sus colaboradores, o algunas cuentas institucionales que sirven como casas de cambio. Usualmente, el beneficio que obtienen de esto está determinado por las cuentas cuyas claves privadas son conocidas por el atacante. Un caso sencillo es aquel en el que el beneficio del atacante corresponde a la suma de la valuación (\textit{ranking}) de todas estas cuentas. Por supuesto, se entiende que las claves privadas de las cuentas institucionales mencionadas anteriormente no están en poder de los atacantes.
+
+El análisis de esta sección se basa en las acciones emprendidas y en el beneficio de los atacantes definidos anteriormente. En primer lugar, discutimos el límite superior para la mejora del puntaje de valuación de una única cuenta. Luego analizamos el límite superior para múltiples cuentas. Por último, se incluye la colusión y la discusión de la situación en la que interviene más de un atacante.
+
+\subsection{Incremento del puntaje de valuación para una cuenta única \label{sec:cheat-single}}
+
+De acuerdo a \refeq{eq:rank-param}, para poder elevar el puntaje de valuación de una cuenta, éste debe estar positivamente correlacionado con la cantidad de activos y con el grado de movimientos de cuenta. La cantidad de activos en la cuenta, es decir, $\beta$, tiene un límite superior, esto es, no puede ser mayor que el total absoluto de activos en poder del atacante, lo cual está denotado por $\beta_0$. El grado de movimientos $\gamma$ representa el volumen de transferencias, lo cual implica que el atacante necesita incrementar la cantidad de transferencias de una de sus cuentas tanto como le sea posible.
+
+El aumento de la suma de la transferencia incluye dos partes: el aumento de la valuación de los ingresos y el aumento de la valuación de los egresos. El aumento de la valuación de los ingresos y egresos requiere dos cuentas participantes, una de las cuales es la cuenta de destino, cuyo objetivo es elevar su puntaje de valuación, y la otra cuenta podría estar o no controlada por el atacante. Si se trata de una cuenta no controlada por el atacante, el aumento de movimientos requiere realizar transacciones con otras personas; esta situación se discute en \refsec{sec:coalition}. El otro caso se da cuando el atacante envía activos a extraños, lo cual es demasiado costoso para que se discuta en esta sección. Por ende, se podría definir que las acciones de los atacantes se centran principalmente en aumentar las transferencias entre las cuentas controladas por ellos mismos. Dado que los activos controlados por los atacantes son limitados y el período de tiempo para la valuación también es limitado, se desprende de ello que la valuación de una cuenta tiene un límite superior que se decide por la cantidad de activos que posee el atacante.
+
+As analyzed above, we consider the scenario of transacting with accounts of the
+same owner. Based on the computation method \refeq{eq:rank-param} as defined in \refsec{sec:function}, the attacker's benefit will be reduced if it split the asset transfers into multiple ones. Thus the attacker will attempt to make its transaction amount to be as high as possible, i.e. it tries to transfer all assets it owns into the account and then transfer it out all. Due to the cycle-removal algorithm, the attacker's asset cannot be transferred in again during this period.
+
+Como se ha analizado anteriormente, consideramos un escenario de operaciones con cuentas del mismo titular. Basado en el método de cálculo \refeq{eq:rank-param} como se define en \refsec{sec:function}, el beneficio del atacante se reducirá si divide las transferencias de activos en múltiples transacciones. De este modo, el atacante intentará que el importe de la transacción sea lo más elevado posible, es decir, buscará transferir a una cuenta dada todos los activos que posee para luego re-enviarlos en su totalidad a la cuenta original. Debido al algoritmo de eliminación de ciclo, los activos del atacante no pueden ser transferidos nuevamente durante este período.
+
+La valuación de los ingresos y egresos es $\gamma = 2 \beta_0$. El puntaje de valuación es:
+\begin{align}
+\mathcal{C} =  \frac{2 \beta_0 ^2}{ (1+e^{a + b \cdot \beta_0}) (1+e^{c + 2 d
+  \cdot \beta_0})}.
+\end{align}
+
+Additionally, we consider a more advanced manipulation technique. Consider the case that an attacker manages to acquire the asset again somewhere else by transacting off-line. Then it could transfer the asset into the account again and the upper-bound of in-and-out degree is the asset amount times the number of off-line transactions. Since the ranking time period is limited, the upper-bound of the number of off-line transactions is a constant integer, i.e. $\gamma$ is bounded by $2T \cdot \beta_0$, where $T$ is a constant integer indicating the length of ranking time period. Therefore the upper-bound score is:
+
+Adicionalmente, consideramos una técnica de manipulación más avanzada. Considérese el caso de que un atacante logra transferir nuevamente sus activos desde otra cuenta (tal vez mediante una transacción \textit{offline}). De ese modo podría transferir los activos a la cuenta original, con lo que el límite superior de la valuación de los ingresos y egresos se transforma en el total de los activos multiplicado por el número de transacciones \textit{offline}. Dado que el período de clasificación es limitado, el límite superior del número de transacciones \textit{offline} es un número entero constante, es decir, $\gamma$ está limitado por $2T \cdot \beta_0$, donde $T$ es un número entero constante que indica la duración del período de clasificación. Por lo tanto, la puntuación máxima es:
+
+\begin{align}
+  \mathcal{C} =  \frac{2T \cdot \beta_0 ^2}{ (1+e^{a + b \cdot \beta_0})
+  (1+e^{c + c \cdot d \cdot \beta_0})}.
+\end{align}
+
+\subsection{Incremento del puntaje de valuación para cuentas múltiples (ataque Sybil)}
+El ataque Sybil hace referencia a una situación en la que un atacante obtiene un alto puntaje de valuación de carácter ilegítimo por medio de la creación de un gran número de pseudo-identidades con el fin de alterar el sistema de reputación de una red p2p \cite{quercia2010sybil}.
+
+Una entidad en una red p2p es una pieza de software a la que se le ha concedido acceso a recursos locales. Esa entidad se anuncia en la red p2p presentando una identidad. Una entidad puede tener más de una identidad. En otras palabras, el mapeo de identidades a entidades puede ser de muchos a uno. Las entidades en redes p2p utilizan múltiples identidades con el fin de lograr redundancia, intercambio de recursos, fiabilidad e integridad. En estas redes, la identidad se utiliza como una abstracción para que una entidad remota pueda llevar un registro de las identidades sin conocer necesariamente la correspondencia de las identidades con las entidades locales. Por defecto, se supone que cada identidad distinta corresponde a una entidad local distinta. En realidad, varias identidades pueden corresponder a la misma entidad local. Un adversario puede presentar múltiples identidades a una red p2p para verse y funcionar como múltiples nodos distintos. De este modo, el adversario puede adquirir un nivel desproporcionado de control sobre la red, por ejemplo, afectando los resultados de una votación \cite{wiki:sybil}.
+
+Aquí asumimos que la recompensa del atacante es la suma de todas las cuentas que controla. Teniendo en cuenta la estrategia para mejorar el puntaje de valuación de una cuenta, que se analiza en la última subsección, el atacante podría aplicar la misma estrategia a varias cuentas: a partir de cualquiera de ellas, el atacante transfiere parte de su activo a la cuenta siguiente, formando finalmente un flujo de activos vinculado.
+
+En este caso, dado que Core Nebulas Rank requiere que no haya más que la cantidad válida de activos en la cuenta durante un plazo no mayor a la mitad del período, el atacante no tiene manera de hacer que $\beta$ sea la cantidad total de activos para más de una cuenta. Por lo tanto, el atacante debe adoptar otra estrategia en la que sus activos se distribuyan uniformemente en todas sus cuentas.
+
+Supongamos que la longitud de las cuentas vinculadas es $N$, es decir, existen $N$ cuentas controladas por el atacante, y para cada una de esas cuentas, $\beta = \frac{\beta_0}{N}$. El análisis de la valuación de los ingresos y egresos es el mismo que en el caso de \refsec{sec:cheat-single}, el límite superior de $\gamma$ es $K \cdot \beta$, donde $K=2\cdot N$ es un número entero constante. Por lo tanto, el límite superior de la suma de todas las cuentas de propiedad del atacante es:
+
+\begin{align}
+\mathcal{C} = N \cdot \frac{K \frac{\beta_0 ^2}{N}}{ (1+e^{a + b \cdot \frac{\beta_0}{N} }) (1+e^{c + K \cdot d \cdot \beta_0})} = \frac{K \beta_0 ^2 }{ (1+e^{a + b \cdot \frac{\beta_0}{N} }) (1+e^{c + K \cdot d \cdot \beta_0})}
+\end{align}
+
+
+\subsection{Manipulación en coalición \label{sec:coalition}}
+
+El resultado de la manipulación en coalición no difiere del caso en el que un atacante posee el total de activos de dos atacantes. En esta situación podemos analizar el ataque a través de las consecuencias del aumento de los activos de un solo atacante.

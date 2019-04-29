@@ -1,0 +1,27 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.4.3)  21 APR 2019 23:48
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**core.tex
+(./core.tex
+LaTeX2e <2018-04-01> patch level 5
+./core.tex:2: Undefined control sequence.
+l.2 \section
+            {Core Nebulas Rank}
+? 
+./core.tex:2: Emergency stop.
+l.2 \section
+            {Core Nebulas Rank}
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 5 strings out of 494524
+ 130 string characters out of 6175865
+ 51594 words of memory out of 5000000
+ 3750 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 40 hyphenation exceptions out of 8191
+ 5i,0n,1p,38b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+./core.tex:2:  ==> Fatal error occurred, no output PDF file produced!

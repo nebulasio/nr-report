@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{1}{section.1}
+\contentsline {section}{\numberline {2}Antecedentes}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Estado de desarrollo de blockchain}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Algoritmos de valuaci\IeC {\'o}n de nodos basados en grafos}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Resistencia a la manipulaci\IeC {\'o}n}{6}{subsection.2.3}
+\contentsline {section}{\numberline {3}Modelo econ\IeC {\'o}mico}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Representaci\IeC {\'o}n de las criptodivisas}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Modelo de criptodivisa}{8}{subsection.3.2}
+\contentsline {section}{\numberline {4}Core Nebulas Rank}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Participaci\IeC {\'o}n Media de Cuenta $\beta (a)$}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Valuaci\IeC {\'o}n de Ingresos y Egresos $\gamma (a)$}{13}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Funci\IeC {\'o}n Wilbur }{15}{subsection.4.3}
+\contentsline {section}{\numberline {5}Resistencia a la manipulaci\IeC {\'o}n de Core Nebulas Rank}{18}{section.5}
+\contentsline {subsection}{\numberline {5.1}Incremento del puntaje de valuaci\IeC {\'o}n para una cuenta \IeC {\'u}nica }{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Incremento del puntaje de valuaci\IeC {\'o}n para cuentas m\IeC {\'u}ltiples (ataque Sybil)}{21}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Manipulaci\IeC {\'o}n en coalici\IeC {\'o}n }{22}{subsection.5.3}
+\contentsline {section}{\numberline {6}Implementaci\IeC {\'o}n de Core Nebulas Rank}{22}{section.6}
+\contentsline {subsection}{\numberline {6.1}\IeC {\textquestiondown }Dentro o fuera del blockchain? }{22}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Actualizaci\IeC {\'o}n de Core Nebulas Rank}{23}{subsection.6.2}
+\contentsline {section}{\numberline {7}Extended Nebulas Rank}{23}{section.7}
+\contentsline {subsection}{\numberline {7.1}Extended Nebulas Rank orientado a contratos inteligentes}{24}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Extended Nebulas Rank multidimensional}{24}{subsection.7.2}
+\contentsline {section}{\numberline {8}Trabajo futuro}{25}{section.8}
+\contentsline {section}{Anexo \numberline {A}Pruebas}{28}{Anexo.1.A}
+\contentsline {subsection}{\numberline {A.1}Prueba de propiedad \ref {prop:one}}{28}{subsection.1.A.1}
+\contentsline {subsection}{\numberline {A.2}Prueba de propiedad \ref {prop:two}}{28}{subsection.1.A.2}
+\contentsline {section}{Anexo \numberline {B}Nueva funci\IeC {\'o}n Wilbur }{30}{Anexo.1.B}
+\contentsline {section}{Anexo \numberline {C}Registro de cambios}{30}{Anexo.1.C}

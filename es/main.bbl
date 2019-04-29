@@ -1,0 +1,120 @@
+\begin{thebibliography}{10}
+
+\bibitem{meiklejohn2013fistful}
+S.~Meiklejohn, M.~Pomarole, G.~Jordan, K.~Levchenko, D.~McCoy, G.~M. Voelker,
+  and S.~Savage, ``A fistful of bitcoins: characterizing payments among men
+  with no names,'' in {\em Proceedings of the 2013 conference on Internet
+  measurement conference}, pp.~127--140, ACM, 2013.
+
+\bibitem{Cookie}
+``{HTTP Cookie}.'' \url{https://en.wikipedia.org/wiki/HTTP_cookie}.
+
+\bibitem{Nebulas}
+``{Nebulas Technical White Paper}.''
+  \url{https://nebulas.io/docs/NebulasTechnicalWhitepaper.pdf}.
+\newblock Accessed: 2018-04-01.
+
+\bibitem{Nakamoto2008}
+S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system,'' 2008.
+
+\bibitem{Namecoin}
+``Namecoin.'' \url{https://namecoin.org.}
+
+\bibitem{OpenAssets}
+``Openassets protocol.''
+  \url{http://github.com/OpenAssets/open-assets-protocol.}
+
+\bibitem{buterin2013ethereum}
+V.~Buterin {\em et~al.}, ``Ethereum white paper,'' 2013.
+
+\bibitem{ChrisSkinner}
+``Forget fintech – welcome to the valueweb.''
+  \url{http://thefinanser.com/2015/02/forget-fintech-welcome-to-the-valueweb.html/}.
+
+\bibitem{page1999pagerank}
+L.~Page, S.~Brin, R.~Motwani, and T.~Winograd, ``The pagerank citation ranking:
+  Bringing order to the web.,'' tech. rep., Stanford InfoLab, 1999.
+
+\bibitem{Fleder2015}
+M.~Fleder, M.~S. Kester, and S.~Pillai, ``Bitcoin transaction graph analysis,''
+  {\em arXiv preprint arXiv:1502.01657}, 2015.
+
+\bibitem{Li2014}
+Q.~Li, T.~Zhou, L.~L{\"u}, and D.~Chen, ``{Identifying influential spreaders by
+  weighted LeaderRank},'' {\em Physica A: Statistical Mechanics and its
+  Applications}, vol.~404, pp.~47--55, 2014.
+
+\bibitem{cheng2006manipulability}
+A.~Cheng and E.~Friedman, ``Manipulability of pagerank under sybil
+  strategies,'' 2006.
+
+\bibitem{nem}
+``{NEM Technical Reference}.'' \url{http://nem.io/NEM_techRef.pdf}.
+\newblock Accessed: 2017-08-01.
+
+\bibitem{Nikolakopoulos2013}
+A.~N. Nikolakopoulos and J.~D. Garofalakis, ``{NCDawareRank},'' {\em
+  Proceedings of the sixth ACM international conference on Web search and data
+  mining - WSDM '13}, no.~February 2013, p.~143, 2013.
+
+\bibitem{xu2007scan}
+X.~Xu, N.~Yuruk, Z.~Feng, and T.~A. Schweiger, ``Scan: a structural clustering
+  algorithm for networks,'' in {\em Proceedings of the 13th ACM SIGKDD
+  international conference on Knowledge discovery and data mining},
+  pp.~824--833, ACM, 2007.
+
+\bibitem{shiokawa2015scan}
+H.~Shiokawa, Y.~Fujiwara, and M.~Onizuka, ``Scan++: efficient algorithm for
+  finding clusters, hubs and outliers on large-scale graphs,'' {\em Proceedings
+  of the VLDB Endowment}, vol.~8, no.~11, pp.~1178--1189, 2015.
+
+\bibitem{chang2017mathsf}
+L.~Chang, W.~Li, L.~Qin, W.~Zhang, and S.~Yang, ``pscan: Fast and exact
+  structural graph clustering,'' {\em IEEE Transactions on Knowledge and Data
+  Engineering}, vol.~29, no.~2, pp.~387--401, 2017.
+
+\bibitem{hopcroft2007manipulation}
+J.~Hopcroft and D.~Sheldon, ``Manipulation-resistant reputations using hitting
+  time,'' in {\em International Workshop on Algorithms and Models for the
+  Web-Graph}, pp.~68--81, Springer, 2007.
+
+\bibitem{zhang2016truetop}
+J.~Zhang, R.~Zhang, J.~Sun, Y.~Zhang, and C.~Zhang, ``Truetop: A
+  sybil-resilient system for user influence measurement on twitter,'' {\em
+  IEEE/ACM Transactions on Networking}, vol.~24, no.~5, pp.~2834--2846, 2016.
+
+\bibitem{cheng2005sybilproof}
+A.~Cheng and E.~Friedman, ``Sybilproof reputation mechanisms,'' in {\em
+  Proceedings of the 2005 ACM SIGCOMM workshop on Economics of peer-to-peer
+  systems}, pp.~128--132, ACM, 2005.
+
+\bibitem{swan2015blockchain}
+M.~Swan, {\em Blockchain: Blueprint for a new economy}.
+\newblock O'Reilly Media, Inc., 2015.
+
+\bibitem{randall}
+R.~S. Kroszner, ``Liquidity and monetary policy,'' 2007.
+
+\bibitem{selden}
+R.~Selden, ``Monetary velocity in the united states,'' 1956.
+
+\bibitem{coinmarketcap}
+``{CoinMarketCap}.'' \url{https://coinmarketcap.com/}.
+
+\bibitem{quercia2010sybil}
+D.~Quercia and S.~Hailes, ``Sybil attacks against mobile users: friends and
+  foes to the rescue,'' in {\em INFOCOM, 2010 Proceedings IEEE}, pp.~1--5,
+  IEEE, 2010.
+
+\bibitem{wiki:sybil}
+{Wikipedia contributors}, ``Sybil attack --- {Wikipedia}{,} the free
+  encyclopedia,'' 2018.
+\newblock [Online; accessed 25-June-2018].
+
+\bibitem{IPFS}
+``{IPFS}.'' \url{https://ipfs.io/}.
+
+\bibitem{Genaro}
+``Genaro.'' \url{https://genaro.network/en/}.
+
+\end{thebibliography}

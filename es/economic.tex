@@ -1,0 +1,94 @@
+% !TEX root = main.tex
+\section{Modelo económico}
+Las criptodivisas están dotadas de importancia económica, ya sea como medios de transacción o como activos inteligentes. Por lo tanto, un modelo económico razonable nos puede ayudara establecer un estándar de medición de valor en el blockchain, lo que es también el objetivo de \nrcore.
+
+Este capítulo presenta en primer lugar la representación matemática de las criptodivisas y luego las analiza mediante un modelo monetario simple pero reconocido. Durante el análisis, presentaremos Core Nebulas Rank como una parte importante de la argumentación.
+
+\subsection{Representación de las criptodivisas}
+La mayor diferencia entre las criptodivisas y la economía tradicional es que todas las transacciones con criptodivisa poseen trazabilidad. Esto provee fuentes de datos cruciales para que podamos analizar el impacto de cada transacción sobre el sistema económico en su conjunto.
+
+En general, un sistema de cripptodivisa se puede definir como un par $(\mathcal{L}, \mathcal{U})$, donde $\mathcal{L}$ denota el sistema contable, y $\mathcal{U}$ es el conjunto de sus usuarios. Más aún, el sistema contable puede ser descripto como una tripla, de este modo:
+
+\begin{align}
+\mathcal{L} = (\mathcal{A}, \mathcal{D}, \mathcal{T})
+\end{align}
+
+\noindent donde $\mathcal{A}$ representa el conjunto de cuentas, $\mathcal{D}$ es el conjunto de balances iniciales de cada cuenta, y $\mathcal{T}$ es el conjunto de transacciones. Cada transacción se puede registrar como un cuaternión de esta forma:
+
+\begin{align}
+\mathcal{D} = \{a \rightarrow d, a{\in}\mathcal{A}, d{\in}R^*\}
+\end{align}
+\begin{align}
+\mathcal{T} = \{(s, t, w, \tau)\}
+\end{align}
+
+\noindent donde $a \rightarrow d$ representa el balance $d$ correspondiente a la cuenta $a$ ($d$ es un número real positivo; en otras palabras, no tomamos en consideración las cuentas con balance cero). $s$, $t$, $w$ y $\tau$ representan la cuenta origen, la cuenta destino, el monto y el tiempo de una transacción. respectivamente.
+
+Una cuenta está controlada por un usuario relevante, quien propone una transacción con otra cuenta, lo que se puede escribir como:
+
+\begin{align}
+u \dom a. \quad u\in \mathcal{U}, a\in \mathcal{A}
+\end{align}
+
+\noindent Por un lado, un usuario puede controlar múltiples cuentas:
+
+\begin{align}
+A(u) = \{\forall a\in \mathcal{A} : u \dom a\}
+\end{align}
+
+\noindent Por otro lado, una cuenta sólo puede ser controlada por un único usuario:
+
+\begin{align}
+\forall u_1, u_2 \in \mathcal{U} : A(u_1) \cap A(u_2) = \phi
+\end{align}
+
+Nótese que el modelo descrito arriba es una simplificación razonable de cualquier sistema de criptodivisas.
+
+En este modelo no distinguimos los datos dentro del blockchain de los datos fuera del mismo, y no introducimos ni el precio de transacción ni las invocaciones de contratos inteligentes, etc. Además, las cuentas de las casas de cambio son de un tipo específico. En términos generales, las transacciones en una casa de cambio se pueden dividir en dos categorías: transacciones normales que se registran en el blockchain y transacciones internas que se registrarán en una base de datos centralizada y propietaria. Esto nos lleva a un resultado en el que no disponemos de las transacciones internas de la casa de cambio si sólo obtenemos los datos del blockchain.
+
+Sin embargo, si las transacciones internas son accesibles con la cooperación de la casa de cambio, podemos mapear la cuenta de una casa de cambio en múltiples cuentas, de modo de utilizar el modelo descrito anteriormente.
+
+\subsection{Modelo de criptodivisa}
+A pesar de que las criptodivisas difieren de la moneda comercial y el dinero fiduciario, la teoría monetaria clásica sigue teniendo un significado práctico hoy en día. Como una forma moderna de dinero nacida de una nueva entidad económica \cite{swan2015blockchain}, las criptodivisas nacieron con los atributos del dinero tradicional tres de sus funciones: sirven como medio de cambio, como ahorro, y como unidades de contabilidad.
+
+En virtud de ello, estableceremos un modelo monetario simple y clásico que ayude a comprender el significado físico de \nr.
+
+Primero, trataremos de brindar un indicador para medir el \emph{factor de velocidad} dentro del ecosistema de las criptodivisas.
+
+Otro concepto esencial que necesita ser diferenciado del \emph{factor de velocidad} en la economía es la \emph{liquidez}.
+
+La \emph{Liquidez} describe el nivel de dificultad que existe en cambiar los activos por otro medio de cambio. Como en economía el dinero en sí mismo es un medio de cambio, podemos definir el dinero como uno de los activos con mayor \emph{liquidez}.
+
+\whitepaper{En el Libro Blanco Técnico de Nebulas \cite{Nabulas}, utilizamos la palabra \emph{liquidez} frecuentemente. No obstante, no existe una definición rígida para tal concepto, cuyo significado es muy amplio incluso en Economía. Por ejemplo, en \emph{The New Palgrave: A Dictionary of Economics} las entradas que explican la \emph{liquidez} incluyen tres aspectos totalmente distintos. R. S. Kroszner indica que se crearon 2795 papers independientes que mencionan la palabra \emph{liquidez} durante los últimos seis meses, cada uno de los cuales, sin embargo, planteó una declaración diferente \cite{randall}. El concepto de \emph{liquidez} en este libro amarillo se refiere a la \textbf{velocidad del dinero}, queriendo significar con esto \textit{los tiempos de rotación de una unidad monetaria durante un determinado período de tiempo}.}
+
+Utilizamos el concepto de \textit{velocidad del dinero} para representar la tasa de rotación de las criptodivisas \cite{selden}, es decir, el volumen de negocios de una unidad monetaria durante un determinado período de tiempo (un día en este documento), que se representa con el símbolo $V$. Según la teoría cuantitativa clásica del dinero, la ecuación se expresa de la siguiente manera:
+
+\begin{align}
+M\times V=P\times Y
+\label{eq:currency}
+\end{align}
+
+\noindent donde $M$, $V$, $P$ y $Y$ representan la cantidad monetaria total del sistema económico, la velocidad del dinero, el nivel de precios (medido por el dinero de la producción económica unitaria, por lo tanto el precio del dinero es $\frac{1}{P}$), y la producción económica real (PBI real) respectivamente. La ecuación muestra que el producto de la cantidad monetaria y la velocidad del dinero es igual al producto del precio de los bienes y su producción.
+
+En cuanto a la cantidad monetaria $M$, Nebulas es similar a Ethereum en cuanto a que la cantidad monetaria mantiene un crecimiento constante (el porcentaje adicional de emisión de dinero de Nebulas —NAS— se establece en el 4\% en la actualidad), que es diferente al caso de Bitcoin en que su cantidad monetaria total será estable una vez que el total de 21 millones de monedas hayan sido creadas. La velocidad del dinero $V$ puede ser descrita como la relación entre la cantidad monetaria circulante y la oferta monetaria. Como resultado, el \refeq{eq:moneda} puede expresarse más adelante como:
+
+\begin{align}
+(M + \Delta{m}) \times \frac{\sum_{(s, t, w, \tau)\in \mathcal{T}}{w}}{M} = P \times Y
+\label{eq:cur_ext}
+\end{align}
+
+\noindent where $\Delta{m}$ is the additional monetary supply.
+
+En términos de nivel de precios $P$, es aceptable que el valor del precio esté determinado por la relación entre la oferta y la demanda monetaria, tanto por las teorías clásicas del dinero como por los Nuevos Modelos Keynesianos. A largo plazo, el nivel total de precios se ajustará para garantizar que la oferta y la demanda monetarias se mantengan en el punto de equilibrio.
+
+Sin embargo, el nivel total de precios no siempre se mantiene en el punto de equilibrio entre la oferta y la demanda monetaria a corto plazo. En un sistema económico sano, la tasa de crecimiento del precio es tradicionalmente menor que la de la velocidad del dinero. Al aumentar la oferta monetaria (en otras palabras, al reducir las tasas de interés), tanto el nivel de precios $P$ como las demandas de bienes y servicios $Y$ aumentarán mientras tanto. Por otro lado, la velocidad de aumento del nivel de precios debe ser controlada, para impedirle a los usuarios retener en su poder la criptodivisa durante mucho tiempo, reduciendo así la velocidad. La razón por la que los usuarios retienen en su poder la criptodivisa es que esperan que, con el tiempo, el precio de la misma se incremente.
+
+Con respecto a la producción económica real, los economistas la representan tradicionalmente como PBI real, es decir, \emph{como medida monetaria del valor de mercado de todos los bienes y servicios finales producidos en un período de tiempo}. Creemos que el valor de la criptodivisa se basa en su velocidad, es decir, que cada transacción contribuye en cierta medida al agregado económico total. En otras palabras, una vez que una transacción tiene lugar, aumenta la velocidad de la criptodivisa, la aprobación de los usuarios y hasta cierto punto, la lealtad de estos para con aquella. Como resultado, pensamos que $Y$ en el \refeq{eq:cur_ext} se compone de cada transacción. Dado que los sujetos de un sistema económico son las cuentas, también podemos explicar $Y$ como las transacciones emitidas por cada cuenta como se indica a continuación:
+
+\begin{align}
+Y=\sum_{a\in \mathcal{A}} \mathcal{C}(a)
+\end{align}
+
+\noindent donde $\mathcal{C}(a)$ representa la contribución hecha por una cuenta $a$ al producto económico total, a saber, \nrcore.
+
+El desarrollo de las criptodivisas depende del desarrollo continuo de la comunidad. Por lo tanto, consideramos que la cuantificación de la contribución de cada cuenta es la base para diseñar un mecanismo de incentivos razonable. Basándonos en este hecho, el sistema económico puede crear incentivos explícitos (por ejemplo, \textit{Prueba de Devoción} tal como se define en el Libro Blanco Técnico de Nebulas) o incentivos implícitos (por ejemplo, los resultados de búsqueda ordenados proporcionados por los motores de búsqueda). La directiva y los incentivos primitivos de la criptodivisa se refieren a la emisión adicional de dinero, que es un factor que las diferencia de las teorías monetarias tradicionales.

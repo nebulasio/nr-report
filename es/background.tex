@@ -1,0 +1,56 @@
+% !TEX root = main.tex
+
+\section{Antecedentes}
+En este capítulo presentamos los antecedentes del blockchain y la tecnología asociada. Debido a la ausencia de mediciones de valor, discutiremos la implementación de algoritmos de valuación tradicionales en el área de blockchain, como así también sus desventajas.
+
+\subsection{Estado de desarrollo de blockchain}
+
+Satoshi Nakamoto publicó su libro blanco de Bitcoin \cite{Nakamoto2008} en octubre de 2008. Como una de las primeras aplicaciones de la tecnología blockchain, Bitcoin es el ejemplo más impactante del concepto de un \emph{sistema de criptodivisa descentralizada}. La producción de Bitcoin depende de la ejecución de un algoritmo especial por parte de una gran cantidad de computadoras, en contraposición a cualquier otra organización, lo que garantiza la consistencia del sistema de contabilidad distribuida.
+
+Mediante el uso de un lenguaje específico de \textit{scripting}, Bitcoin puede ser utilizado para realizar pagos a terceros, como un sistema eficiente de micropagos, y más. En tiempos más recientes, emergió una ola de experimentos con origen en la plataforma Bitcoin, que incluyeron características más complejas que la primitiva criptodivisa p2p. Por ejemplo: Namecoin \cite{Namecoin} creó un sistema DNS distribuido, y Open Assets \cite{OpenAssets} implementó el concepto de \textit{monedas coloreadas}; en ambos casos se introduce el concepto de activos inteligentes siguiendo la trazabilidad de Bitcoin.
+
+Desafortunadamente, el lenguaje de \textit{scripting} de Bitcoin tiene muchos defectos de diseño que dificultad su aplicabilidad, como la falta de instrucciones y el hecho de no ser Turing-completo, algo que limita su utilidad.
+
+Con el desarrollo de la tecnología de blockchain, se han unido más sucesores, quehan tratado de ampliar las funciones relacionadas a distintas aplicaciones. El caso más significativo es el de Ethereum \cite{buterin2013ethereum}, que introduce el concepto de contratos inteligentes y Turing-completos, lo que abre una nueva dimensión para el campo de las aplicaciones.
+
+Los contratos inteligentes son contratos ejecutados mediante métodos técnicos en el sistema blockchain. El contrato inteligente de la red Ethereum corre en la máquina virtual Ethereum (EVM), que no depende de ninguna autoridad centralizada; así, la EVM garantiza la consistencia de sus resultados, así como el de los contratos inteligentes, mediante un algoritmo de consenso.
+
+Cada persona es libre de crear aplicaciones distribuidas ({\dapp}s) con funciones complejas basadas en el contrato inteligente de Ethereum. Estas DApps proporcionan soluciones a varios campos más allá de las transacciones básicas como el voto, el \textit{crowdfunding}, los préstamos, los derechos de propiedad, etc. Sin embargo, incluso cuando Ethereum extiende las posibles aplicaciones de blockchain, no existen aplicaciones revolucionarias en la plataforma Ethereum debido a la falta inherente de capacidad de medición de valor.
+
+Para todo sistema que da soporte a contratos inteligentes existen dos tipos de cuentas: cuentas de propiedad externa (EOA) y cuentas de contratos inteligentes, y ambas carecen de un sistema de medición de valor razonable. Mientras tanto, existe información de gran valor escondida en el proceso de invocación de un contrato inteligente. Esa información contiene más dimensiones que los datos transaccionales tradicionales, y no es posible evaluarla mediante mediciones de valor clásicas.
+
+A principios de 2015, a Chris Skinner se le ocurrió la idea de una \emph{web de valor} \cite{ChrisSkinner}, señalando que un ecosistema de valor debería incluir intercambios de valor, almacenes de valor y sistemas de gestión de valor. Skinner señaló que existen claras diferencias entre las plataformas de criptodivisas y la sociedad tradicional en cuanto a medición del valor, lo que plantea un desafío para evaluar el valor de los datos y la información en las plataformas de criptodivisas.
+
+\subsection{Algoritmos de valuación de nodos basados en grafos}
+La nueva generación de proyectos blockchain, tales como Ethereum, construyeron un ecosistema complejo, que fue más allá de una simple plataforma de criptodivisas. No obstante, no hay un método razonable para valuar las entidades dentro del blockchain. Por ejemplo, no podemos decir con certeza qué entidad posee la mayor contribución al sistema blockchain, ni tampoco sabemos a ciencia cierta cómo medir ese parámetro.
+
+El algoritmo PageRank \cite{page1999pagerank} es una medida típica de reputación en internet. Como algoritmo principal de Google, PageRank fue propuesto para resolver el problema de clasificación en el análisis de enlaces web; luego de realizar investigaciones basadas en él, fue ampliamente utilizado en diversos campos tales como evaluar la importancia de \textit{papers} académicos, en \textit{web crawlers}, en la extracción de palabras clave, en la evaluación de la reputación de usuarios en redes sociales, etcétera.
+
+Algunas investigaciones ponen el foco en el posible uso de PageRank en blockchains. Fleder, Kester, Pillai, et al. demostraron que PageRank se puede utilizar para el descubrimiento de cuentas Bitcoin y para analizar la actividad de dichas cuentas\cite{Fleder2015}. Sin embargo, el método que plantean es sencillamente trabajo analítico manual con la asistencia de PageRank.
+
+Tal como el algoritmo de valuación original creado para su uso en la web 2.0, PageRank sufre de limitaciones inherentes para la evaluación de la reputación \textit{online}.
+
+Desde entonces han surgido más investigaciones que mejoran PageRank, siendo una de las más famosas \textit{LeaderRank}. Este algoritmo mejora la probabilidad de transición introduciendo nodos \textit{ground} y enlaces bidireccionales ponderados en lugar de utilizar la misma probabilidad de transición en PageRank, lo que hace que los nodos tengan una probabilidad de transición diferente tanto dentro como fuera. Sin embargo, sigue habiendo limitaciones: LeaderRank cuenta la reputación de forma iterativa tomando únicamente en consideración la relación entre los nodos, mientras carece de la capacidad de evaluar las actividades de los usuarios.
+
+También es importante destacar que los algoritmos PageRank no son resistentes a los ataques Sybil\cite{cheng2006manipulability}, que es la estrategia por la cual un adversario subvierte el sistema de reputación dentro de una red simétrica creando un gran número de identidades seudónimas.
+
+El trabajo más relevante con Nebulas Rank es NEM \cite{nem}. A diferencia de los algoritmos de consenso como Prueba de Trabajo (\textit{Proof-of-Work} o PoW) o Prueba de Participación (\textit{Proof-of-Stake} o PoS), NEM adopta el protocolo de consenso llamado Prueba de Importancia (\textit{Proof-of-Importance}, o PoI) y, además, NCDawareRank \cite{Nikolakopoulos2013} como su algoritmo de clasificación. NCDawareRank hace uso del efecto de clusterización de la topología de red con un algoritmo de clusterización basado en el algoritmo SCAN \cite{xu2007scan} \cite{shiokawa2015scan} \cite{chang2017mathsf}.
+
+Aunque la estructura de la comunidad está representada en el grafo de transacciones y debería ser útil para manejar los nodos de spam, esto no garantiza que todos los nodos de la cadena de bloques controlados por una entidad en el mundo real estén mapeados en un solo cluster, lo que da lugar a la manipulación.
+
+\subsection{Resistencia a la manipulación}
+La habilidad de resistir la manipulación, (veracidad), es la meta más significativa —y la que representa un mayor desafío— para Nebulas Rank.
+
+Hopcroft et al. hallaron que PageRank falla al evaluar la reputación de un usuario sometido a manipulación \cite{hopcroft2007manipulation}. Zhang et al. señalan que un adversario puede reducir efectivamente la reputación de los usuarios no-Sybil aún si se construye un índice de evaluación de la reputación del nodo.\cite{zhang2016truetop}.
+
+Esto se debe en gran medida a que los algoritmos de PageRank funcionan en base a la topología de la red, mientras que al adversario le basta con crear una imagen de la red para obtener la misma reputación, o una mayor.~\cite{cheng2005sybilproof}~\cite{cheng2006manipulability}.
+
+En cuanto a los sistemas blockchain, los métodos más comunes de manipulación incluyen:
+\begin{enumerate}
+\item Transferencia en lazo. El atacante realiza transferencias a lo largo de una topología lazo, lo que permite que el mismo dinero circule repetidamente sobre las mismas aristas. Al hacerlo, el atacante espera incrementar la ponderación de las aristas relacionadas;
+\item Transferencia a direcciones aleatorias, de tal forma que como resultado se incrementen los egresos del nodo Sybil y la propagación de sus fondos;
+\item Formar un componente de red independiente con direcciones controladas por el atacante, de tal modo que éste pretenda ser un nodo central;
+\item Interactuar frecuentemente con direcciones de casas de cambio importantes, es decir, transferir los mismos fondos una y otra vez con una dirección perteneciente a una casa de cambios importante, con el fin de que el atacante logre una mejor posición estructural en la red.
+\end{enumerate}
+
+Tomamos en cuenta estos y otros métodos para garantizar la equidad de Core Nebulas Rank durante la etapa de diseño.
